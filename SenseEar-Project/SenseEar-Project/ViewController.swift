@@ -7,14 +7,52 @@
 //
 
 import UIKit
-
-import UIKit
 import MobileCoreServices
+
+enum GenderSelection: Int, CaseIterable, Identifiable, Hashable {
+    case male
+    case female
+    
+    static func allValues() -> [String] {
+        return [male, female].map({$0.name})
+    }
+    
+    var id: UUID {
+        return UUID()
+    }
+    
+    public var name: String {
+       switch self {
+       case .male:
+           return "Male"
+       case .female:
+           return "Female"
+       }
+   }
+}
+
+//extension GenderSelection {
+//
+//    var id: UUID {
+//        return UUID()
+//    }
+//
+//    var name: String {
+//        switch (self) {
+//            case .male:
+//                return "Male"
+//            case .female:
+//                return "Female"
+//        }
+//    }
+//}
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var genderSelection: UISegmentedControl!
-    @IBOutlet weak var accentSelection: UISegmentedControl!
+//    private var genderSelection: GenderSelection
+    
+    @IBOutlet weak var genderSelectionSC: UISegmentedControl!
+    @IBOutlet weak var accentSelectionSC: UISegmentedControl!
     
     @IBOutlet weak var importBtn: UIButton!
     @IBOutlet weak var generateBtn: UIButton!
@@ -23,6 +61,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         setUp()
+        addValuesToSegmentControls()
     }
     
     public func setUp() {
@@ -33,6 +72,20 @@ class ViewController: UIViewController {
 //        importBtn.setTitle("Import Text File", for: .normal)
 //        generateBtn.setTitle("Generate Audio File", for: .normal)
     }
+    
+    public func addValuesToSegmentControls() {
+        
+        //GenderSC
+        genderSelectionSC.selectedSegmentIndex = 0;
+//        genderSelectionSC.setTitle(GenderSelection.allValues([0]), forSegmentAt: 0)
+//        genderSelectionSC.setTitle(GenderSelection.allValues([1]), forSegmentAt: 0)
+//        genderSelectionSC = UISegmentedControl(items: GenderSelection.allValues())
+        
+        
+        //AccentSC
+        accentSelectionSC.selectedSegmentIndex = 0
+    }
+    
     
     @IBAction func importFiles(_ sender: UIButton) {
         
@@ -52,7 +105,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UIDocumentPickerDelegate {
     
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt urls: [URL]) {
+    private func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt urls: [URL]) {
         /// Handle your document
         
         guard let selectedFileURL = urls.first else {
