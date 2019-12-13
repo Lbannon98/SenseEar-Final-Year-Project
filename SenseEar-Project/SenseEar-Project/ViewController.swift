@@ -78,7 +78,7 @@ class ViewController: UIViewController {
     public func setUp() {
         documentView.layer.borderWidth = 2
         documentView.layer.borderColor = UIColor.black.cgColor
-        
+    
         /* Add appropriate constraints */
 //        importBtn.setTitle("Import Text File", for: .normal)
 //        generateBtn.setTitle("Generate Audio File", for: .normal)

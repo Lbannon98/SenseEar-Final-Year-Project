@@ -15,14 +15,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="C4f-lu-60k">
-                                <rect key="frame" x="20" y="44" width="374" height="630"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBs-RH-EBc">
+                                <rect key="frame" x="85" y="782" width="244" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Generate Audio File"/>
+                                <connections>
+                                    <action selector="generateFile:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="auK-xU-uH1"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="mI2-R8-NgA">
+                                <rect key="frame" x="35" y="44" width="344" height="638"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVc-xh-GHA">
-                                        <rect key="frame" x="16" y="0.0" width="342" height="368"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="344" height="238"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lml-4L-bMs">
-                                                <rect key="frame" x="104.5" y="166" width="133" height="36"/>
+                                                <rect key="frame" x="105.5" y="101" width="133" height="36"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                                 <state key="normal" title="Import Text File"/>
                                                 <connections>
@@ -37,71 +47,85 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Gender:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3J-tb-9fO">
-                                        <rect key="frame" x="107" y="403" width="160.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="298" width="344" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NFJ-t3-faE" userLabel="GenderSelection">
-                                        <rect key="frame" x="121.5" y="468" width="131" height="32"/>
-                                        <segments>
-                                            <segment title="First"/>
-                                            <segment title="Second"/>
-                                        </segments>
-                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="XlR-M2-lnx">
+                                        <rect key="frame" x="0.0" y="388" width="344" height="50"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NFJ-t3-faE" userLabel="GenderSelection">
+                                                <rect key="frame" x="0.0" y="0.0" width="224" height="51"/>
+                                                <segments>
+                                                    <segment title="First"/>
+                                                    <segment title="Second"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b40-mJ-6lk">
+                                                <rect key="frame" x="294" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="FiT-Nu-npv"/>
+                                                    <constraint firstAttribute="width" constant="50" id="Mv1-aZ-Rke"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="3"/>
+                                                <state key="normal" backgroundImage="microphone-30"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Accent:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c76-DA-Ena">
-                                        <rect key="frame" x="109" y="534" width="156.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="498" width="344" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oiw-MD-Oty" userLabel="AccentSelection">
-                                        <rect key="frame" x="88.5" y="599" width="197" height="32"/>
-                                        <segments>
-                                            <segment title="First"/>
-                                            <segment title="Second"/>
-                                            <segment title=""/>
-                                        </segments>
-                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="TYA-0M-xer">
+                                        <rect key="frame" x="0.0" y="588" width="344" height="50"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oiw-MD-Oty" userLabel="AccentSelection">
+                                                <rect key="frame" x="0.0" y="0.0" width="244" height="51"/>
+                                                <segments>
+                                                    <segment title="First"/>
+                                                    <segment title="Second"/>
+                                                    <segment title=""/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ai2-Kf-PDP">
+                                                <rect key="frame" x="294" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="ESc-Un-VTb"/>
+                                                    <constraint firstAttribute="height" constant="50" id="dMG-jD-mfs"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="3"/>
+                                                <state key="normal" backgroundImage="microphone-30"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="NFJ-t3-faE" firstAttribute="height" secondItem="C4f-lu-60k" secondAttribute="height" multiplier="0.0492063" id="0Ae-hA-M9n"/>
-                                    <constraint firstItem="NFJ-t3-faE" firstAttribute="width" secondItem="C4f-lu-60k" secondAttribute="width" multiplier="0.350267" id="0Ph-ry-bQK"/>
-                                    <constraint firstItem="DVc-xh-GHA" firstAttribute="top" secondItem="C4f-lu-60k" secondAttribute="top" id="A8T-Jf-vej"/>
-                                    <constraint firstItem="oiw-MD-Oty" firstAttribute="height" secondItem="C4f-lu-60k" secondAttribute="height" multiplier="0.0492063" id="DDV-Ba-jKI"/>
-                                    <constraint firstItem="c76-DA-Ena" firstAttribute="centerX" secondItem="C4f-lu-60k" secondAttribute="centerX" id="JoL-20-wAr"/>
-                                    <constraint firstItem="oiw-MD-Oty" firstAttribute="width" secondItem="C4f-lu-60k" secondAttribute="width" multiplier="0.526738" id="MJO-C9-RaG"/>
-                                    <constraint firstItem="y3J-tb-9fO" firstAttribute="top" secondItem="DVc-xh-GHA" secondAttribute="bottom" constant="35" id="MSp-Eq-CWQ"/>
-                                    <constraint firstItem="NFJ-t3-faE" firstAttribute="centerX" secondItem="C4f-lu-60k" secondAttribute="centerX" id="YBM-AT-itT"/>
-                                    <constraint firstItem="oiw-MD-Oty" firstAttribute="centerX" secondItem="C4f-lu-60k" secondAttribute="centerX" id="YCI-hn-W86"/>
-                                    <constraint firstItem="c76-DA-Ena" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NFJ-t3-faE" secondAttribute="bottom" constant="35" id="ZLD-GA-RSk"/>
-                                    <constraint firstItem="DVc-xh-GHA" firstAttribute="leading" secondItem="C4f-lu-60k" secondAttribute="leading" constant="16" id="cob-Ub-YAX"/>
-                                    <constraint firstItem="y3J-tb-9fO" firstAttribute="centerX" secondItem="C4f-lu-60k" secondAttribute="centerX" id="hk6-bN-nOC"/>
-                                    <constraint firstItem="oiw-MD-Oty" firstAttribute="top" relation="greaterThanOrEqual" secondItem="c76-DA-Ena" secondAttribute="bottom" constant="35" id="lIs-uw-4aW"/>
-                                    <constraint firstAttribute="trailing" secondItem="DVc-xh-GHA" secondAttribute="trailing" constant="16" id="prA-D2-Zfo"/>
-                                    <constraint firstItem="NFJ-t3-faE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3J-tb-9fO" secondAttribute="bottom" constant="35" id="xse-ci-tkF"/>
+                                    <constraint firstItem="y3J-tb-9fO" firstAttribute="centerX" secondItem="mI2-R8-NgA" secondAttribute="centerX" id="1Ur-ZO-KNY"/>
+                                    <constraint firstItem="y3J-tb-9fO" firstAttribute="centerX" secondItem="mI2-R8-NgA" secondAttribute="centerX" id="adE-wR-mFu"/>
+                                    <constraint firstItem="DVc-xh-GHA" firstAttribute="centerX" secondItem="mI2-R8-NgA" secondAttribute="centerX" id="g8x-3D-8Ma"/>
+                                    <constraint firstItem="TYA-0M-xer" firstAttribute="centerX" secondItem="mI2-R8-NgA" secondAttribute="centerX" id="hMd-Ek-jU9"/>
+                                    <constraint firstItem="c76-DA-Ena" firstAttribute="centerX" secondItem="mI2-R8-NgA" secondAttribute="centerX" id="nBY-b3-N7c"/>
+                                    <constraint firstItem="XlR-M2-lnx" firstAttribute="centerX" secondItem="mI2-R8-NgA" secondAttribute="centerX" id="zOL-xl-9u5"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBs-RH-EBc">
-                                <rect key="frame" x="85" y="782" width="244" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Generate Audio File"/>
-                                <connections>
-                                    <action selector="generateFile:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="auK-xU-uH1"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="MBs-RH-EBc" firstAttribute="leading" secondItem="2NF-Vc-Ohg" secondAttribute="leading" constant="85" id="5mv-h8-dnl"/>
-                            <constraint firstItem="C4f-lu-60k" firstAttribute="leading" secondItem="2NF-Vc-Ohg" secondAttribute="leading" constant="20" id="7Wk-FL-4Pz"/>
                             <constraint firstItem="MBs-RH-EBc" firstAttribute="width" secondItem="6dp-ng-7xA" secondAttribute="height" multiplier="85:448" constant="74" id="9pP-Z7-hY2"/>
                             <constraint firstItem="2NF-Vc-Ohg" firstAttribute="bottom" secondItem="MBs-RH-EBc" secondAttribute="bottom" constant="44" id="LTi-vb-qbW"/>
                             <constraint firstItem="2NF-Vc-Ohg" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MBs-RH-EBc" secondAttribute="trailing" symbolic="YES" id="UxY-yk-ouV"/>
-                            <constraint firstItem="MBs-RH-EBc" firstAttribute="top" secondItem="oiw-MD-Oty" secondAttribute="bottom" constant="108" id="Wz8-AP-Ton"/>
                             <constraint firstItem="MBs-RH-EBc" firstAttribute="centerX" secondItem="2NF-Vc-Ohg" secondAttribute="centerX" id="eHJ-hL-HdP"/>
-                            <constraint firstItem="C4f-lu-60k" firstAttribute="top" secondItem="2NF-Vc-Ohg" secondAttribute="top" id="lu4-Eq-iZ4"/>
-                            <constraint firstItem="2NF-Vc-Ohg" firstAttribute="trailing" secondItem="C4f-lu-60k" secondAttribute="trailing" constant="20" id="vXA-jk-AK3"/>
+                            <constraint firstItem="mI2-R8-NgA" firstAttribute="leading" secondItem="2NF-Vc-Ohg" secondAttribute="leading" constant="35" id="l3I-1h-Kbm"/>
+                            <constraint firstAttribute="bottom" secondItem="mI2-R8-NgA" secondAttribute="bottom" constant="214" id="s4b-nD-qGp"/>
+                            <constraint firstItem="mI2-R8-NgA" firstAttribute="top" secondItem="2NF-Vc-Ohg" secondAttribute="top" id="wGW-HD-IVZ"/>
+                            <constraint firstItem="2NF-Vc-Ohg" firstAttribute="trailing" secondItem="mI2-R8-NgA" secondAttribute="trailing" constant="35" id="y7R-B2-b83"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2NF-Vc-Ohg"/>
                     </view>
@@ -118,4 +142,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="microphone-30" width="30" height="30"/>
+    </resources>
 </document>
