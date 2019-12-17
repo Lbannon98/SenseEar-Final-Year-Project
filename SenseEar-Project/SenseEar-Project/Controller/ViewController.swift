@@ -79,7 +79,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var documentView: UIView!
     
     var userInputGenderSelection = GenderSelection.female
-    let speechRecogniser: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale.init(identifier: "en-UK"))
+    let speechRecogniser: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale.init(identifier: "en-IRE"))
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
@@ -94,6 +94,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     public func setUp() {
         documentView.layer.borderWidth = 2
         documentView.layer.borderColor = UIColor.black.cgColor
+        
+        genderAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
+        accentAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
 
         /* Add appropriate constraints */
 //        importBtn.setTitle("Import Text File", for: .normal)
@@ -152,7 +155,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.voiceSelectedGenderLbl.isEnabled = buttonState
             }
         }
-        self.voiceSelectedGenderLbl.frame.size.width = view.bounds.width - 64
+        //self.voiceSelectedGenderLbl.frame.size.width = view.bounds.width - 64
     }
     
     func startRecording() {
@@ -227,14 +230,17 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             genderAudioBtn.isEnabled = false
-            self.self.genderAudioBtn.setTitle("Record", for: .normal)
+//            self.self.genderAudioBtn.setTitle("Record", for: .normal)
+            self.genderAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
 //            if let image = UIImage(named: "microphone-30.png") {
 //                self.genderAudioBtn.setImage(image, for: .normal)
 //            }
 //            self.genderAudioBtn.setTitle("Record", for: .normal)
         } else {
             startRecording()
-            genderAudioBtn.setTitle("Stop", for: .normal)
+            self.genderAudioBtn.setImage(UIImage(named: "stop.png"), for: .normal)
+
+//            genderAudioBtn.setTitle("Stop", for: .normal)
 
 //            if let image = UIImage(named: "stop.circle.fill.png") {
 //                self.genderAudioBtn.setImage(image, for: .normal)
