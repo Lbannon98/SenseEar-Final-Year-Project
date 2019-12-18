@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB17221523A8E70600CBB8C6 /* CircleButton.swift */; };
 		DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AC239D45CF0073DAFA /* AppDelegate.swift */; };
 		DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */; };
 		DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214B0239D45CF0073DAFA /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB17221523A8E70600CBB8C6 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		DB4214A9239D45CF0073DAFA /* SenseEar-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SenseEar-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4214AC239D45CF0073DAFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB17221323A8E65600CBB8C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB17221523A8E70600CBB8C6 /* CircleButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB17221423A8E66E00CBB8C6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DB4214B0239D45CF0073DAFA /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		DB4214A0239D45CF0073DAFA = {
 			isa = PBXGroup;
 			children = (
@@ -58,9 +76,10 @@
 		DB4214AB239D45CF0073DAFA /* SenseEar-Project */ = {
 			isa = PBXGroup;
 			children = (
+				DB17221323A8E65600CBB8C6 /* View */,
+				DB17221423A8E66E00CBB8C6 /* Controller */,
 				DB4214AC239D45CF0073DAFA /* AppDelegate.swift */,
 				DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */,
-				DB4214B0239D45CF0073DAFA /* ViewController.swift */,
 				DB4214B2239D45CF0073DAFA /* Main.storyboard */,
 				DB4214B5239D45D00073DAFA /* Assets.xcassets */,
 				DB4214B7239D45D00073DAFA /* LaunchScreen.storyboard */,
@@ -141,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */,
 				DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */,
 				DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */,
 				DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */,

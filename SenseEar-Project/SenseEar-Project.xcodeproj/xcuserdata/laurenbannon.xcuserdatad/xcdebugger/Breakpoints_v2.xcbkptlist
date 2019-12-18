@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4AB3E7A2-08EF-4A6F-9B07-8216A97C35C8"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9EAE45E9-4C75-47B7-8AE6-97CEDC48397C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SenseEar-Project/Controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "requestMicrophoneAccess()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9EAE45E9-4C75-47B7-8AE6-97CEDC48397C - ca3f718842e4f99a"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SenseEar_Project.ViewController.requestMicrophoneAccess() -&gt; ()"
+                  moduleName = "SenseEar-Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/laurenbannon/Desktop/College/Year%204/Semester%201/Software%20Project/Project/SenseEar%20Project%20(New)/SenseEar-Project/SenseEar-Project/Controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "166">
+               </Location>
+               <Location
+                  uuid = "9EAE45E9-4C75-47B7-8AE6-97CEDC48397C - f766b2f4cd144ce3"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.SFSpeechRecognizerAuthorizationStatus) -&gt; () in SenseEar_Project.ViewController.requestMicrophoneAccess() -&gt; ()"
+                  moduleName = "SenseEar-Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/laurenbannon/Desktop/College/Year%204/Semester%201/Software%20Project/Project/SenseEar%20Project%20(New)/SenseEar-Project/SenseEar-Project/Controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "166">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
