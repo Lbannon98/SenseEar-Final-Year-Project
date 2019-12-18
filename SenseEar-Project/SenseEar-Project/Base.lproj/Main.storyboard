@@ -63,6 +63,9 @@
                                                     <segment title="First"/>
                                                     <segment title="Second"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="genderSelectionSCChanged:" destination="S2z-Qn-eFc" eventType="valueChanged" id="uUk-D0-ike"/>
+                                                </connections>
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b40-mJ-6lk" customClass="CircleButton" customModule="SenseEar_Project" customModuleProvider="target">
                                                 <rect key="frame" x="281" y="0.0" width="70" height="70"/>
@@ -110,6 +113,9 @@
                                                     <segment title="Second"/>
                                                     <segment title=""/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="accentSelectionSCChanged:" destination="S2z-Qn-eFc" eventType="valueChanged" id="9oE-0Y-8cm"/>
+                                                </connections>
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ai2-Kf-PDP" customClass="CircleButton" customModule="SenseEar_Project" customModuleProvider="target">
                                                 <rect key="frame" x="281" y="0.0" width="70" height="70"/>

@@ -61,9 +61,7 @@ enum AccentSelection: Int, CaseIterable, Identifiable, Hashable {
 
 
 class ViewController: UIViewController, SFSpeechRecognizerDelegate {
-    
-//    private var genderSelection: GenderSelection
-    
+
     @IBOutlet weak var genderSelectionSC: UISegmentedControl!
     @IBOutlet weak var accentSelectionSC: UISegmentedControl!
     
@@ -79,7 +77,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var documentView: UIView!
     
     let voiceGenderSelectionDictionary = [
-           "Male": GenderSelection.male,
+           "Mail": GenderSelection.male,
            "Female": GenderSelection.female] as [String : Any]
        
        let voiceAccentSelectionDictionary = [
@@ -97,7 +95,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     override func viewDidLoad() {
         setUp()
         addValuesToSegmentControls()
-        
         requestMicrophoneAccess()
     }
     
@@ -107,38 +104,23 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         genderAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
         accentAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
-
-        /* Add appropriate constraints */
-//        importBtn.setTitle("Import Text File", for: .normal)
-//        generateBtn.setTitle("Generate Audio File", for: .normal)
     }
     
     public func addValuesToSegmentControls() {
         
         //GenderSC
-        let male: GenderSelection = .male
-        let female: GenderSelection = .female
+        genderSelectionSC.selectedSegmentIndex = 0
         
-        genderSelectionSC.selectedSegmentIndex = 0;
-        
-        genderSelectionSC.setTitle(male.name, forSegmentAt: 0)
-        genderSelectionSC.setTitle(female.name, forSegmentAt: 1)
-        
-//        genderSelectionSC.setTitle(GenderSelection.allValues([0]), forSegmentAt: 0)
-//        genderSelectionSC.setTitle(GenderSelection.allValues([1]), forSegmentAt: 0)
-//        genderSelectionSC = UISegmentedControl(items: GenderSelection.allValues())
-        
+        genderSelectionSC.setTitle(GenderSelection.allValues()[0], forSegmentAt: 0)
+        genderSelectionSC.setTitle(GenderSelection.allValues()[1], forSegmentAt: 1)
         
         //AccentSC
-        let english: AccentSelection = .english
-        let american: AccentSelection = .american
-        let austrailian: AccentSelection = .austrailian
-        
         accentSelectionSC.selectedSegmentIndex = 0
         
-        accentSelectionSC.setTitle(english.name, forSegmentAt: 0)
-        accentSelectionSC.setTitle(american.name, forSegmentAt: 1)
-        accentSelectionSC.setTitle(austrailian.name, forSegmentAt: 2)
+        accentSelectionSC.setTitle(AccentSelection.allValues()[0], forSegmentAt: 0)
+        accentSelectionSC.setTitle(AccentSelection.allValues()[1], forSegmentAt: 1)
+        accentSelectionSC.setTitle(AccentSelection.allValues()[2], forSegmentAt: 2)
+        
     }
     
     func requestMicrophoneAccess() {
@@ -178,6 +160,29 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.voiceSelectedAccentLbl.frame.size.width = view.bounds.width - 64
 
     }
+    
+    @IBAction func genderSelectionSCChanged(_ sender: Any) {
+        
+        if genderSelectionSC.selectedSegmentIndex == 0 {
+            print(GenderSelection.allValues()[0])
+        } else {
+            print(GenderSelection.allValues()[1])
+        }
+        
+    }
+
+    @IBAction func accentSelectionSCChanged(_ sender: Any) {
+        
+        if accentSelectionSC.selectedSegmentIndex == 0 {
+            print(AccentSelection.allValues()[0])
+        } else if accentSelectionSC.selectedSegmentIndex == 1 {
+            print(AccentSelection.allValues()[1])
+        } else {
+            print(AccentSelection.allValues()[2])
+        }
+        
+    }
+    
     
     func genderStartRecording() {
         if recognitionTask != nil {
@@ -357,7 +362,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             self.accentAudioBtn.setImage(UIImage(named: "stop.png"), for: .normal)
 
         }
-            
+        
     }
     
     @IBAction func importFiles(_ sender: UIButton) {
