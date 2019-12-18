@@ -17,10 +17,6 @@ class CircleButton: UIButton {
         }
     }
     
-//    override func prepareForInterfaceBuilder() {
-//        setUpView()
-//    }
-    
     override func awakeFromNib() {
          setUpView()
     }

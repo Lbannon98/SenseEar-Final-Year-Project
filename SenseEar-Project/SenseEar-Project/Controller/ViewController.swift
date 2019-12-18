@@ -78,12 +78,22 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBOutlet weak var documentView: UIView!
     
+    let voiceGenderSelectionDictionary = [
+           "Male": GenderSelection.male,
+           "Female": GenderSelection.female] as [String : Any]
+       
+       let voiceAccentSelectionDictionary = [
+           "English": AccentSelection.english,
+           "American": AccentSelection.american,
+           "Austrailian": AccentSelection.austrailian] as [String : Any]
+    
     var userInputGenderSelection = GenderSelection.female
+    var userInputAccentSelection = AccentSelection.austrailian
     let speechRecogniser: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale.init(identifier: "en-IRE"))
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
-    
+
     override func viewDidLoad() {
         setUp()
         addValuesToSegmentControls()
@@ -135,59 +145,74 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         speechRecogniser?.delegate = self
         
         SFSpeechRecognizer.requestAuthorization {
-            status in
+            authenticationStatus in
             var buttonState = false
-            switch status {
+            
+            switch authenticationStatus {
             case .authorized:
                 buttonState = true
-                print("Permission received")
+                print("Permission received!")
+                
             case .denied:
                 buttonState = false
-                print("User did not give permission to use speech recognition")
+                print("User did not give permission to use speech recognition!")
+                
             case .notDetermined:
                 buttonState = false
-                print("Speech recognition not allowed by user")
+                print("Speech recognition not allowed by user!")
+                
             case .restricted:
                 buttonState = false
-                print("Speech recognition not supported on this device")
+                print("Speech recognition not supported on this device!")
+                
+            @unknown default:
+                fatalError()
             }
+            
             DispatchQueue.main.async {
                 self.voiceSelectedGenderLbl.isEnabled = buttonState
+                self.voiceSelectedAccentLbl.isEnabled = buttonState
             }
         }
-        //self.voiceSelectedGenderLbl.frame.size.width = view.bounds.width - 64
+        self.voiceSelectedGenderLbl.frame.size.width = view.bounds.width - 64
+        self.voiceSelectedAccentLbl.frame.size.width = view.bounds.width - 64
+
     }
     
-    func startRecording() {
-        if recognitionTask != nil { //created when request kicked off by the recognizer. used to track progress of a transcription or cancel it
+    func genderStartRecording() {
+        if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
         let audioSession = AVAudioSession.sharedInstance()
         do {
+            
             try audioSession.setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.record)), mode: .default)
             try audioSession.setMode(AVAudioSession.Mode.measurement)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+            
         } catch {
             print("Failed to setup audio session")
         }
         
-        recognitionRequest = SFSpeechAudioBufferRecognitionRequest() //read from buffer
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
         let inputNode = audioEngine.inputNode
         
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Could not create request instance")
         }
+        
         recognitionRequest.shouldReportPartialResults = true
         recognitionTask = speechRecogniser?.recognitionTask(with: recognitionRequest) {
-            res, err in
+
+            result, error in
             var isLast = false
-            if res != nil { //res contains transcription of a chunk of audio, corresponding to a single word usually
-                isLast = (res?.isFinal)!
+            if result != nil {
+                isLast = (result?.isFinal)!
             }
             
-            if err != nil || isLast {
+            if error != nil || isLast {
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
                 
@@ -195,21 +220,95 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
                 self.recognitionTask = nil
                 
                 self.genderAudioBtn.isEnabled = true
-                let bestStr = res?.bestTranscription.formattedString
-                var inDict = self.voiceGenderSelectionDictionary.contains { $0.key == bestStr}
                 
-                if inDict {
-                    self.voiceSelectedGenderLbl.text = bestStr
-                    self.userInputGenderSelection = self.voiceGenderSelectionDictionary[bestStr!]! as! GenderSelection
+                let bestTranscription = result?.bestTranscription.formattedString
+                var inGenderSelectionDictionary = self.voiceGenderSelectionDictionary.contains { $0.key == bestTranscription}
+                
+                if inGenderSelectionDictionary {
+                    
+                    self.voiceSelectedGenderLbl.text = bestTranscription
+                    self.userInputGenderSelection = self.voiceGenderSelectionDictionary[bestTranscription!]! as! GenderSelection
+                    
+                } else {
+                    self.voiceSelectedGenderLbl.text = "Not understood, try again"
                 }
-                else {
-                    self.voiceSelectedGenderLbl.text = "Can't find it in the dictionary"
-//                    self.userInputGenderSelection = GenderSelection.male
-                }
-//                self.mapSetUp()
+    
             }
             
         }
+        
+        let format = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: format) {
+            buffer, _ in
+            self.recognitionRequest?.append(buffer)
+        }
+        audioEngine.prepare()
+        
+        do {
+            try audioEngine.start()
+        } catch {
+            print("Can't start the engine")
+        }
+    }
+    
+    func accentStartRecording() {
+        if recognitionTask != nil {
+            recognitionTask?.cancel()
+            recognitionTask = nil
+        }
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            
+            try audioSession.setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.record)), mode: .default)
+            try audioSession.setMode(AVAudioSession.Mode.measurement)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+            
+        } catch {
+            print("Failed to setup audio session")
+        }
+        
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        let inputNode = audioEngine.inputNode
+        
+        guard let recognitionRequest = recognitionRequest else {
+            fatalError("Could not create request instance")
+        }
+        
+        recognitionRequest.shouldReportPartialResults = true
+        recognitionTask = speechRecogniser?.recognitionTask(with: recognitionRequest) {
+
+            result, error in
+            var isLast = false
+            if result != nil {
+                isLast = (result?.isFinal)!
+            }
+            
+            if error != nil || isLast {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+                
+                self.accentAudioBtn.isEnabled = true
+                
+                let bestTranscription = result?.bestTranscription.formattedString
+                var inAccentSelectionDictionary = self.voiceAccentSelectionDictionary.contains {$0.key == bestTranscription}
+                
+                if inAccentSelectionDictionary {
+                    
+                    self.voiceSelectedAccentLbl.text = bestTranscription
+                    self.userInputAccentSelection = self.voiceAccentSelectionDictionary[bestTranscription!]! as! AccentSelection
+                    
+                } else {
+                    self.voiceSelectedAccentLbl.text = "Not understood, try again"
+                }
+                
+            }
+            
+        }
+        
         let format = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: format) {
             buffer, _ in
@@ -227,33 +326,38 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func genderSpeechSelection(_ sender: Any) {
         
         if audioEngine.isRunning {
+            
             audioEngine.stop()
             recognitionRequest?.endAudio()
             genderAudioBtn.isEnabled = false
-//            self.self.genderAudioBtn.setTitle("Record", for: .normal)
             self.genderAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
-//            if let image = UIImage(named: "microphone-30.png") {
-//                self.genderAudioBtn.setImage(image, for: .normal)
-//            }
-//            self.genderAudioBtn.setTitle("Record", for: .normal)
+
         } else {
-            startRecording()
+            
+            genderStartRecording()
             self.genderAudioBtn.setImage(UIImage(named: "stop.png"), for: .normal)
 
-//            genderAudioBtn.setTitle("Stop", for: .normal)
-
-//            if let image = UIImage(named: "stop.circle.fill.png") {
-//                self.genderAudioBtn.setImage(image, for: .normal)
-//            }
-//            self.genderAudioBtn.setTitle("Stop", for: .normal)
         }
-            
-        print("Gender Selected!")
+    
     }
     
     
     @IBAction func accentSpeechSelection(_ sender: Any) {
-        print("Accent Selected!")
+        
+         if audioEngine.isRunning {
+            
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+            accentAudioBtn.isEnabled = false
+            self.accentAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
+            
+        } else {
+            
+            accentStartRecording()
+            self.accentAudioBtn.setImage(UIImage(named: "stop.png"), for: .normal)
+
+        }
+            
     }
     
     @IBAction func importFiles(_ sender: UIButton) {
@@ -269,15 +373,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func generateFile(_ sender: Any) {
         print("File Generated!!")
     }
-    
-    let voiceGenderSelectionDictionary = [
-        "Male": GenderSelection.male,
-        "Female": GenderSelection.female] as [String : Any]
-    
-    let voiceAccentSelectionDictionary = [
-        "English": AccentSelection.english,
-        "American": AccentSelection.american,
-        "Austrailian": AccentSelection.austrailian] as [String : Any]
     
 }
 
@@ -310,10 +405,5 @@ extension ViewController: UIDocumentPickerDelegate {
 fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
         return input.rawValue
 }
-
-//extension ViewController: SFSpeechRecognizerDelegate {
-//
-//
-//}
 
 
