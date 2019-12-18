@@ -77,13 +77,14 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var documentView: UIView!
     
     let voiceGenderSelectionDictionary = [
-           "Mail": GenderSelection.male,
-           "Female": GenderSelection.female] as [String : Any]
+//        "Male": GenderSelection.male,
+        "Mail": GenderSelection.male,
+        "Female": GenderSelection.female] as [String : Any]
        
-       let voiceAccentSelectionDictionary = [
-           "English": AccentSelection.english,
-           "American": AccentSelection.american,
-           "Austrailian": AccentSelection.austrailian] as [String : Any]
+   let voiceAccentSelectionDictionary = [
+        "English": AccentSelection.english,
+        "American": AccentSelection.american,
+        "Austrailian": AccentSelection.austrailian] as [String : Any]
     
     var userInputGenderSelection = GenderSelection.female
     var userInputAccentSelection = AccentSelection.austrailian
