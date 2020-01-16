@@ -10,6 +10,7 @@ import UIKit
 import Speech
 import AVFoundation
 import MobileCoreServices
+import FirebaseStorage
 
 enum GenderSelection: Int, CaseIterable, Identifiable, Hashable {
     case male
@@ -75,6 +76,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var voiceSelectedAccentLbl: UILabel!
     
     @IBOutlet weak var documentView: UIView!
+    
+    var firebaseStorageReference: StorageReference {
+        return Storage.storage().reference().child("documents")
+    }
     
     let voiceGenderSelectionDictionary = [
 //        "Male": GenderSelection.male,
@@ -384,6 +389,28 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
 extension ViewController: UIDocumentPickerDelegate {
     
+//    private func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt urls: [URL]) {
+//        /// Handle your document
+//
+//        guard let selectedFileURL = urls.first else {
+//            return
+//        }
+//
+//        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//        let sandboxFileURL = dir.appendingPathComponent(selectedFileURL.lastPathComponent)
+//
+//        if FileManager.default.fileExists(atPath: sandboxFileURL.path) {
+//            print("Already Exists!")
+//        } else {
+//            do {
+//                try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
+//                  print("Success!")
+//            } catch {
+//                print("Error: \(error)")
+//            }
+//        }
+//    }
+    
     private func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt urls: [URL]) {
         /// Handle your document
         
@@ -393,16 +420,22 @@ extension ViewController: UIDocumentPickerDelegate {
         
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let sandboxFileURL = dir.appendingPathComponent(selectedFileURL.lastPathComponent)
+        let uploadDocumentRef = firebaseStorageReference.child(sandboxFileURL.absoluteString)
         
         if FileManager.default.fileExists(atPath: sandboxFileURL.path) {
             print("Already Exists!")
         } else {
             do {
-                try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
-                  print("Success!")
-            } catch {
-                print("Error: \(error)")
+                let contents = try FileManager.default.contents(atPath: sandboxFileURL.absoluteString)
+                
+                let uploadTask = uploadDocumentRef.putData(contents!, metadata: nil) { (metadata, error) in
+                    print("Upload Task Finished")
+                    print(metadata ?? "No Metadata")
+                    print(error ?? "No Error")
+                }
+                uploadTask.resume()
             }
+            
         }
     }
     
