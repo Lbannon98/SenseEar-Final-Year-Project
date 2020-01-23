@@ -76,10 +76,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBOutlet weak var documentView: UIView!
     
-//    var firebaseStorageReference: StorageReference {
-//        return Storage.storage().reference()
-//    }
-    
     let voiceGenderSelectionDictionary = [
 //        "Male": GenderSelection.male,
         "Mail": GenderSelection.male,

@@ -24,8 +24,7 @@ extension ViewController: UIDocumentPickerDelegate {
         
         let uploadTask = documentRef.putFile(from: localFile, metadata: nil) { metadata, error in
           guard let metadata = metadata else {
-            // Uh-oh, an error occurred!
-            print(error)
+            print(error!)
             return
           }
         }
