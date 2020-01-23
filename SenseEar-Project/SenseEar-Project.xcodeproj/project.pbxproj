@@ -3,11 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67A511DB25D4D9133B22605D /* Pods_SenseEar_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */; };
+		DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */; };
 		DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB17221523A8E70600CBB8C6 /* CircleButton.swift */; };
+		DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */; };
+		DB24FB3223D8D8040036C32D /* VoiceController+VoiceRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */; };
 		DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AC239D45CF0073DAFA /* AppDelegate.swift */; };
 		DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */; };
 		DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214B0239D45CF0073DAFA /* ViewController.swift */; };
@@ -18,7 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenseEar_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8374EB9B027846E5A088B10B /* Pods-SenseEar-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenseEar-Project.release.xcconfig"; path = "Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project.release.xcconfig"; sourceTree = "<group>"; };
+		858B6368E8A8D3046C2C1366 /* Pods-SenseEar-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenseEar-Project.debug.xcconfig"; path = "Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project.debug.xcconfig"; sourceTree = "<group>"; };
+		DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB17221523A8E70600CBB8C6 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+FileManagement.swift"; sourceTree = "<group>"; };
+		DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoiceController+VoiceRecognition.swift"; sourceTree = "<group>"; };
 		DB4214A9239D45CF0073DAFA /* SenseEar-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SenseEar-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4214AC239D45CF0073DAFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,12 +45,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67A511DB25D4D9133B22605D /* Pods_SenseEar_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		275A31D3F9D58DCCC80DA4B9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				858B6368E8A8D3046C2C1366 /* Pods-SenseEar-Project.debug.xcconfig */,
+				8374EB9B027846E5A088B10B /* Pods-SenseEar-Project.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D91D570BE667CBB8BB00FBC9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DB17221323A8E65600CBB8C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				DB4214B0239D45CF0073DAFA /* ViewController.swift */,
+				DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */,
+				DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -62,6 +92,8 @@
 			children = (
 				DB4214AB239D45CF0073DAFA /* SenseEar-Project */,
 				DB4214AA239D45CF0073DAFA /* Products */,
+				275A31D3F9D58DCCC80DA4B9 /* Pods */,
+				D91D570BE667CBB8BB00FBC9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +115,7 @@
 				DB4214B2239D45CF0073DAFA /* Main.storyboard */,
 				DB4214B5239D45D00073DAFA /* Assets.xcassets */,
 				DB4214B7239D45D00073DAFA /* LaunchScreen.storyboard */,
+				DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */,
 				DB4214BA239D45D00073DAFA /* Info.plist */,
 				DB4214C0239D46E90073DAFA /* GenderSelection.swift */,
 			);
@@ -96,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB4214BD239D45D00073DAFA /* Build configuration list for PBXNativeTarget "SenseEar-Project" */;
 			buildPhases = (
+				DB2CBA1E12F4442EC014C66B /* [CP] Check Pods Manifest.lock */,
 				DB4214A5239D45CF0073DAFA /* Sources */,
 				DB4214A6239D45CF0073DAFA /* Frameworks */,
 				DB4214A7239D45CF0073DAFA /* Resources */,
+				E637AC0C5AD817219DAB97DA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB4214B9239D45D00073DAFA /* LaunchScreen.storyboard in Resources */,
+				DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */,
 				DB4214B6239D45D00073DAFA /* Assets.xcassets in Resources */,
 				DB4214B4239D45CF0073DAFA /* Main.storyboard in Resources */,
 			);
@@ -155,16 +191,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DB2CBA1E12F4442EC014C66B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SenseEar-Project-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E637AC0C5AD817219DAB97DA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DB4214A5239D45CF0073DAFA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */,
+				DB24FB3223D8D8040036C32D /* VoiceController+VoiceRecognition.swift in Sources */,
 				DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */,
 				DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */,
 				DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */,
 				DB4214C1239D46E90073DAFA /* GenderSelection.swift in Sources */,
+				DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +386,7 @@
 		};
 		DB4214BE239D45D00073DAFA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 858B6368E8A8D3046C2C1366 /* Pods-SenseEar-Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -325,6 +406,7 @@
 		};
 		DB4214BF239D45D00073DAFA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8374EB9B027846E5A088B10B /* Pods-SenseEar-Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

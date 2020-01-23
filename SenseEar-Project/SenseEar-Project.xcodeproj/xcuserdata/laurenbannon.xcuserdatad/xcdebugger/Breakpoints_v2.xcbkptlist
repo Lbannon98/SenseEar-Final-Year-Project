@@ -14,9 +14,9 @@
             filePath = "SenseEar-Project/Controller/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "requestMicrophoneAccess()"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "addValuesToSegmentControls()"
             landmarkType = "7">
             <Locations>
                <Location
