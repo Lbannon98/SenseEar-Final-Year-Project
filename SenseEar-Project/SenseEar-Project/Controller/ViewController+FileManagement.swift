@@ -17,19 +17,56 @@ extension ViewController: UIDocumentPickerDelegate {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         
-        let localFile = url.absoluteURL
-        let filename = localFile.lastPathComponent
+        selectedFile = url.absoluteURL
+        filename = selectedFile?.lastPathComponent
                 
-        let documentRef = storageRef.child("documents/\(filename)")
-        
-        let uploadTask = documentRef.putFile(from: localFile, metadata: nil) { metadata, error in
+        let documentRef = storageRef.child("documents/\(filename!)")
+    
+        let uploadTask = documentRef.putFile(from: selectedFile!, metadata: nil) { metadata, error in
           guard let metadata = metadata else {
             print(error!)
             return
           }
         }
+        
+        textExtractionFromSelectedFile()
     }
     
+    func textExtractionFromSelectedFile() {
+        
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        
+        let filePath = documentsDirectory.appendingPathComponent(filename!)
+        
+        do {
+            let directoryContents = try FileManager.default.contentsOfDirectory(atPath: documentsDirectory.path)
+            
+            // Print the urls of the files contained in the documents directory
+            print(directoryContents)
+            
+            //Check if file exists
+            if FileManager.default.fileExists(atPath: documentsDirectory.path) {
+               do {
+                let data = try String(contentsOfFile: filePath.path, encoding: .utf8)
+                                      
+                print(data)
+                print("File does exist!")
+                   
+               } catch {
+                    print("Error: \(error)")
+                    print("Could not extract text from file!")
+               }
+               
+           } else {
+               print("File does not exist!")
+           }
+            
+        } catch {
+            print("Could not search for urls of files in documents directory: \(error)")
+        }
+        
+    }
+
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("Cancelled")
     }

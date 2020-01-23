@@ -92,7 +92,25 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
+    
+    var filename: String?
+    var selectedFile: URL?
+    
+    init(filename: String?, selectedFile: URL) {
+        self.filename = filename
+        self.selectedFile = selectedFile
+        super.init(nibName: nil, bundle: nil)
+    }
 
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+       super.awakeFromNib()
+       //custom logic goes here
+    }
+    
     override func viewDidLoad() {
         setUp()
         addValuesToSegmentControls()
@@ -191,7 +209,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         present(documentPicker, animated: true, completion: nil)
             
     }
-    
     
     @IBAction func generateFile(_ sender: Any) {
         print("File Generated!!")
