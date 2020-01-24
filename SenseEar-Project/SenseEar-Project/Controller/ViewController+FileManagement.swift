@@ -9,28 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseStorage
-
-extension NSAttributedString {
-    convenience init(data: Data, documentType: DocumentType, encoding: String.Encoding = .utf8) throws {
-        try self.init(data: data,
-                      options: [.documentType: documentType,
-                                .characterEncoding: encoding.rawValue],
-                      documentAttributes: nil)
-    }
-    convenience init(html data: Data) throws {
-        try self.init(data: data, documentType: .html)
-    }
-    convenience init(txt data: Data) throws {
-        try self.init(data: data, documentType: .plain)
-    }
-    convenience init(rtf data: Data) throws {
-        try self.init(data: data, documentType: .rtf)
-    }
-    convenience init(rtfd data: Data) throws {
-        try self.init(data: data, documentType: .rtfd)
-    }
-}
-
+import PDFKit
 
 extension ViewController: UIDocumentPickerDelegate {
     
@@ -67,38 +46,55 @@ extension ViewController: UIDocumentPickerDelegate {
                 
                 print("FILE PATH: \(filePath!)")
                 
-                if selectedFile!.pathExtension == "docx" {
-
-                    var fileString  = String("")
+                var fileString  = String("")
+                
+                
+                if selectedFile!.pathExtension == "txt" {
                     
                     do {
-                        let data =  try NSData(contentsOf: selectedFile!)
-                        if let tryForString = try? NSAttributedString(data: data! as Data, options: [
-                            .documentType: NSAttributedString.DocumentType.rtf,
-                            .characterEncoding: String.Encoding.utf8.rawValue
-                            ], documentAttributes: nil) {
-                            fileString = tryForString.string
-                        } else {
-                            fileString = "Data conversion error."
-                        }
+                                                      
+                        let data = try String(contentsOfFile: filePath!, encoding: .utf8)
+                            
+                        print("Text File!")
+                        print("ANSWER: \(data)")
+                           
+                   } catch {
+                       print("Word Document File Not Found")
+                   }
+                    
+                } else if selectedFile!.pathExtension == "docx" {
+                    
+                    do {
+                        
+                        let data = try NSData(contentsOfFile: selectedFile!.relativePath)
+                        
+//                        if let stringTry = try? NSAttributedString(data: data! as Data, documentType: .plain, encoding: .utf8) {
+//                            fileString = stringTry.string
+//                        } else {
+//                            fileString = "Data conversion error."
+//                        }
+                        
                         fileString = fileString.trimmingCharacters(in: .whitespacesAndNewlines)
                         
-                        print(fileString)
+                        print("ANSWER: \(fileString)")
+
                     } catch {
                         print("Word Document File Not Found")
                     }
                     
                     print("Word Document!")
                     
-                } else{
+                } else if selectedFile!.pathExtension == "pdf" {
                     
-                    let data = try String(contentsOfFile: filePath!, encoding: .utf8)
-                    print("Text File!")
-                    print(data)
-                    
+                    if let page = PDFDocument(url: selectedFile!){
+                        let pageText = page.string
+                        
+                        print("PDF File!")
+                        print(pageText!)
+                                      
+                    }
                 }
-                
-
+                    
            } else {
                print("File does not exist!")
            }
