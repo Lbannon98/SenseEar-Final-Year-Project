@@ -95,8 +95,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     var filename: String?
     var selectedFile: URL?
+    var directoryContents: [String]?
     
-    init(filename: String?, selectedFile: URL) {
+    init(filename: String?, selectedFile: URL?) {
         self.filename = filename
         self.selectedFile = selectedFile
         super.init(nibName: nil, bundle: nil)
