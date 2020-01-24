@@ -40,27 +40,32 @@ extension ViewController: UIDocumentPickerDelegate {
         
         do {
             let directoryContents = try FileManager.default.contentsOfDirectory(atPath: documentsDirectory.path)
-            
+
             // Print the urls of the files contained in the documents directory
-            print(directoryContents)
+            // [] - > File doesn't exist cause the directory is empty
             
+            print("Documents Directory: \(documentsDirectory.absoluteString)")
+            print("Document Contents: \(directoryContents)")
+            print("Path to file: \(filePath.path)")
+            print("Filename from file path: \(filePath.lastPathComponent)")
+//
             //Check if file exists
             if FileManager.default.fileExists(atPath: documentsDirectory.path) {
                do {
                 let data = try String(contentsOfFile: filePath.path, encoding: .utf8)
-                                      
+
                 print(data)
                 print("File does exist!")
-                   
+
                } catch {
                     print("Error: \(error)")
                     print("Could not extract text from file!")
                }
-               
+
            } else {
                print("File does not exist!")
            }
-            
+
         } catch {
             print("Could not search for urls of files in documents directory: \(error)")
         }
