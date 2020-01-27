@@ -76,6 +76,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBOutlet weak var documentView: UIView!
     
+    //Voice Recognition Variables
     let voiceGenderSelectionDictionary = [
 //        "Male": GenderSelection.male,
         "Mail": GenderSelection.male,
@@ -93,9 +94,11 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
     
+    //File Management Variables
     var filename: String?
     var selectedFile: URL?
     var directoryContents: [String]?
+    var newConvertedPdf: URL?
     
     init(filename: String?, selectedFile: URL?) {
         self.filename = filename

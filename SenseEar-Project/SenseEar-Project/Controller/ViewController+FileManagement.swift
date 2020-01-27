@@ -46,11 +46,6 @@ extension ViewController: UIDocumentPickerDelegate {
             //Check if file exists
             if FileManager.default.fileExists(atPath: documentsDirectory.path) {
                 
-                print("FILE PATH: \(filePath!)")
-                
-                var fileString  = String("")
-                
-                
                 if selectedFile!.pathExtension == "txt" {
                     
                     do {
@@ -65,35 +60,65 @@ extension ViewController: UIDocumentPickerDelegate {
                    }
                     
                 } else if selectedFile!.pathExtension == "docx" {
-                    
+                                        
                     do {
                             PTConvert.convertOffice(toPDF: filePath!, paperSize: .zero) { (pathToPDF) in
                             guard let pathToPDF = pathToPDF else {
                                 // Failed to convert file to PDF.
                                 return
                             }
-                            
-                            // Copy temporary PDF to persistent location.
-//                            let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, false)[0]
-                            
-                            let urlToPDF = URL(fileURLWithPath: pathToPDF)
-                                let destinationURL = URL(fileURLWithPath: documentsDirectory.path).appendingPathComponent(urlToPDF.lastPathComponent)
-                                print("DOCUMENT DIRECTORYYYYYYYY\(documentsDirectory.path)")
-                            
                                 
-                            do {
+                                let urlToPDF = URL(fileURLWithPath: pathToPDF)
+                                let destinationURL = URL(fileURLWithPath: filePathWithoutFilename!).appendingPathComponent(urlToPDF.lastPathComponent)
                                 
-                                try FileManager.default.copyItem(at: urlToPDF, to: destinationURL)
-                                print("Success!!")
-                                
-                            } catch {
+                                self.newConvertedPdf = urlToPDF
+                                    
+                                do {
+                                    
+//                                    if let pdf = PDFDocument(url: self.newConvertedPdf!) {
+//                                        let pageCount = pdf.pageCount
+//                                        let documentContent = NSMutableAttributedString()
+//                                        var content = String()
+//
+//                                        for i in 1 ..< pageCount {
+//                                            guard let page = pdf.page(at: i) else { continue }
+//                                            guard let pageContent = page.string else { continue }
+//
+//                                            content = pageContent
+////                                            guard let pageContent = page.attributedString else { continue }
+////                                            documentContent.append(pageContent)
+////                                            content = documentContent.mutableString as String
+////                                            content = pageContent.string
+//                                        }
+//
+////                                         print("NEW PDF CONTENT: \(content)")
+////
+////                                        for i in 1 ..< pageCount {
+////                                            guard let page = pdf.page(at: i) else { continue }
+////                                            guard let pageContent = page.attributedString else { continue }
+////                                            documentContent.append(pageContent)
+////
+////
+////
+////                                            print("NEW PDF CONTENT: \(documentContent)")
+////                                        }
+//                                    }
+                                    
+//                                    var pdfContents: String = ""
+//
+//                                    if let page = PDFDocument(url: self.newConvertedPdf!) {
+//                                        pdfContents = page.string!
+//
+//                                        print("PDF File!")
+//                                        print(pdfContents)
+//
+//                                    }
+                                    
+                                    
+                                } catch {
+                                    print("YOU SUCK! \(error)")
+                                }
                             
-                                print("YOU SUCK! \(error)")
-                                // Failed to copy item to persistent location.
-                            }
-                                
-                                self.extractTextFromPDF()
-                            // Do something with PDF output.
                         }
                         
 
@@ -154,4 +179,31 @@ extension ViewController: UIDocumentPickerDelegate {
            print("Saved: \(outputPath)")
     }
 
+}
+
+extension NSAttributedString {
+     public func attributedStringByTrimmingCharacterSet(charSet: NSCharacterSet) -> NSAttributedString {
+         let modifiedString = NSMutableAttributedString(attributedString: self)
+        modifiedString.trimCharactersInSet(charSet: charSet)
+         return NSAttributedString(attributedString: modifiedString)
+     }
+}
+
+extension NSMutableAttributedString {
+     public func trimCharactersInSet(charSet: NSCharacterSet) {
+        var range = (string as NSString).rangeOfCharacter(from: charSet as CharacterSet)
+
+         // Trim leading characters from character set.
+         while range.length != 0 && range.location == 0 {
+            replaceCharacters(in: range, with: "")
+            range = (string as NSString).rangeOfCharacter(from: charSet as CharacterSet)
+         }
+
+         // Trim trailing characters from character set.
+        range = (string as NSString).rangeOfCharacter(from: charSet as CharacterSet, options: .backwards)
+         while range.length != 0 && NSMaxRange(range) == length {
+            replaceCharacters(in: range, with: "")
+            range = (string as NSString).rangeOfCharacter(from: charSet as CharacterSet, options: .backwards)
+         }
+     }
 }
