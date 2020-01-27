@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseStorage
 import PDFKit
+import PDFNet
 
 extension ViewController: UIDocumentPickerDelegate {
     
@@ -38,6 +39,7 @@ extension ViewController: UIDocumentPickerDelegate {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         
         let filePath = selectedFile?.relativePath
+        let filePathWithoutFilename = selectedFile?.deletingLastPathComponent().relativePath
         
         do {
                     
@@ -59,24 +61,41 @@ extension ViewController: UIDocumentPickerDelegate {
                         print("ANSWER: \(data)")
                            
                    } catch {
-                       print("Word Document File Not Found")
+                       print("Text File Not Found")
                    }
                     
                 } else if selectedFile!.pathExtension == "docx" {
                     
                     do {
+                            PTConvert.convertOffice(toPDF: filePath!, paperSize: .zero) { (pathToPDF) in
+                            guard let pathToPDF = pathToPDF else {
+                                // Failed to convert file to PDF.
+                                return
+                            }
+                            
+                            // Copy temporary PDF to persistent location.
+//                            let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, false)[0]
+                            
+                            let urlToPDF = URL(fileURLWithPath: pathToPDF)
+                                let destinationURL = URL(fileURLWithPath: documentsDirectory.path).appendingPathComponent(urlToPDF.lastPathComponent)
+                                print("DOCUMENT DIRECTORYYYYYYYY\(documentsDirectory.path)")
+                            
+                                
+                            do {
+                                
+                                try FileManager.default.copyItem(at: urlToPDF, to: destinationURL)
+                                print("Success!!")
+                                
+                            } catch {
+                            
+                                print("YOU SUCK! \(error)")
+                                // Failed to copy item to persistent location.
+                            }
+                                
+                                self.extractTextFromPDF()
+                            // Do something with PDF output.
+                        }
                         
-                        let data = try NSData(contentsOfFile: selectedFile!.relativePath)
-                        
-//                        if let stringTry = try? NSAttributedString(data: data! as Data, documentType: .plain, encoding: .utf8) {
-//                            fileString = stringTry.string
-//                        } else {
-//                            fileString = "Data conversion error."
-//                        }
-                        
-                        fileString = fileString.trimmingCharacters(in: .whitespacesAndNewlines)
-                        
-                        print("ANSWER: \(fileString)")
 
                     } catch {
                         print("Word Document File Not Found")
@@ -86,13 +105,8 @@ extension ViewController: UIDocumentPickerDelegate {
                     
                 } else if selectedFile!.pathExtension == "pdf" {
                     
-                    if let page = PDFDocument(url: selectedFile!){
-                        let pageText = page.string
-                        
-                        print("PDF File!")
-                        print(pageText!)
-                                      
-                    }
+                    extractTextFromPDF()
+                    
                 }
                     
            } else {
@@ -111,6 +125,33 @@ extension ViewController: UIDocumentPickerDelegate {
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("Cancelled")
+    }
+    
+    func extractTextFromPDF() -> String {
+        
+        var pdfContents: String = ""
+        
+        if let page = PDFDocument(url: selectedFile!) {
+            pdfContents = page.string!
+            
+            print("PDF File!")
+            print(pdfContents)
+                          
+        }
+        
+        return pdfContents
+    }
+    
+    func simpleConvert(inputPath: String, outputPath: String) {
+           // Start with a PDFDoc (the conversion destination)
+           let pdfDoc: PTPDFDoc = PTPDFDoc()
+
+           // perform the conversion with no optional parameters
+           PTConvert.office(toPDF: pdfDoc, in_filename: inputPath, options: nil)
+
+           pdfDoc.save(toFile: outputPath, flags: e_ptremove_unused.rawValue)
+
+           print("Saved: \(outputPath)")
     }
 
 }
