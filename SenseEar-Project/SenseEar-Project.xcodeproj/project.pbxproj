@@ -134,6 +134,7 @@
 				DB4214A6239D45CF0073DAFA /* Frameworks */,
 				DB4214A7239D45CF0073DAFA /* Resources */,
 				E637AC0C5AD817219DAB97DA /* [CP] Embed Pods Frameworks */,
+				45B6242B790C38A332F3D0ED /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,6 +193,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		45B6242B790C38A332F3D0ED /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DB2CBA1E12F4442EC014C66B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

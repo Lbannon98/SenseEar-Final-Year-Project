@@ -8,16 +8,16 @@
 
 import UIKit
 import Firebase
+import PDFNet
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        PTPDFNet.initialize("Insert Commercial License Key Here After Purchase")
         
         return true
     }

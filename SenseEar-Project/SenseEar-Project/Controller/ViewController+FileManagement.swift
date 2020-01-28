@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import FirebaseStorage
+import PDFKit
+import PDFNet
 
 extension ViewController: UIDocumentPickerDelegate {
     
@@ -17,21 +19,115 @@ extension ViewController: UIDocumentPickerDelegate {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         
-        let localFile = url.absoluteURL
-        let filename = localFile.lastPathComponent
+        selectedFile = url.absoluteURL
+        filename = selectedFile?.lastPathComponent
                 
-        let documentRef = storageRef.child("documents/\(filename)")
-        
-        let uploadTask = documentRef.putFile(from: localFile, metadata: nil) { metadata, error in
+        let documentRef = storageRef.child("documents/\(filename!)")
+    
+        let uploadTask = documentRef.putFile(from: selectedFile!, metadata: nil) { metadata, error in
           guard let metadata = metadata else {
             print(error!)
             return
           }
         }
+        
+        self.textExtractionFromSelectedFile()
+    }
+    
+    func textExtractionFromSelectedFile() {
+        
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        
+        let filePath = selectedFile?.relativePath
+        let filePathWithoutFilename = selectedFile?.deletingLastPathComponent().relativePath
+        
+        do {
+                    
+            //Check if file exists
+            if FileManager.default.fileExists(atPath: documentsDirectory.path) {
+                
+                if selectedFile!.pathExtension == "txt" {
+                    
+                    do {
+                        
+                        extractedContent = try String(contentsOfFile: filePath!, encoding: .utf8)
+                        print(extractedContent!)
+                           
+                   } catch {
+                        print("No Text File Found! \(error)")
+                   }
+                    
+                } else if selectedFile!.pathExtension == "docx" || selectedFile!.pathExtension == "xlsx" || selectedFile!.pathExtension == "pptx" {
+                                        
+                    do {
+                            PTConvert.convertOffice(toPDF: filePath!, paperSize: .zero) { (pathToPDF) in
+                            guard let pathToPDF = pathToPDF else {
+                                return
+                            }
+                                
+                                let urlToPDF = URL(fileURLWithPath: pathToPDF)
+                                let destinationURL = URL(fileURLWithPath: filePathWithoutFilename!).appendingPathComponent(urlToPDF.lastPathComponent)
+                                
+                                self.newConvertedPdf = urlToPDF
+                                    
+                                do {
+                                    self.extractTextFromPDF(url: self.newConvertedPdf!)
+                                    
+                                } catch {
+                                    print("Text Extraction Failed! \(error)")
+                                }
+                        }
+
+                    } catch {
+                        print("Microsoft Office File Not Found!")
+                    }
+                    
+                } else if selectedFile!.pathExtension == "pdf" {
+                    
+                    do {
+                        
+                        self.extractTextFromPDF(url: selectedFile!)
+                        
+                    } catch {
+                        print("Text Extraction Failed! \(error)")
+                    }
+                    
+                } 
+                    
+           } else {
+               print("File does not exist!")
+           }
+            
+        } catch CocoaError.fileReadNoSuchFile {
+            
+            print("CAUGHT IT!")
+            
+        } catch let error {
+            fatalError("bad error: \(error)")
+        }
+        
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("Cancelled")
     }
-
+    
+    func extractTextFromPDF(url: URL) -> String {
+        
+        guard let content = extractedContent else {
+            return ""
+        }
+                
+        if let page = PDFDocument(url: url) {
+            extractedContent = page.string!
+            
+            if let content = extractedContent {
+                print(content)
+                return content
+            }
+        }
+        
+        return content
+    }
+    
 }

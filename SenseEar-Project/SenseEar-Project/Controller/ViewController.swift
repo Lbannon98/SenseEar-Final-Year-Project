@@ -76,6 +76,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBOutlet weak var documentView: UIView!
     
+    //Voice Recognition Variables
     let voiceGenderSelectionDictionary = [
 //        "Male": GenderSelection.male,
         "Mail": GenderSelection.male,
@@ -92,7 +93,31 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
+    
+    //File Management Variables
+    var filename: String?
+    var selectedFile: URL?
+    var newConvertedPdf: URL?
+    
+    //Extracted Text Variable
+    var extractedContent: String?
 
+    init(filename: String?, selectedFile: URL?, extractedContent: String?) {
+        self.filename = filename
+        self.selectedFile = selectedFile
+        self.extractedContent = extractedContent
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+       super.awakeFromNib()
+       //custom logic goes here
+    }
+    
     override func viewDidLoad() {
         setUp()
         addValuesToSegmentControls()
@@ -191,7 +216,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         present(documentPicker, animated: true, completion: nil)
             
     }
-    
     
     @IBAction func generateFile(_ sender: Any) {
         print("File Generated!!")
