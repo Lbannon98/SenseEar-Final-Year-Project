@@ -97,7 +97,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     //File Management Variables
     var filename: String?
     var selectedFile: URL?
-    var directoryContents: [String]?
     var newConvertedPdf: URL?
     
     //Extracted Text Variable
