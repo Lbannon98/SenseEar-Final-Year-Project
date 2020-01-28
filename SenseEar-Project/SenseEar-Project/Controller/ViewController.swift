@@ -100,9 +100,13 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     var directoryContents: [String]?
     var newConvertedPdf: URL?
     
-    init(filename: String?, selectedFile: URL?) {
+    //Extracted Text Variable
+    var extractedContent: String?
+
+    init(filename: String?, selectedFile: URL?, extractedContent: String?) {
         self.filename = filename
         self.selectedFile = selectedFile
+        self.extractedContent = extractedContent
         super.init(nibName: nil, bundle: nil)
     }
 

@@ -31,7 +31,7 @@ extension ViewController: UIDocumentPickerDelegate {
           }
         }
         
-        textExtractionFromSelectedFile()
+        self.textExtractionFromSelectedFile()
     }
     
     func textExtractionFromSelectedFile() {
@@ -49,14 +49,12 @@ extension ViewController: UIDocumentPickerDelegate {
                 if selectedFile!.pathExtension == "txt" {
                     
                     do {
-                                                      
-                        let data = try String(contentsOfFile: filePath!, encoding: .utf8)
-                            
-                        print("Text File!")
-                        print("ANSWER: \(data)")
+                        
+                        extractedContent = try String(contentsOfFile: filePath!, encoding: .utf8)
+                        print(extractedContent!)
                            
                    } catch {
-                       print("Text File Not Found")
+                        print("No Text File Found! \(error)")
                    }
                     
                 } else if selectedFile!.pathExtension == "docx" || selectedFile!.pathExtension == "xlsx" || selectedFile!.pathExtension == "pptx" {
@@ -64,43 +62,35 @@ extension ViewController: UIDocumentPickerDelegate {
                     do {
                             PTConvert.convertOffice(toPDF: filePath!, paperSize: .zero) { (pathToPDF) in
                             guard let pathToPDF = pathToPDF else {
-                                // Failed to convert file to PDF.
                                 return
                             }
                                 
                                 let urlToPDF = URL(fileURLWithPath: pathToPDF)
                                 let destinationURL = URL(fileURLWithPath: filePathWithoutFilename!).appendingPathComponent(urlToPDF.lastPathComponent)
                                 
-                                print("HERE \(filePathWithoutFilename)")
-                                print(urlToPDF.lastPathComponent)
-                                
                                 self.newConvertedPdf = urlToPDF
                                     
                                 do {
-                                    
-                                    var pdfContents: String = ""
-
-                                    if let page = PDFDocument(url: self.newConvertedPdf!) {
-                                        pdfContents = page.string!
-
-                                        print("PDF File!")
-                                        print(pdfContents)
-
-                                    }
+                                    self.extractTextFromPDF(url: self.newConvertedPdf!)
                                     
                                 } catch {
-                                    print("YOU SUCK! \(error)")
+                                    print("Text Extraction Failed! \(error)")
                                 }
-                            
                         }
 
                     } catch {
-                        print("Word Document File Not Found")
+                        print("Microsoft Office File Not Found!")
                     }
                     
                 } else if selectedFile!.pathExtension == "pdf" {
                     
-                    extractTextFromPDF()
+                    do {
+                        
+                        self.extractTextFromPDF(url: selectedFile!)
+                        
+                    } catch {
+                        print("Text Extraction Failed! \(error)")
+                    }
                     
                 } 
                     
@@ -122,19 +112,22 @@ extension ViewController: UIDocumentPickerDelegate {
         print("Cancelled")
     }
     
-    func extractTextFromPDF() -> String {
+    func extractTextFromPDF(url: URL) -> String {
         
-        var pdfContents: String = ""
-        
-        if let page = PDFDocument(url: selectedFile!) {
-            pdfContents = page.string!
+        guard let content = extractedContent else {
+            return ""
+        }
+                
+        if let page = PDFDocument(url: url) {
+            extractedContent = page.string!
             
-            print("PDF File!")
-            print(pdfContents)
-                          
+            if let content = extractedContent {
+                print(content)
+                return content
+            }
         }
         
-        return pdfContents
+        return content
     }
     
 }
