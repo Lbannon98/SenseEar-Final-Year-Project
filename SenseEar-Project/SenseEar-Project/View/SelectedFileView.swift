@@ -17,7 +17,8 @@ class SelectedFileView: UIView {
         UINib(nibName: "SelectedFileView", bundle: nil).instantiate(withOwner: self, options: nil)
         addSubview(view)
         view.frame = self.bounds
+        
     }
-    
+
 }
  
