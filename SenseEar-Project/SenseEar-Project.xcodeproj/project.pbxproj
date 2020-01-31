@@ -19,6 +19,8 @@
 		DB4214B6239D45D00073DAFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B5239D45D00073DAFA /* Assets.xcassets */; };
 		DB4214B9239D45D00073DAFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B7239D45D00073DAFA /* LaunchScreen.storyboard */; };
 		DB4214C1239D46E90073DAFA /* GenderSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214C0239D46E90073DAFA /* GenderSelection.swift */; };
+		DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
+		DB46BC4223E41F35006903D4 /* SelectedFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46BC4123E41F35006903D4 /* SelectedFileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		DB4214B8239D45D00073DAFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB4214BA239D45D00073DAFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB4214C0239D46E90073DAFA /* GenderSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelection.swift; sourceTree = "<group>"; };
+		DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedFileView.xib; sourceTree = "<group>"; };
+		DB46BC4123E41F35006903D4 /* SelectedFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedFileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +76,9 @@
 		DB17221323A8E65600CBB8C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DB46BC4123E41F35006903D4 /* SelectedFileView.swift */,
 				DB17221523A8E70600CBB8C6 /* CircleButton.swift */,
+				DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +191,7 @@
 			files = (
 				DB4214B9239D45D00073DAFA /* LaunchScreen.storyboard in Resources */,
 				DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */,
+				DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */,
 				DB4214B6239D45D00073DAFA /* Assets.xcassets in Resources */,
 				DB4214B4239D45CF0073DAFA /* Main.storyboard in Resources */,
 			);
@@ -261,6 +268,7 @@
 				DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */,
 				DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */,
 				DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */,
+				DB46BC4223E41F35006903D4 /* SelectedFileView.swift in Sources */,
 				DB4214C1239D46E90073DAFA /* GenderSelection.swift in Sources */,
 				DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */,
 			);
