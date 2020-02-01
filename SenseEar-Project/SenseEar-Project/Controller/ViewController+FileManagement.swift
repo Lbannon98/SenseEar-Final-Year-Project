@@ -32,6 +32,7 @@ extension ViewController: UIDocumentPickerDelegate {
         }
         
         self.textExtractionFromSelectedFile()
+        self.assignFileTypeLogo()
     }
     
     func textExtractionFromSelectedFile() {
@@ -106,6 +107,51 @@ extension ViewController: UIDocumentPickerDelegate {
             fatalError("bad error: \(error)")
         }
         
+    }
+    
+    func assignFileTypeLogo() {
+
+        if selectedFile!.pathExtension == "txt" {
+            
+            let image = UIImage(named: "text-file-50.png")
+            fileTypeLogo = UIImageView(image: image)
+            
+        //These going to cause problems cause it will show up as a pdf
+        } else if selectedFile!.pathExtension == "pdf" {
+            
+            let image = UIImage(named: "pdf-file-48.png")
+            fileTypeLogo = UIImageView(image: image)
+            
+        } else if selectedFile!.pathExtension == "docx" {
+            
+            let image = UIImage(named: "microsoft-word-2019-48.png")
+            fileTypeLogo = UIImageView(image: image)
+            
+        } else if selectedFile!.pathExtension == "xlsx" {
+            
+            let image = UIImage(named: "microsoft-excel-48.png")
+            fileTypeLogo = UIImageView(image: image)
+            
+        } else if selectedFile!.pathExtension == "pptx" {
+
+            let image = UIImage(named: "microsoft-powerpoint-48.png")
+            fileTypeLogo = UIImageView(image: image)
+            
+        }
+        
+        selectedFileView.isHidden = false
+        
+        var txt = UIImage(named: "microsoft-word-2019-48.png")
+        var txtImageView = UIImageView(image: txt)
+        
+        let file = SelectedFile(filename: "Class.docx", fileTypeLogo: txtImageView)
+        //        let file = SelectedFile(filename: filename!, fileTypeLogo: fileTypeLogo!)
+        viewModel = SelectedFileViewModel(selectedFile: file)
+        
+//        let file = SelectedFile(filename: filename!, fileTypeLogo: fileTypeLogo!)
+//        viewModel = SelectedFileViewModel(selectedFile: file)
+//
+//        print("Logo Assigned\(file)")
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

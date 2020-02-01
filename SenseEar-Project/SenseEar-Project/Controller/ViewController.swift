@@ -75,6 +75,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var voiceSelectedAccentLbl: UILabel!
     
     @IBOutlet weak var documentView: UIView!
+    @IBOutlet weak var selectedFileView: SelectedFileView!
     
     //Voice Recognition Variables
     let voiceGenderSelectionDictionary = [
@@ -98,17 +99,29 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     var filename: String?
     var selectedFile: URL?
     var newConvertedPdf: URL?
+    var fileTypeLogo: UIImageView?
     
     //Extracted Text Variable
     var extractedContent: String?
+    
+    //View Model
+    var viewModel: SelectedFileViewModel! {
+        didSet {
+//            selectedFileView.accessibilityLabel = viewModel.selectedFile.filename
+//            selectedFileView.addSubview(viewModel.selectedFile.fileTypeLogo)
 
-    init(filename: String?, selectedFile: URL?, extractedContent: String?) {
+//            generateBtn.setTitle(viewModel.selectedFile.filename, for: .normal)
+        }
+    }
+
+    init(filename: String?, selectedFile: URL?, extractedContent: String?, viewModel: SelectedFileViewModel!) {
         self.filename = filename
         self.selectedFile = selectedFile
         self.extractedContent = extractedContent
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
@@ -132,6 +145,15 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         genderAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
         accentAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
+        
+        selectedFileView.isHidden = true
+        
+//        var txt = UIImage(named: "text-file-50.png")
+//        var txtImageView = UIImageView(image: txt)
+//        
+//        let file = SelectedFile(filename: "Class.pdf", fileTypeLogo: txtImageView)
+////        let file = SelectedFile(filename: filename!, fileTypeLogo: fileTypeLogo!)
+//        viewModel = SelectedFileViewModel(selectedFile: file)
     }
     
     public func addValuesToSegmentControls() {
