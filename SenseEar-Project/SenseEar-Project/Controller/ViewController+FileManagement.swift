@@ -32,6 +32,7 @@ extension ViewController: UIDocumentPickerDelegate {
         }
         
         self.textExtractionFromSelectedFile()
+        self.selectedFileInfoAttachedToView()
     }
     
     func textExtractionFromSelectedFile() {
@@ -106,6 +107,41 @@ extension ViewController: UIDocumentPickerDelegate {
             fatalError("bad error: \(error)")
         }
         
+    }
+    
+    func selectedFileInfoAttachedToView() {
+
+        if selectedFile!.pathExtension == "txt" {
+            
+            let image = UIImage(named: "text-file-50.png")
+            fileTypeLogo = UIImageView(image: image)
+            
+        } else if selectedFile!.pathExtension == "pdf" {
+            
+            let image = UIImage(named: "icons8-pdf-48-2.png")
+            fileTypeLogo = UIImageView(image: image)
+            
+        } else if selectedFile!.pathExtension == "docx" {
+            
+            let image = UIImage(named: "icons8-microsoft-word-48.png")
+            fileTypeLogo = UIImageView(image: image)
+            
+        } else if selectedFile!.pathExtension == "xlsx" {
+            
+            let image = UIImage(named: "icons8-microsoft-excel-48.png")
+            fileTypeLogo = UIImageView(image: image)
+            
+        } else if selectedFile!.pathExtension == "pptx" {
+
+            let image = UIImage(named: "icons8-microsoft-powerpoint-48.png")
+            fileTypeLogo = UIImageView(image: image)
+            
+        }
+        
+        viewModel = SelectedFileViewModel(filename: filename!, fileTypeLogo: fileTypeLogo!)
+        selectedFileView.setup(with: viewModel)
+        
+        selectedFileView.isHidden = false
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

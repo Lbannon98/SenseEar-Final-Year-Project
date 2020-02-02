@@ -75,6 +75,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var voiceSelectedAccentLbl: UILabel!
     
     @IBOutlet weak var documentView: UIView!
+    @IBOutlet weak var selectedFileView: SelectedFileView!
     
     //Voice Recognition Variables
     let voiceGenderSelectionDictionary = [
@@ -98,17 +99,22 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     var filename: String?
     var selectedFile: URL?
     var newConvertedPdf: URL?
+    var fileTypeLogo: UIImageView?
     
     //Extracted Text Variable
     var extractedContent: String?
+    
+    //View Model
+    var viewModel: SelectedFileViewModel!
 
-    init(filename: String?, selectedFile: URL?, extractedContent: String?) {
+    init(filename: String?, selectedFile: URL?, extractedContent: String?, viewModel: SelectedFileViewModel!) {
         self.filename = filename
         self.selectedFile = selectedFile
         self.extractedContent = extractedContent
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
@@ -128,8 +134,12 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         documentView.layer.borderWidth = 2
         documentView.layer.borderColor = UIColor.black.cgColor
         
+        importBtn.setTitle("Import File", for: .normal)
+        
         genderAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
         accentAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
+        
+        selectedFileView.isHidden = true
     }
     
     public func addValuesToSegmentControls() {
