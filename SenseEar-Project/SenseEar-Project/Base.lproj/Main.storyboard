@@ -22,10 +22,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="351" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lml-4L-bMs">
-                                                <rect key="frame" x="109" y="7" width="133" height="36"/>
+                                                <rect key="frame" x="160.5" y="7" width="30" height="36"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
-                                                <state key="normal" title="Import Text File"/>
                                                 <connections>
                                                     <action selector="importFiles:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="PLR-Xp-XY8"/>
                                                 </connections>

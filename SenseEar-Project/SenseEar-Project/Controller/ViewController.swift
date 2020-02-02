@@ -134,7 +134,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         documentView.layer.borderWidth = 2
         documentView.layer.borderColor = UIColor.black.cgColor
         
-        importBtn.setTitle("Import Text File", for: .normal)
+        importBtn.setTitle("Import File", for: .normal)
         
         genderAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
         accentAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
