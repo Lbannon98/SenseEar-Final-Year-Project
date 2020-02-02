@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectedFileView" customModule="SenseEar_Project" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="f9b-8Q-XAU" id="XXL-Ug-JdL"/>
+                <outlet property="label" destination="uod-5J-Yi8" id="OwA-BW-IIl"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ABe-7Q-2GZ"/>
             </connections>
         </placeholder>

@@ -32,7 +32,7 @@ extension ViewController: UIDocumentPickerDelegate {
         }
         
         self.textExtractionFromSelectedFile()
-        self.assignFileTypeLogo()
+        self.selectedFileInfoAttachedToView()
     }
     
     func textExtractionFromSelectedFile() {
@@ -109,14 +109,13 @@ extension ViewController: UIDocumentPickerDelegate {
         
     }
     
-    func assignFileTypeLogo() {
+    func selectedFileInfoAttachedToView() {
 
         if selectedFile!.pathExtension == "txt" {
             
             let image = UIImage(named: "text-file-50.png")
             fileTypeLogo = UIImageView(image: image)
             
-        //These going to cause problems cause it will show up as a pdf
         } else if selectedFile!.pathExtension == "pdf" {
             
             let image = UIImage(named: "pdf-file-48.png")
@@ -139,19 +138,10 @@ extension ViewController: UIDocumentPickerDelegate {
             
         }
         
+        viewModel = SelectedFileViewModel(filename: filename!, fileTypeLogo: fileTypeLogo!)
+        selectedFileView.setup(with: viewModel)
+        
         selectedFileView.isHidden = false
-        
-        var txt = UIImage(named: "microsoft-word-2019-48.png")
-        var txtImageView = UIImageView(image: txt)
-        
-        let file = SelectedFile(filename: "Class.docx", fileTypeLogo: txtImageView)
-        //        let file = SelectedFile(filename: filename!, fileTypeLogo: fileTypeLogo!)
-        viewModel = SelectedFileViewModel(selectedFile: file)
-        
-//        let file = SelectedFile(filename: filename!, fileTypeLogo: fileTypeLogo!)
-//        viewModel = SelectedFileViewModel(selectedFile: file)
-//
-//        print("Logo Assigned\(file)")
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

@@ -21,7 +21,6 @@
 		DB4214C1239D46E90073DAFA /* GenderSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214C0239D46E90073DAFA /* GenderSelection.swift */; };
 		DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
 		DB46BC4223E41F35006903D4 /* SelectedFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46BC4123E41F35006903D4 /* SelectedFileView.swift */; };
-		DB60B3D523E4874C0015DFB7 /* SelectedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB60B3D423E4874C0015DFB7 /* SelectedFile.swift */; };
 		DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB60B3D623E488550015DFB7 /* SelectedFileViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +43,6 @@
 		DB4214C0239D46E90073DAFA /* GenderSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelection.swift; sourceTree = "<group>"; };
 		DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedFileView.xib; sourceTree = "<group>"; };
 		DB46BC4123E41F35006903D4 /* SelectedFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedFileView.swift; sourceTree = "<group>"; };
-		DB60B3D423E4874C0015DFB7 /* SelectedFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedFile.swift; sourceTree = "<group>"; };
 		DB60B3D623E488550015DFB7 /* SelectedFileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedFileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,7 +81,6 @@
 				DB46BC4123E41F35006903D4 /* SelectedFileView.swift */,
 				DB17221523A8E70600CBB8C6 /* CircleButton.swift */,
 				DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */,
-				DB60B3D423E4874C0015DFB7 /* SelectedFile.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -286,7 +283,6 @@
 				DB4214C1239D46E90073DAFA /* GenderSelection.swift in Sources */,
 				DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */,
 				DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */,
-				DB60B3D523E4874C0015DFB7 /* SelectedFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,14 +6,16 @@
 //  Copyright © 2020 Lauren Bannon. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class SelectedFileViewModel {
     
-    let selectedFile: SelectedFile
-    
-    init(selectedFile: SelectedFile) {
-        self.selectedFile = selectedFile
+    let filename: String
+    let fileTypeLogo: UIImageView
+       
+    init(filename: String, fileTypeLogo: UIImageView){
+       self.filename = filename
+       self.fileTypeLogo = fileTypeLogo
     }
     
 } 

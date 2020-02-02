@@ -105,14 +105,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     var extractedContent: String?
     
     //View Model
-    var viewModel: SelectedFileViewModel! {
-        didSet {
-//            selectedFileView.accessibilityLabel = viewModel.selectedFile.filename
-//            selectedFileView.addSubview(viewModel.selectedFile.fileTypeLogo)
-
-//            generateBtn.setTitle(viewModel.selectedFile.filename, for: .normal)
-        }
-    }
+    var viewModel: SelectedFileViewModel!
 
     init(filename: String?, selectedFile: URL?, extractedContent: String?, viewModel: SelectedFileViewModel!) {
         self.filename = filename
@@ -147,13 +140,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         accentAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
         
         selectedFileView.isHidden = true
-        
-//        var txt = UIImage(named: "text-file-50.png")
-//        var txtImageView = UIImageView(image: txt)
-//        
-//        let file = SelectedFile(filename: "Class.pdf", fileTypeLogo: txtImageView)
-////        let file = SelectedFile(filename: filename!, fileTypeLogo: fileTypeLogo!)
-//        viewModel = SelectedFileViewModel(selectedFile: file)
     }
     
     public func addValuesToSegmentControls() {
