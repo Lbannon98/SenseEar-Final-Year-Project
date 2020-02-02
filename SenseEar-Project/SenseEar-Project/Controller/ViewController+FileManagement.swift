@@ -118,22 +118,22 @@ extension ViewController: UIDocumentPickerDelegate {
             
         } else if selectedFile!.pathExtension == "pdf" {
             
-            let image = UIImage(named: "pdf-file-48.png")
+            let image = UIImage(named: "icons8-pdf-48-2.png")
             fileTypeLogo = UIImageView(image: image)
             
         } else if selectedFile!.pathExtension == "docx" {
             
-            let image = UIImage(named: "microsoft-word-2019-48.png")
+            let image = UIImage(named: "icons8-microsoft-word-48.png")
             fileTypeLogo = UIImageView(image: image)
             
         } else if selectedFile!.pathExtension == "xlsx" {
             
-            let image = UIImage(named: "microsoft-excel-48.png")
+            let image = UIImage(named: "icons8-microsoft-excel-48.png")
             fileTypeLogo = UIImageView(image: image)
             
         } else if selectedFile!.pathExtension == "pptx" {
 
-            let image = UIImage(named: "microsoft-powerpoint-48.png")
+            let image = UIImage(named: "icons8-microsoft-powerpoint-48.png")
             fileTypeLogo = UIImageView(image: image)
             
         }
