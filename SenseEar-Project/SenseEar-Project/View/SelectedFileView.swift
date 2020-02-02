@@ -28,6 +28,18 @@ class SelectedFileView: UIView {
         label.text = viewModel.filename
         
     }
+    
+    func clear(with viewModel: SelectedFileViewModel) {
+       
+        imageView.image = nil
+        label.text = ""
+        
+        let image = UIImage()
+    
+        viewModel.filename = ""
+        viewModel.fileTypeLogo.image = image
+        
+    }
 
 }
  

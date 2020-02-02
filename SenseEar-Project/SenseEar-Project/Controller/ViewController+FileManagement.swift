@@ -142,6 +142,7 @@ extension ViewController: UIDocumentPickerDelegate {
         selectedFileView.setup(with: viewModel)
         
         selectedFileView.isHidden = false
+        clearBtn.isHidden = false
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
