@@ -224,7 +224,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBAction func importFiles(_ sender: UIButton) {
         
-        let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeText), String(kUTTypePlainText), String(kUTTypeContent), String(kUTTypeImage)], in: .import)
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeText), String(kUTTypePlainText), String(kUTTypeContent)], in: .import)
 
         documentPicker.delegate = self
         documentPicker.allowsMultipleSelection = false
