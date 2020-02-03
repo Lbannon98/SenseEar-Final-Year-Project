@@ -116,33 +116,68 @@ extension ViewController: UIDocumentPickerDelegate {
             let image = UIImage(named: "text-file-50.png")
             fileTypeLogo = UIImageView(image: image)
             
+            importBtn.setTitle("Import File", for: .normal)
+            
+            selectedFileView.isHidden = false
+            clearBtn.isHidden = false
+            
         } else if selectedFile!.pathExtension == "pdf" {
             
             let image = UIImage(named: "icons8-pdf-48-2.png")
             fileTypeLogo = UIImageView(image: image)
+            
+            importBtn.setTitle("Import File", for: .normal)
+
+            selectedFileView.isHidden = false
+            clearBtn.isHidden = false
             
         } else if selectedFile!.pathExtension == "docx" {
             
             let image = UIImage(named: "icons8-microsoft-word-48.png")
             fileTypeLogo = UIImageView(image: image)
             
+            importBtn.setTitle("Import File", for: .normal)
+
+            selectedFileView.isHidden = false
+            clearBtn.isHidden = false
+            
         } else if selectedFile!.pathExtension == "xlsx" {
             
             let image = UIImage(named: "icons8-microsoft-excel-48.png")
             fileTypeLogo = UIImageView(image: image)
+            
+            importBtn.setTitle("Import File", for: .normal)
+
+            selectedFileView.isHidden = false
+            clearBtn.isHidden = false
             
         } else if selectedFile!.pathExtension == "pptx" {
 
             let image = UIImage(named: "icons8-microsoft-powerpoint-48.png")
             fileTypeLogo = UIImageView(image: image)
             
+            importBtn.setTitle("Import File", for: .normal)
+            
+            selectedFileView.isHidden = false
+            clearBtn.isHidden = false
+            
+        } else {
+            
+            filename = ""
+            
+            let image = UIImage()
+            fileTypeLogo = UIImageView(image: image)
+            
+            selectedFileView.isHidden = true
+            clearBtn.isHidden = true
+            
+            importBtn.setTitle("Not a text file! Select another file!", for: .normal)
+            importBtn.isHidden = false
         }
         
         viewModel = SelectedFileViewModel(filename: filename!, fileTypeLogo: fileTypeLogo!)
         selectedFileView.setup(with: viewModel)
-        
-        selectedFileView.isHidden = false
-        clearBtn.isHidden = false
+    
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
