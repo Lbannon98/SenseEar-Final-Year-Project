@@ -10,8 +10,8 @@ import UIKit
 
 class SelectedFileViewModel {
     
-    let filename: String
-    let fileTypeLogo: UIImageView
+    var filename: String
+    var fileTypeLogo: UIImageView
        
     init(filename: String, fileTypeLogo: UIImageView){
        self.filename = filename

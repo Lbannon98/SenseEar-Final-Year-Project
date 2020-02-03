@@ -67,6 +67,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBOutlet weak var importBtn: UIButton!
     @IBOutlet weak var generateBtn: UIButton!
+    @IBOutlet weak var clearBtn: UIButton!
     
     @IBOutlet weak var genderAudioBtn: CircleButton!
     @IBOutlet weak var accentAudioBtn: CircleButton!
@@ -136,10 +137,14 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         importBtn.setTitle("Import File", for: .normal)
         
+        let cancelConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .light)
+        clearBtn.setImage(UIImage(systemName: "multiply.circle.fill", withConfiguration: cancelConfiguration), for: .normal)
+       
         genderAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
         accentAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
         
         selectedFileView.isHidden = true
+        clearBtn.isHidden = true
     }
     
     public func addValuesToSegmentControls() {
@@ -219,12 +224,23 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBAction func importFiles(_ sender: UIButton) {
         
-        let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeText), String(kUTTypePlainText), String(kUTTypeContent), String(kUTTypeImage)], in: .import)
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeText), String(kUTTypePlainText), String(kUTTypeContent)], in: .import)
 
         documentPicker.delegate = self
         documentPicker.allowsMultipleSelection = false
         present(documentPicker, animated: true, completion: nil)
             
+    }
+    
+    
+    @IBAction func clearFileSelection(_ sender: Any) {
+        
+        viewModel = SelectedFileViewModel(filename: filename!, fileTypeLogo: fileTypeLogo!)
+        selectedFileView.clear(with: viewModel)
+        
+        selectedFileView.isHidden = true
+        clearBtn.isHidden = true
+        
     }
     
     @IBAction func generateFile(_ sender: Any) {
