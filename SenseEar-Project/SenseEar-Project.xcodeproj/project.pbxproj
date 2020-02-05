@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		67A511DB25D4D9133B22605D /* Pods_SenseEar_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */; };
+		DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
 		DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */; };
 		DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB17221523A8E70600CBB8C6 /* CircleButton.swift */; };
 		DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */; };
@@ -280,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
