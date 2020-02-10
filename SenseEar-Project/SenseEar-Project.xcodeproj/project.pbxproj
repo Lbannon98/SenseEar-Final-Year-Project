@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		67A511DB25D4D9133B22605D /* Pods_SenseEar_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */; };
+		DB00B44A23F1DA4F0064AFE4 /* TestFile.txt in Sources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
+		DB00B45523F1DB7E0064AFE4 /* TestFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
+		DB00B45623F1DD1F0064AFE4 /* TestFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
 		DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
 		DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */; };
 		DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB17221523A8E70600CBB8C6 /* CircleButton.swift */; };
@@ -44,6 +47,11 @@
 		8374EB9B027846E5A088B10B /* Pods-SenseEar-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenseEar-Project.release.xcconfig"; path = "Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project.release.xcconfig"; sourceTree = "<group>"; };
 		858B6368E8A8D3046C2C1366 /* Pods-SenseEar-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenseEar-Project.debug.xcconfig"; path = "Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project.debug.xcconfig"; sourceTree = "<group>"; };
 		D0F22E9803F0409D6344C95A /* Pods-SenseEar-ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenseEar-ProjectTests.release.xcconfig"; path = "Target Support Files/Pods-SenseEar-ProjectTests/Pods-SenseEar-ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		DB00B44023F1B9D90064AFE4 /* Intent (1).pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Intent (1).pptx"; sourceTree = "<group>"; };
+		DB00B44123F1B9D90064AFE4 /* TestFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TestFile.txt; path = "/Users/laurenbannon/Desktop/College/Year 4/Semester 1/Software Project/Project/SenseEar Project (New)/SenseEar-Project/SenseEar-ProjectTests/Assets/TestFile.txt"; sourceTree = "<absolute>"; };
+		DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "CV 2019.pdf"; sourceTree = "<group>"; };
+		DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CV - Lauren Bannon.docx"; sourceTree = "<group>"; };
+		DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Module Due Dates - Semester 2.xlsx"; sourceTree = "<group>"; };
 		DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB17221523A8E70600CBB8C6 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+FileManagement.swift"; sourceTree = "<group>"; };
@@ -107,6 +115,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DB00B43F23F1B9490064AFE4 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */,
+				DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */,
+				DB00B44023F1B9D90064AFE4 /* Intent (1).pptx */,
+				DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */,
+				DB00B44123F1B9D90064AFE4 /* TestFile.txt */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		DB17221323A8E65600CBB8C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +188,7 @@
 		DB760E9723EAB66700241855 /* SenseEar-ProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				DB00B43F23F1B9490064AFE4 /* Assets */,
 				DB760EA123EABA0800241855 /* ViewModelTests.swift */,
 				DB760E9823EAB66700241855 /* SenseEar_ProjectTests.swift */,
 				DB760E9A23EAB66700241855 /* Info.plist */,
@@ -269,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB00B45623F1DD1F0064AFE4 /* TestFile.txt in Resources */,
 				DB4214B9239D45D00073DAFA /* LaunchScreen.storyboard in Resources */,
 				DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */,
 				DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */,
@@ -281,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB00B45523F1DB7E0064AFE4 /* TestFile.txt in Resources */,
 				DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB00B44A23F1DA4F0064AFE4 /* TestFile.txt in Sources */,
 				DB760EA223EABA0800241855 /* ViewModelTests.swift in Sources */,
 				DB760E9923EAB66700241855 /* SenseEar_ProjectTests.swift in Sources */,
 			);

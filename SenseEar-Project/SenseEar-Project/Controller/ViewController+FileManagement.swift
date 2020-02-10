@@ -31,13 +31,13 @@ extension ViewController: UIDocumentPickerDelegate {
           }
         }
         
-        self.textExtractionFromSelectedFile()
+        self.textExtractionFromSelectedFile(url: selectedFile!)
         self.selectedFileInfoAttachedToView()
     }
     
-    func textExtractionFromSelectedFile() {
+    func textExtractionFromSelectedFile(url: URL) -> String {
         
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return "" }
         
         let filePath = selectedFile?.relativePath
         let filePathWithoutFilename = selectedFile?.deletingLastPathComponent().relativePath
@@ -72,7 +72,8 @@ extension ViewController: UIDocumentPickerDelegate {
                                 self.newConvertedPdf = urlToPDF
                                     
                                 do {
-                                    self.extractTextFromPDF(url: self.newConvertedPdf!)
+                                    
+                                   self.extractTextFromPDF(url: self.newConvertedPdf!)
                                     
                                 } catch {
                                     print("Text Extraction Failed! \(error)")
@@ -106,6 +107,8 @@ extension ViewController: UIDocumentPickerDelegate {
         } catch let error {
             fatalError("bad error: \(error)")
         }
+        
+        return extractedContent!
         
     }
     

@@ -7,10 +7,20 @@
 //
 
 import XCTest
+@testable import SenseEar_Project
+import Nimble
 
 class SenseEar_ProjectTests: XCTestCase {
+    
+//    var selectedFile: URL?
+    var viewController: ViewController!
 
     override func setUp() {
+//        super.setUp()
+//        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
+//        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main())
+        
+        
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
@@ -18,16 +28,28 @@ class SenseEar_ProjectTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testTextExtractionFromTextFile() {
+        
+        //Given
+        
+//        let testBundle = Bundle(for: type(of: self))
+//        guard let file = Bundle.main.url(forResource: "TestFile", withExtension: "txt") else {
+//            fatalError()
+//        }
+        
+//        print(url)
+//        guard let fileURL = testBundle.url(forResource: "TestFile", withExtension: "txt")
+//          else { fatalError() }
+//
+//        print(fileURL.description)
+        
+        //When
+//        let textExtracted = viewController.textExtractionFromSelectedFile(url: file)
+        
+//        print("TEXT EXTRACTED: \(textExtracted)")
+       
+        //Then
+        
     }
 
 }
