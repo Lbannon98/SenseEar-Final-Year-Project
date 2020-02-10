@@ -15,14 +15,15 @@ class SelectedFileView: UIView {
     @IBOutlet weak var label: UILabel!
     
     let nibName = "SelectedFileView"
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
+    
+    required init(coder: NSCoder = NSCoder.empty) {
+        super.init(coder: coder)!
+        
         guard let views = loadViewFromNib() else { return }
         views.frame = self.bounds
         self.addSubview(views)
         view = views
+
     }
 
     func loadViewFromNib() -> UIView? {
@@ -30,14 +31,6 @@ class SelectedFileView: UIView {
         let nib = UINib(nibName: nibName, bundle: bundle)
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
-    
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        UINib(nibName: "SelectedFileView", bundle: nil).instantiate(withOwner: self, options: nil)
-//        addSubview(view)
-//        view.frame = self.bounds
-//
-//    }
 
     func setup(with viewModel: SelectedFileViewModel) {
         
@@ -58,5 +51,14 @@ class SelectedFileView: UIView {
         
     }
 
+}
+
+extension NSCoder {
+   class var empty: NSCoder {
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWith: data)
+        archiver.finishEncoding()
+        return NSKeyedUnarchiver(forReadingWith: data as Data)
+   }
 }
  

@@ -11,36 +11,32 @@ import XCTest
 import Nimble
 
 class ViewModelTests: XCTestCase {
+    
+    var selectedFileView: SelectedFileView!
 
-//    let nibName = "SelectedFileView"
+     override func setUp() {
+       super.setUp()
+        selectedFileView = SelectedFileView()
+    }
     
-//    func testSelectedFileViewContainsAView() {
-//        let bundle = Bundle(for: SelectedFileView.self)
-//        guard let _ = bundle.loadNibNamed("SelectedFileView", owner: nil)?.first as? UIView else {
-//          return XCTFail("CustomView nib did not contain a UIView")
-//        }
-//    }
-    
-//    func testSelectedFileViewContainsAView() {
-//        let bundle = Bundle(for: type(of: self))
-//        let nib = UINib(nibName: nibName, bundle: bundle)
-//        nib.instantiate(withOwner: self, options: nil).first
-//        
-//    }
+    override func tearDown() {
+        selectedFileView = nil
+        super.tearDown()
+    }
     
     func testViewModelValueAssignment() {
-        
+
         //Given
         let image = UIImage(named: "icons8-pdf-48-2.png")
         let fileTypeLogo = UIImageView(image: image)
-           
+
         //When
         let viewModel: SelectedFileViewModel = SelectedFileViewModel(filename: "Deadly.pdf", fileTypeLogo: fileTypeLogo)
-        
+
         //Then
         expect(viewModel.filename).to(equal("Deadly.pdf"))
         expect(viewModel.fileTypeLogo.image).to(equal(image))
-        
+
     }
     
     func testSelectedFileViewSetupFunctionWithViewModel() {
@@ -48,8 +44,6 @@ class ViewModelTests: XCTestCase {
         //Given
         let image = UIImage(named: "icons8-microsoft-powerpoint-48.png")
         let fileTypeLogo = UIImageView(image: image)
-           
-        let selectedFileView: SelectedFileView = SelectedFileView(coder: NSCoder())!
         
         let viewModel: SelectedFileViewModel = SelectedFileViewModel(filename: "Deadly.pptx", fileTypeLogo: fileTypeLogo)
         
@@ -63,28 +57,25 @@ class ViewModelTests: XCTestCase {
     }
     
     func testSelectedFileViewClearFunctionWithViewModel() {
-        
+
         //Given
         let image = UIImage(named: "icons8-microsoft-word-48.png")
         let fileTypeLogo = UIImageView(image: image)
-        
+
         let image2 = UIImage()
-           
-        let selectedFileView: SelectedFileView = SelectedFileView(coder: NSCoder())!
-        
+
         let viewModel: SelectedFileViewModel = SelectedFileViewModel(filename: "Deadly.docx", fileTypeLogo: fileTypeLogo)
-        
+
         //When
         selectedFileView.clear(with: viewModel)
 
         //Then
         expect(viewModel.fileTypeLogo.image).to(equal(image2))
         expect(viewModel.filename).to(equal(""))
-        
-        expect(selectedFileView.imageView.image).to(beNil())
-        expect(selectedFileView.label.text).to(equal(""))
+
+        expect(self.selectedFileView.imageView.image).to(beNil())
+        expect(self.selectedFileView.label.text).to(equal(""))
 
     }
     
-
 }
