@@ -47,54 +47,110 @@ extension ViewController: UIDocumentPickerDelegate {
             //Check if file exists
             if FileManager.default.fileExists(atPath: documentsDirectory.path) {
                 
-                if selectedFile!.pathExtension == "txt" {
+                guard let file = selectedFile else {
+                    return ""
+                }
+                
+                if let file = selectedFile {
                     
-                    do {
+                    if file.pathExtension == "txt" {
                         
-                        extractedContent = try String(contentsOfFile: filePath!, encoding: .utf8)
-                        print(extractedContent!)
-                           
-                   } catch {
-                        print("No Text File Found! \(error)")
-                   }
-                    
-                } else if selectedFile!.pathExtension == "docx" || selectedFile!.pathExtension == "xlsx" || selectedFile!.pathExtension == "pptx" {
-                                        
-                    do {
-                            PTConvert.convertOffice(toPDF: filePath!, paperSize: .zero) { (pathToPDF) in
-                            guard let pathToPDF = pathToPDF else {
-                                return
-                            }
-                                
-                                let urlToPDF = URL(fileURLWithPath: pathToPDF)
-                                let destinationURL = URL(fileURLWithPath: filePathWithoutFilename!).appendingPathComponent(urlToPDF.lastPathComponent)
-                                
-                                self.newConvertedPdf = urlToPDF
-                                    
-                                do {
-                                    
-                                   self.extractTextFromPDF(url: self.newConvertedPdf!)
-                                    
-                                } catch {
-                                    print("Text Extraction Failed! \(error)")
+                        do {
+                            
+                            extractedContent = try String(contentsOfFile: filePath!, encoding: .utf8)
+                            print(extractedContent!)
+                               
+                       } catch {
+                            print("No Text File Found! \(error)")
+                       }
+                        
+                    } else if file.pathExtension == "docx" || file.pathExtension == "xlsx" || file.pathExtension == "pptx" {
+                                            
+                        do {
+                                PTConvert.convertOffice(toPDF: filePath!, paperSize: .zero) { (pathToPDF) in
+                                guard let pathToPDF = pathToPDF else {
+                                    return
                                 }
-                        }
+                                    
+                                    let urlToPDF = URL(fileURLWithPath: pathToPDF)
+                                    let destinationURL = URL(fileURLWithPath: filePathWithoutFilename!).appendingPathComponent(urlToPDF.lastPathComponent)
+                                    
+                                    self.newConvertedPdf = urlToPDF
+                                        
+                                    do {
+                                        
+                                       self.extractTextFromPDF(url: self.newConvertedPdf!)
+                                        
+                                    } catch {
+                                        print("Text Extraction Failed! \(error)")
+                                    }
+                            }
 
-                    } catch {
-                        print("Microsoft Office File Not Found!")
-                    }
-                    
-                } else if selectedFile!.pathExtension == "pdf" {
-                    
-                    do {
+                        } catch {
+                            print("Microsoft Office File Not Found!")
+                        }
                         
-                        self.extractTextFromPDF(url: selectedFile!)
+                    } else if file.pathExtension == "pdf" {
                         
-                    } catch {
-                        print("Text Extraction Failed! \(error)")
+                        do {
+                            
+                            self.extractTextFromPDF(url: file)
+                            
+                        } catch {
+                            print("Text Extraction Failed! \(error)")
+                        }
+                        
                     }
-                    
-                } 
+                }
+                
+//                if selectedFile!.pathExtension == "txt" {
+//
+//                    do {
+//
+//                        extractedContent = try String(contentsOfFile: filePath!, encoding: .utf8)
+//                        print(extractedContent!)
+//
+//                   } catch {
+//                        print("No Text File Found! \(error)")
+//                   }
+//
+//                } else if selectedFile!.pathExtension == "docx" || selectedFile!.pathExtension == "xlsx" || selectedFile!.pathExtension == "pptx" {
+//
+//                    do {
+//                            PTConvert.convertOffice(toPDF: filePath!, paperSize: .zero) { (pathToPDF) in
+//                            guard let pathToPDF = pathToPDF else {
+//                                return
+//                            }
+//
+//                                let urlToPDF = URL(fileURLWithPath: pathToPDF)
+//                                let destinationURL = URL(fileURLWithPath: filePathWithoutFilename!).appendingPathComponent(urlToPDF.lastPathComponent)
+//
+//                                self.newConvertedPdf = urlToPDF
+//
+//                                do {
+//
+//                                   self.extractTextFromPDF(url: self.newConvertedPdf!)
+//
+//                                } catch {
+//                                    print("Text Extraction Failed! \(error)")
+//                                }
+//                        }
+//
+//                    } catch {
+//                        print("Microsoft Office File Not Found!")
+//                    }
+//
+//                } else if selectedFile!.pathExtension == "pdf" {
+//
+//                    do {
+//
+//                        self.extractTextFromPDF(url: selectedFile!)
+//
+//                    } catch {
+//                        print("Text Extraction Failed! \(error)")
+//                    }
+//
+//                }
                     
            } else {
                print("File does not exist!")

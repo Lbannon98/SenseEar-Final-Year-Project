@@ -12,16 +12,12 @@ import Nimble
 
 class SenseEar_ProjectTests: XCTestCase {
     
-//    var selectedFile: URL?
     var viewController: ViewController!
-
+    
     override func setUp() {
-//        super.setUp()
-//        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
-//        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main())
-        
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+      super.setUp()
+      
+        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
     }
 
     override func tearDown() {
@@ -31,25 +27,96 @@ class SenseEar_ProjectTests: XCTestCase {
     func testTextExtractionFromTextFile() {
         
         //Given
-        
-//        let testBundle = Bundle(for: type(of: self))
-//        guard let file = Bundle.main.url(forResource: "TestFile", withExtension: "txt") else {
-//            fatalError()
-//        }
-        
-//        print(url)
-//        guard let fileURL = testBundle.url(forResource: "TestFile", withExtension: "txt")
-//          else { fatalError() }
-//
-//        print(fileURL.description)
+        let testBundle = Bundle(for: type(of: self))
+
+        guard let fileURL = testBundle.url(forResource: "TestFile", withExtension: "txt")
+          else { fatalError() }
+
+        print("FILE URL: \(fileURL.description)")
         
         //When
-//        let textExtracted = viewController.textExtractionFromSelectedFile(url: file)
+        let textExtracted = viewController.textExtractionFromSelectedFile(url: fileURL)
         
-//        print("TEXT EXTRACTED: \(textExtracted)")
+        print("TEXT EXTRACTED: \(String(textExtracted))")
        
         //Then
-        
+        expect(textExtracted).toNot(beNil())
+    }
+    
+    func testTextExtractionFromPDFFile() {
+           
+           //Given
+           let testBundle = Bundle(for: type(of: self))
+
+           guard let fileURL = testBundle.url(forResource: "CV 2019", withExtension: "pdf")
+             else { fatalError() }
+
+           print("FILE URL: \(fileURL.description)")
+           
+           //When
+           let textExtracted = viewController.textExtractionFromSelectedFile(url: fileURL)
+           
+           print("TEXT EXTRACTED: \(String(textExtracted))")
+          
+           //Then
+           expect(textExtracted).toNot(beNil())
+    }
+    
+    func testTextExtractionFromWordDoc() {
+           
+           //Given
+           let testBundle = Bundle(for: type(of: self))
+
+           guard let fileURL = testBundle.url(forResource: "CV - Lauren Bannon", withExtension: "docx")
+             else { fatalError() }
+
+           print("FILE URL: \(fileURL.description)")
+           
+           //When
+           let textExtracted = viewController.textExtractionFromSelectedFile(url: fileURL)
+           
+           print("TEXT EXTRACTED: \(String(textExtracted))")
+          
+           //Then
+           expect(textExtracted).toNot(beNil())
+    }
+    
+    func testTextExtractionFromExcelDoc() {
+           
+           //Given
+           let testBundle = Bundle(for: type(of: self))
+
+           guard let fileURL = testBundle.url(forResource: "Module Due Dates - Semester 2", withExtension: "xlsx")
+             else { fatalError() }
+
+           print("FILE URL: \(fileURL.description)")
+           
+           //When
+           let textExtracted = viewController.textExtractionFromSelectedFile(url: fileURL)
+           
+           print("TEXT EXTRACTED: \(String(textExtracted))")
+          
+           //Then
+           expect(textExtracted).toNot(beNil())
+    }
+    
+    func testTextExtractionFromPowerPointDoc() {
+           
+           //Given
+           let testBundle = Bundle(for: type(of: self))
+
+           guard let fileURL = testBundle.url(forResource: "Intent (1)", withExtension: "pptx")
+             else { fatalError() }
+
+           print("FILE URL: \(fileURL.description)")
+           
+           //When
+           let textExtracted = viewController.textExtractionFromSelectedFile(url: fileURL)
+           
+           print("TEXT EXTRACTED: \(String(textExtracted))")
+          
+           //Then
+           expect(textExtracted).toNot(beNil())
     }
 
 }

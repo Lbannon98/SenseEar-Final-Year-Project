@@ -16,6 +16,7 @@
 		DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB17221523A8E70600CBB8C6 /* CircleButton.swift */; };
 		DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */; };
 		DB24FB3223D8D8040036C32D /* VoiceController+VoiceRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */; };
+		DB2E72A323F99FF60075D7A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B2239D45CF0073DAFA /* Main.storyboard */; };
 		DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AC239D45CF0073DAFA /* AppDelegate.swift */; };
 		DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */; };
 		DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214B0239D45CF0073DAFA /* ViewController.swift */; };
@@ -303,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB2E72A323F99FF60075D7A6 /* Main.storyboard in Resources */,
 				DB00B45523F1DB7E0064AFE4 /* TestFile.txt in Resources */,
 				DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */,
 			);
