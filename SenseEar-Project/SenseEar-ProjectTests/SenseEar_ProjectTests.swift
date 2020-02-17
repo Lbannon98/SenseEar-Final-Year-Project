@@ -18,6 +18,7 @@ class SenseEar_ProjectTests: XCTestCase {
       super.setUp()
       
         viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        
     }
 
     override func tearDown() {

@@ -104,14 +104,14 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     //Extracted Text Variable
     var extractedContent: String?
+//    var newPDFExtractedContent: String?
     
     //View Model
     var viewModel: SelectedFileViewModel!
 
-    init(filename: String?, selectedFile: URL?, extractedContent: String?, viewModel: SelectedFileViewModel!) {
+    init(filename: String?, selectedFile: URL?, viewModel: SelectedFileViewModel!) {
         self.filename = filename
         self.selectedFile = selectedFile
-        self.extractedContent = extractedContent
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

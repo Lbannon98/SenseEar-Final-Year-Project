@@ -10,7 +10,6 @@
 		67A511DB25D4D9133B22605D /* Pods_SenseEar_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */; };
 		DB00B44A23F1DA4F0064AFE4 /* TestFile.txt in Sources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
 		DB00B45523F1DB7E0064AFE4 /* TestFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
-		DB00B45623F1DD1F0064AFE4 /* TestFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
 		DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
 		DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */; };
 		DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB17221523A8E70600CBB8C6 /* CircleButton.swift */; };
@@ -29,6 +28,10 @@
 		DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB60B3D623E488550015DFB7 /* SelectedFileViewModel.swift */; };
 		DB760E9923EAB66700241855 /* SenseEar_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB760E9823EAB66700241855 /* SenseEar_ProjectTests.swift */; };
 		DB760EA223EABA0800241855 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB760EA123EABA0800241855 /* ViewModelTests.swift */; };
+		DBC9728723FAA5BC00B3A7C4 /* CV - Lauren Bannon.docx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */; };
+		DBC9728823FAA5BF00B3A7C4 /* CV 2019.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */; };
+		DBC9728923FAA5C700B3A7C4 /* Module Due Dates - Semester 2.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */; };
+		DBC9728A23FAA5CA00B3A7C4 /* Intent (1).pptx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44023F1B9D90064AFE4 /* Intent (1).pptx */; };
 		F1F98CD5F1ED7033103E9348 /* Pods_SenseEar_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10428519F0FBD23813A16BF /* Pods_SenseEar_ProjectTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -291,7 +294,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB00B45623F1DD1F0064AFE4 /* TestFile.txt in Resources */,
 				DB4214B9239D45D00073DAFA /* LaunchScreen.storyboard in Resources */,
 				DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */,
 				DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */,
@@ -304,7 +306,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBC9728823FAA5BF00B3A7C4 /* CV 2019.pdf in Resources */,
+				DBC9728923FAA5C700B3A7C4 /* Module Due Dates - Semester 2.xlsx in Resources */,
+				DBC9728723FAA5BC00B3A7C4 /* CV - Lauren Bannon.docx in Resources */,
 				DB2E72A323F99FF60075D7A6 /* Main.storyboard in Resources */,
+				DBC9728A23FAA5CA00B3A7C4 /* Intent (1).pptx in Resources */,
 				DB00B45523F1DB7E0064AFE4 /* TestFile.txt in Resources */,
 				DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */,
 			);
