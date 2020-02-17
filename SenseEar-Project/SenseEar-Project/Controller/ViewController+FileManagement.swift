@@ -29,8 +29,9 @@ extension ViewController: UIDocumentPickerDelegate {
             print(error!)
             return
           }
+            
         }
-
+        
         self.textExtractionFromSelectedFile(url: selectedFile!)
         self.selectedFileInfoAttachedToView()
     }
@@ -88,11 +89,12 @@ extension ViewController: UIDocumentPickerDelegate {
                                         return
                                     }
 
-                                    print("newPDFFile: \(newPDFFile)")
+                                    print("newPDFFile: \(url)")
 
                                   do {
 
                                     self.extractTextFromPDF(url: newPDFFile)
+//                                    self.extractedContent = self.extractTextFromPDF(url: newPDFFile)
     //                                        self.extractedContent = self.extractTextFromMicrosoftOfficeFiles(url: urlToPDF)
 
                                   } catch {
@@ -108,7 +110,8 @@ extension ViewController: UIDocumentPickerDelegate {
 
                           do {
 
-                              self.extractTextFromPDF(url: file)
+                            self.extractTextFromPDF(url: file)
+//                              self.extractedContent = self.extractTextFromPDF(url: file)
 
                           } catch {
                               print("Text Extraction Failed! \(error)")

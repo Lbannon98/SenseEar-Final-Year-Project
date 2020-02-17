@@ -9,6 +9,7 @@
 import XCTest
 @testable import SenseEar_Project
 import Nimble
+import FirebaseStorage
 
 class SenseEar_ProjectTests: XCTestCase {
     
@@ -24,6 +25,33 @@ class SenseEar_ProjectTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func testFirebaseStorage() {
+        
+        //Given
+        let testBundle = Bundle(for: type(of: self))
+        guard let file = testBundle.url(forResource: "TestFile", withExtension: "txt")
+          else { fatalError() }
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        
+        //When
+        let filename = file.lastPathComponent
+        let documentRef = storageRef.child("documents/\(filename)")
+        
+        let uploadTask = documentRef.putFile(from: file, metadata: nil) { metadata, error in
+          guard let metadata = metadata else {
+            print(error!)
+            return
+          }
+            
+            //Then
+            expect(metadata.name).to(equal(filename))
+            expect(metadata).toNot(beNil())
+        }
+        
+    }
 
     func testTextExtractionFromTextFile() {
         
@@ -34,6 +62,7 @@ class SenseEar_ProjectTests: XCTestCase {
           else { fatalError() }
 
         print("FILE URL: \(fileURL.description)")
+        print("FILE URL: \(fileURL.lastPathComponent)")
         
         //When
         let textExtracted = viewController.textExtractionFromSelectedFile(url: fileURL)
