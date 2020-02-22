@@ -9,11 +9,11 @@
 import Foundation
 import PDFKit
 
-/// <#Description#>
+/// Controls the text extraction functionality
 class TextExtractor {
     
-    /// <#Description#>
-    /// - Parameter file: <#file description#>
+    /// Controls text extraction from PDF files
+    /// - Parameter file: takes selected file url
     func extractText(from file: URL) -> String {
         if let page = PDFDocument(url: file) {
             guard let extractedContent = page.string else {
@@ -24,5 +24,5 @@ class TextExtractor {
         }
         return ""
     }
-    
+
 }

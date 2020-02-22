@@ -14,6 +14,10 @@ import PDFNet
 
 extension ViewController: UIDocumentPickerDelegate {
 
+    /// Controls the functionality behind the fille selection
+    /// - Parameters:
+    ///   - controller: Document Picker Controller which has been initialised in the View Controller
+    ///   - url: The url of the selected file
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
 
         let storage = Storage.storage()
@@ -35,7 +39,10 @@ extension ViewController: UIDocumentPickerDelegate {
         self.textExtractionFromSelectedFile(url: selectedFile!)
         self.selectedFileInfoAttachedToView()
     }
-
+    
+    
+    /// Controls the functionality behind the text extraction from all file types
+    /// - Parameter url: Takes the url of the selected file
     func textExtractionFromSelectedFile(url: URL) -> String {
 
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return "" }
@@ -74,7 +81,7 @@ extension ViewController: UIDocumentPickerDelegate {
                                                         
                             // OutputPath is a relative path  built from the URL of the selectedFile
                         let outputPath = pathToFile.replacingOccurrences(of: ".\(selectedFile.pathExtension)", with: ".pdf")
-                        OfficeFileConvertor.convertOfficeDoc(with: pathToFile, to: outputPath)
+                        OfficeFileConverter.convertOfficeDoc(with: pathToFile, to: outputPath)
                         
                             let pdfFileURL = URL(fileURLWithPath: outputPath)
                             self.extractedContent = self.extractTextFromPDF(url: pdfFileURL)
@@ -86,7 +93,8 @@ extension ViewController: UIDocumentPickerDelegate {
 
                           do {
 
-                            self.extractTextFromPDF(url: selectedFile)
+                            self.extractedContent = self.extractTextFromPDF(url: selectedFile)
+                            print(self.extractedContent!)
 
                           } catch {
                               print("Text Extraction Failed! \(error)")
@@ -109,7 +117,8 @@ extension ViewController: UIDocumentPickerDelegate {
         return extractedContent!
 
     }
-
+    
+    /// Controls the functionality behind the view being updated
     func selectedFileInfoAttachedToView() {
 
         guard let file = selectedFile else {
@@ -189,6 +198,9 @@ extension ViewController: UIDocumentPickerDelegate {
         print("Cancelled")
     }
 
+    
+    /// Controls extraction from pdf files
+    /// - Parameter url: Takes url of the pdf file
     func extractTextFromPDF(url: URL) -> String {
 
         let extractor = TextExtractor()

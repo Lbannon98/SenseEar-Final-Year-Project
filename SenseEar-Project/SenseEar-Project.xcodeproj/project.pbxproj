@@ -32,8 +32,8 @@
 		DBC9728823FAA5BF00B3A7C4 /* CV 2019.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */; };
 		DBC9728923FAA5C700B3A7C4 /* Module Due Dates - Semester 2.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */; };
 		DBC9728A23FAA5CA00B3A7C4 /* Intent (1).pptx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44023F1B9D90064AFE4 /* Intent (1).pptx */; };
-		DBD1DF8324002D85002151D6 /* OfficeFileConvertor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1DF8224002D85002151D6 /* OfficeFileConvertor.swift */; };
-		DBD1DF85240033E3002151D6 /* OfficeFileConvertorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1DF84240033E3002151D6 /* OfficeFileConvertorTests.swift */; };
+		DBD1DF8324002D85002151D6 /* OfficeFileConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */; };
+		DBD1DF85240033E3002151D6 /* OfficeFileConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1DF84240033E3002151D6 /* OfficeFileConverterTests.swift */; };
 		DBD1DF882400346A002151D6 /* TextExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1DF872400346A002151D6 /* TextExtractor.swift */; };
 		F1F98CD5F1ED7033103E9348 /* Pods_SenseEar_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10428519F0FBD23813A16BF /* Pods_SenseEar_ProjectTests.framework */; };
 /* End PBXBuildFile section */
@@ -79,8 +79,8 @@
 		DB760E9823EAB66700241855 /* SenseEar_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenseEar_ProjectTests.swift; sourceTree = "<group>"; };
 		DB760E9A23EAB66700241855 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB760EA123EABA0800241855 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModelTests.swift; path = ViewModelTests/ViewModelTests.swift; sourceTree = "<group>"; };
-		DBD1DF8224002D85002151D6 /* OfficeFileConvertor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConvertor.swift; sourceTree = "<group>"; };
-		DBD1DF84240033E3002151D6 /* OfficeFileConvertorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConvertorTests.swift; sourceTree = "<group>"; };
+		DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConverter.swift; sourceTree = "<group>"; };
+		DBD1DF84240033E3002151D6 /* OfficeFileConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConverterTests.swift; sourceTree = "<group>"; };
 		DBD1DF872400346A002151D6 /* TextExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtractor.swift; sourceTree = "<group>"; };
 		E10428519F0FBD23813A16BF /* Pods_SenseEar_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenseEar_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -203,7 +203,7 @@
 				DB760EA123EABA0800241855 /* ViewModelTests.swift */,
 				DB760E9823EAB66700241855 /* SenseEar_ProjectTests.swift */,
 				DB760E9A23EAB66700241855 /* Info.plist */,
-				DBD1DF84240033E3002151D6 /* OfficeFileConvertorTests.swift */,
+				DBD1DF84240033E3002151D6 /* OfficeFileConverterTests.swift */,
 			);
 			path = "SenseEar-ProjectTests";
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 		DBD1DF862400344F002151D6 /* Conversion */ = {
 			isa = PBXGroup;
 			children = (
-				DBD1DF8224002D85002151D6 /* OfficeFileConvertor.swift */,
+				DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */,
 				DBD1DF872400346A002151D6 /* TextExtractor.swift */,
 			);
 			path = Conversion;
@@ -447,7 +447,7 @@
 				DBD1DF882400346A002151D6 /* TextExtractor.swift in Sources */,
 				DB4214C1239D46E90073DAFA /* GenderSelection.swift in Sources */,
 				DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */,
-				DBD1DF8324002D85002151D6 /* OfficeFileConvertor.swift in Sources */,
+				DBD1DF8324002D85002151D6 /* OfficeFileConverter.swift in Sources */,
 				DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,7 +458,7 @@
 			files = (
 				DB00B44A23F1DA4F0064AFE4 /* TestFile.txt in Sources */,
 				DB760EA223EABA0800241855 /* ViewModelTests.swift in Sources */,
-				DBD1DF85240033E3002151D6 /* OfficeFileConvertorTests.swift in Sources */,
+				DBD1DF85240033E3002151D6 /* OfficeFileConverterTests.swift in Sources */,
 				DB760E9923EAB66700241855 /* SenseEar_ProjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  OfficeFileConvertorTests.swift
+//  OfficeFileConverterTests.swift
 //  SenseEar-ProjectTests
 //
 //  Created by Lauren Bannon on 21/02/2020.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class OfficeFileConvertorTests: XCTestCase {
+class OfficeFileConverterTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

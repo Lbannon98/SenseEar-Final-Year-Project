@@ -1,5 +1,5 @@
 //
-//  OfficeFileConvertor.swift
+//  OfficeFileConverter.swift
 //  SenseEar-Project
 //
 //  Created by Lauren Bannon on 21/02/2020.
@@ -9,13 +9,13 @@
 import Foundation
 import PDFNet
 
-/// <#Description#>
-class OfficeFileConvertor: NSObject {
+/// Controls functionality behind the conversion behind Office file to pdf files
+class OfficeFileConverter: NSObject {
     
-    /// <#Description#>
+    /// Fuction to convert and save the new pdf file
     /// - Parameters:
-    ///   - inputPath: <#inputPath description#>
-    ///   - outputPath: <#outputPath description#>
+    ///   - inputPath: Input path of Office files
+    ///   - outputPath: Output path of converted pdf file
     class func convertOfficeDoc(with inputPath: String, to outputPath: String) {
         // Start with a PDFDoc (the conversion destination)
         let pdfDoc: PTPDFDoc = PTPDFDoc()
