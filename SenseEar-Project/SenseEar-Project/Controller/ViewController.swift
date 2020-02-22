@@ -104,7 +104,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     //Extracted Text Variable
     var extractedContent: String?
-//    var newPDFExtractedContent: String?
     
     //View Model
     var viewModel: SelectedFileViewModel!

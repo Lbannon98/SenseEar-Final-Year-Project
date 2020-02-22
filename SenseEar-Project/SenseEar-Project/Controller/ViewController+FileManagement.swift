@@ -40,23 +40,18 @@ extension ViewController: UIDocumentPickerDelegate {
 
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return "" }
 
-        let filePath = selectedFile?.relativePath
-        let filePathWithoutFilename = selectedFile?.deletingLastPathComponent().relativePath
+        guard let selectedFile = self.selectedFile else {
+            return ""
+        }
+        
+        let pathToFile = selectedFile.relativePath
 
           do {
 
               //Check if file exists
               if FileManager.default.fileExists(atPath: documentsDirectory.path) {
 
-                  guard let file = selectedFile else {
-                      return ""
-                  }
-
-                    guard let pathToFile = filePath else {
-                        return ""
-                    }
-
-                      if file.pathExtension == "txt" {
+                      if selectedFile.pathExtension == "txt" {
 
                           do {
 
@@ -72,46 +67,26 @@ extension ViewController: UIDocumentPickerDelegate {
                               print("No Text File Found! \(error)")
                          }
 
-                      } else if file.pathExtension == "docx" || file.pathExtension == "xlsx" || file.pathExtension == "pptx" {
+                      } else if selectedFile.pathExtension == "docx" ||
+                                selectedFile.pathExtension == "xlsx" ||
+                                selectedFile.pathExtension == "pptx" {
+
+                                                        
+                            // OutputPath is a relative path  built from the URL of the selectedFile
+                        let outputPath = pathToFile.replacingOccurrences(of: ".\(selectedFile.pathExtension)", with: ".pdf")
+                        OfficeFileConvertor.convertOfficeDoc(with: pathToFile, to: outputPath)
+                        
+                            let pdfFileURL = URL(fileURLWithPath: outputPath)
+                            self.extractedContent = self.extractTextFromPDF(url: pdfFileURL)
+                            print("We might have done it!")
+                        
+                            print(self.extractedContent!)
+
+                      } else if selectedFile.pathExtension == "pdf" {
 
                           do {
 
-                              PTConvert.convertOffice(toPDF: pathToFile, paperSize: .zero) { (pathToPDF) in
-                                  guard let pathToNewPDF = pathToPDF else {
-                                      return
-                                  }
-
-                                  let urlToPDF = URL(fileURLWithPath: pathToNewPDF)
-
-                                    self.newConvertedPdf = urlToPDF
-
-                                    guard let newPDFFile = self.newConvertedPdf else {
-                                        return
-                                    }
-
-                                    print("newPDFFile: \(url)")
-
-                                  do {
-
-                                    self.extractTextFromPDF(url: newPDFFile)
-//                                    self.extractedContent = self.extractTextFromPDF(url: newPDFFile)
-    //                                        self.extractedContent = self.extractTextFromMicrosoftOfficeFiles(url: urlToPDF)
-
-                                  } catch {
-                                      print("Text Extraction Failed! \(error)")
-                                  }
-                              }
-
-                          } catch {
-                              print("Microsoft Office File Not Found!")
-                          }
-
-                      } else if file.pathExtension == "pdf" {
-
-                          do {
-
-                            self.extractTextFromPDF(url: file)
-//                              self.extractedContent = self.extractTextFromPDF(url: file)
+                            self.extractTextFromPDF(url: selectedFile)
 
                           } catch {
                               print("Text Extraction Failed! \(error)")
@@ -216,36 +191,10 @@ extension ViewController: UIDocumentPickerDelegate {
 
     func extractTextFromPDF(url: URL) -> String {
 
-        if let page = PDFDocument(url: url) {
-            extractedContent = page.string!
-
-            guard let content = extractedContent else {
-                return ""
-            }
-
-            print(content)
-            return content
-
-        }
-
+        let extractor = TextExtractor()
+        return extractor.extractText(from: url)
         return extractedContent!
+        
     }
-
-//    func extractTextFromMicrosoftOfficeFiles(url: URL) -> String {
-//
-//        if let page = PDFDocument(url: url) {
-//            newPDFExtractedContent = page.string!
-//
-//            guard let content = newPDFExtractedContent else {
-//                return ""
-//            }
-//
-//            print(content)
-//            return content
-//
-//        }
-//
-//        return newPDFExtractedContent!
-//    }
 
 }
