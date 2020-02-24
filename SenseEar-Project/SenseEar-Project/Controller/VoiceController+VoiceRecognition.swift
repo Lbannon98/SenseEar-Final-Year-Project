@@ -13,7 +13,7 @@ import UIKit
 extension ViewController {
     
     
-    /// Sets up microphone access rewquest to user
+    /// Sets up microphone access request to user
     func requestMicrophoneAccess() {
            speechRecogniser?.delegate = self
            

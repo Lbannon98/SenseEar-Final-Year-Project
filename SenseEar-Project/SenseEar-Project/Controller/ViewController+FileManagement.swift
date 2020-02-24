@@ -54,6 +54,7 @@ extension ViewController: UIDocumentPickerDelegate {
         let pathToFile = selectedFile.relativePath
 
           do {
+            
 
               //Check if file exists
               if FileManager.default.fileExists(atPath: documentsDirectory.path) {
