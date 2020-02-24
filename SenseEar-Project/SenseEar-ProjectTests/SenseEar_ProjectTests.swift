@@ -135,7 +135,7 @@ class SenseEar_ProjectTests: XCTestCase {
            //Given
            let testBundle = Bundle(for: type(of: self))
 
-           guard let fileURL = testBundle.url(forResource: "Intent (1)", withExtension: "pptx")
+           guard let fileURL = testBundle.url(forResource: "Intent", withExtension: "pptx")
              else { fatalError() }
 
            print("FILE URL: \(fileURL.description)")
