@@ -59,7 +59,6 @@ enum AccentSelection: Int, CaseIterable, Identifiable, Hashable {
    }
 }
 
-
 class ViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     @IBOutlet weak var genderSelectionSC: UISegmentedControl!
@@ -108,10 +107,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     //View Model
     var viewModel: SelectedFileViewModel!
 
-    init(filename: String?, selectedFile: URL?, extractedContent: String?, viewModel: SelectedFileViewModel!) {
+    init(filename: String?, selectedFile: URL?, viewModel: SelectedFileViewModel!) {
         self.filename = filename
         self.selectedFile = selectedFile
-        self.extractedContent = extractedContent
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -122,7 +120,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     override func awakeFromNib() {
        super.awakeFromNib()
-       //custom logic goes here
     }
     
     override func viewDidLoad() {
@@ -231,7 +228,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         present(documentPicker, animated: true, completion: nil)
             
     }
-    
     
     @IBAction func clearFileSelection(_ sender: Any) {
         

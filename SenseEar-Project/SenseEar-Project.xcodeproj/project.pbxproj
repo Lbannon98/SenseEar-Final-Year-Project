@@ -8,10 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		67A511DB25D4D9133B22605D /* Pods_SenseEar_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */; };
+		DB00B44A23F1DA4F0064AFE4 /* TestFile.txt in Sources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
+		DB00B45523F1DB7E0064AFE4 /* TestFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
+		DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
 		DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */; };
 		DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB17221523A8E70600CBB8C6 /* CircleButton.swift */; };
 		DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */; };
 		DB24FB3223D8D8040036C32D /* VoiceController+VoiceRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */; };
+		DB2A3C2A240451A900544B7B /* OfficeFileConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A3C29240451A900544B7B /* OfficeFileConverterTests.swift */; };
+		DB2A3C2B24045A0300544B7B /* OfficeFileConverter.swift in Resources */ = {isa = PBXBuildFile; fileRef = DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */; };
+		DB2E72A323F99FF60075D7A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B2239D45CF0073DAFA /* Main.storyboard */; };
 		DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AC239D45CF0073DAFA /* AppDelegate.swift */; };
 		DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */; };
 		DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214B0239D45CF0073DAFA /* ViewController.swift */; };
@@ -22,16 +28,43 @@
 		DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
 		DB46BC4223E41F35006903D4 /* SelectedFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46BC4123E41F35006903D4 /* SelectedFileView.swift */; };
 		DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB60B3D623E488550015DFB7 /* SelectedFileViewModel.swift */; };
+		DB760E9923EAB66700241855 /* SenseEar_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB760E9823EAB66700241855 /* SenseEar_ProjectTests.swift */; };
+		DB760EA223EABA0800241855 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB760EA123EABA0800241855 /* ViewModelTests.swift */; };
+		DBC9728723FAA5BC00B3A7C4 /* CV - Lauren Bannon.docx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */; };
+		DBC9728823FAA5BF00B3A7C4 /* CV 2019.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */; };
+		DBC9728923FAA5C700B3A7C4 /* Module Due Dates - Semester 2.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */; };
+		DBC9728A23FAA5CA00B3A7C4 /* Intent.pptx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44023F1B9D90064AFE4 /* Intent.pptx */; };
+		DBD1DF8324002D85002151D6 /* OfficeFileConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */; };
+		DBD1DF882400346A002151D6 /* TextExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1DF872400346A002151D6 /* TextExtractor.swift */; };
+		F1F98CD5F1ED7033103E9348 /* Pods_SenseEar_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10428519F0FBD23813A16BF /* Pods_SenseEar_ProjectTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DB760E9B23EAB66700241855 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB4214A1239D45CF0073DAFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB4214A8239D45CF0073DAFA;
+			remoteInfo = "SenseEar-Project";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		06FB963A3FA6F7B3C9F2D4BC /* Pods-SenseEar-ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenseEar-ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-SenseEar-ProjectTests/Pods-SenseEar-ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenseEar_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8374EB9B027846E5A088B10B /* Pods-SenseEar-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenseEar-Project.release.xcconfig"; path = "Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project.release.xcconfig"; sourceTree = "<group>"; };
 		858B6368E8A8D3046C2C1366 /* Pods-SenseEar-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenseEar-Project.debug.xcconfig"; path = "Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project.debug.xcconfig"; sourceTree = "<group>"; };
+		D0F22E9803F0409D6344C95A /* Pods-SenseEar-ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenseEar-ProjectTests.release.xcconfig"; path = "Target Support Files/Pods-SenseEar-ProjectTests/Pods-SenseEar-ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		DB00B44023F1B9D90064AFE4 /* Intent.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Intent.pptx; sourceTree = "<group>"; };
+		DB00B44123F1B9D90064AFE4 /* TestFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TestFile.txt; path = "/Users/laurenbannon/Desktop/College/Year 4/Semester 1/Software Project/Project/SenseEar Project (New)/SenseEar-Project/SenseEar-ProjectTests/Assets/TestFile.txt"; sourceTree = "<absolute>"; };
+		DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "CV 2019.pdf"; sourceTree = "<group>"; };
+		DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CV - Lauren Bannon.docx"; sourceTree = "<group>"; };
+		DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Module Due Dates - Semester 2.xlsx"; sourceTree = "<group>"; };
 		DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB17221523A8E70600CBB8C6 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+FileManagement.swift"; sourceTree = "<group>"; };
 		DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoiceController+VoiceRecognition.swift"; sourceTree = "<group>"; };
+		DB2A3C29240451A900544B7B /* OfficeFileConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConverterTests.swift; sourceTree = "<group>"; };
 		DB4214A9239D45CF0073DAFA /* SenseEar-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SenseEar-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4214AC239D45CF0073DAFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +77,13 @@
 		DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedFileView.xib; sourceTree = "<group>"; };
 		DB46BC4123E41F35006903D4 /* SelectedFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedFileView.swift; sourceTree = "<group>"; };
 		DB60B3D623E488550015DFB7 /* SelectedFileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedFileViewModel.swift; sourceTree = "<group>"; };
+		DB760E9623EAB66700241855 /* SenseEar-ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SenseEar-ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB760E9823EAB66700241855 /* SenseEar_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenseEar_ProjectTests.swift; sourceTree = "<group>"; };
+		DB760E9A23EAB66700241855 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB760EA123EABA0800241855 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModelTests.swift; path = ViewModelTests/ViewModelTests.swift; sourceTree = "<group>"; };
+		DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConverter.swift; sourceTree = "<group>"; };
+		DBD1DF872400346A002151D6 /* TextExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtractor.swift; sourceTree = "<group>"; };
+		E10428519F0FBD23813A16BF /* Pods_SenseEar_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenseEar_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +95,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DB760E9323EAB66700241855 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1F98CD5F1ED7033103E9348 /* Pods_SenseEar_ProjectTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -63,6 +111,8 @@
 			children = (
 				858B6368E8A8D3046C2C1366 /* Pods-SenseEar-Project.debug.xcconfig */,
 				8374EB9B027846E5A088B10B /* Pods-SenseEar-Project.release.xcconfig */,
+				06FB963A3FA6F7B3C9F2D4BC /* Pods-SenseEar-ProjectTests.debug.xcconfig */,
+				D0F22E9803F0409D6344C95A /* Pods-SenseEar-ProjectTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -71,8 +121,21 @@
 			isa = PBXGroup;
 			children = (
 				4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */,
+				E10428519F0FBD23813A16BF /* Pods_SenseEar_ProjectTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB00B43F23F1B9490064AFE4 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */,
+				DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */,
+				DB00B44023F1B9D90064AFE4 /* Intent.pptx */,
+				DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */,
+				DB00B44123F1B9D90064AFE4 /* TestFile.txt */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		DB17221323A8E65600CBB8C6 /* View */ = {
@@ -99,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				DB4214AB239D45CF0073DAFA /* SenseEar-Project */,
+				DB760E9723EAB66700241855 /* SenseEar-ProjectTests */,
 				DB4214AA239D45CF0073DAFA /* Products */,
 				275A31D3F9D58DCCC80DA4B9 /* Pods */,
 				D91D570BE667CBB8BB00FBC9 /* Frameworks */,
@@ -109,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				DB4214A9239D45CF0073DAFA /* SenseEar-Project.app */,
+				DB760E9623EAB66700241855 /* SenseEar-ProjectTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,6 +181,7 @@
 		DB4214AB239D45CF0073DAFA /* SenseEar-Project */ = {
 			isa = PBXGroup;
 			children = (
+				DBD1DF862400344F002151D6 /* Conversion */,
 				DB95B2AD23E41FF000BC109F /* View Model */,
 				DB17221323A8E65600CBB8C6 /* View */,
 				DB17221423A8E66E00CBB8C6 /* Controller */,
@@ -131,12 +197,33 @@
 			path = "SenseEar-Project";
 			sourceTree = "<group>";
 		};
+		DB760E9723EAB66700241855 /* SenseEar-ProjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB00B43F23F1B9490064AFE4 /* Assets */,
+				DB760EA123EABA0800241855 /* ViewModelTests.swift */,
+				DB2A3C29240451A900544B7B /* OfficeFileConverterTests.swift */,
+				DB760E9823EAB66700241855 /* SenseEar_ProjectTests.swift */,
+				DB760E9A23EAB66700241855 /* Info.plist */,
+			);
+			path = "SenseEar-ProjectTests";
+			sourceTree = "<group>";
+		};
 		DB95B2AD23E41FF000BC109F /* View Model */ = {
 			isa = PBXGroup;
 			children = (
 				DB60B3D623E488550015DFB7 /* SelectedFileViewModel.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DBD1DF862400344F002151D6 /* Conversion */ = {
+			isa = PBXGroup;
+			children = (
+				DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */,
+				DBD1DF872400346A002151D6 /* TextExtractor.swift */,
+			);
+			path = Conversion;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,18 +249,42 @@
 			productReference = DB4214A9239D45CF0073DAFA /* SenseEar-Project.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DB760E9523EAB66700241855 /* SenseEar-ProjectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB760E9F23EAB66700241855 /* Build configuration list for PBXNativeTarget "SenseEar-ProjectTests" */;
+			buildPhases = (
+				F033A731D511F498767D4A49 /* [CP] Check Pods Manifest.lock */,
+				DB760E9223EAB66700241855 /* Sources */,
+				DB760E9323EAB66700241855 /* Frameworks */,
+				DB760E9423EAB66700241855 /* Resources */,
+				54C676ACD631A3FD419239EA /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB760E9C23EAB66700241855 /* PBXTargetDependency */,
+			);
+			name = "SenseEar-ProjectTests";
+			productName = "SenseEar-ProjectTests";
+			productReference = DB760E9623EAB66700241855 /* SenseEar-ProjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DB4214A1239D45CF0073DAFA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Lauren Bannon";
 				TargetAttributes = {
 					DB4214A8239D45CF0073DAFA = {
 						CreatedOnToolsVersion = 11.2.1;
+					};
+					DB760E9523EAB66700241855 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = DB4214A8239D45CF0073DAFA;
 					};
 				};
 			};
@@ -191,6 +302,7 @@
 			projectRoot = "";
 			targets = (
 				DB4214A8239D45CF0073DAFA /* SenseEar-Project */,
+				DB760E9523EAB66700241855 /* SenseEar-ProjectTests */,
 			);
 		};
 /* End PBXProject section */
@@ -205,6 +317,21 @@
 				DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */,
 				DB4214B6239D45D00073DAFA /* Assets.xcassets in Resources */,
 				DB4214B4239D45CF0073DAFA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB760E9423EAB66700241855 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB2A3C2B24045A0300544B7B /* OfficeFileConverter.swift in Resources */,
+				DBC9728823FAA5BF00B3A7C4 /* CV 2019.pdf in Resources */,
+				DBC9728923FAA5C700B3A7C4 /* Module Due Dates - Semester 2.xlsx in Resources */,
+				DBC9728723FAA5BC00B3A7C4 /* CV - Lauren Bannon.docx in Resources */,
+				DB2E72A323F99FF60075D7A6 /* Main.storyboard in Resources */,
+				DBC9728A23FAA5CA00B3A7C4 /* Intent.pptx in Resources */,
+				DB00B45523F1DB7E0064AFE4 /* TestFile.txt in Resources */,
+				DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +353,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54C676ACD631A3FD419239EA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SenseEar-ProjectTests/Pods-SenseEar-ProjectTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SenseEar-ProjectTests/Pods-SenseEar-ProjectTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SenseEar-ProjectTests/Pods-SenseEar-ProjectTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DB2CBA1E12F4442EC014C66B /* [CP] Check Pods Manifest.lock */ = {
@@ -267,6 +411,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SenseEar-Project/Pods-SenseEar-Project-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F033A731D511F498767D4A49 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SenseEar-ProjectTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -280,13 +446,34 @@
 				DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */,
 				DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */,
 				DB46BC4223E41F35006903D4 /* SelectedFileView.swift in Sources */,
+				DBD1DF882400346A002151D6 /* TextExtractor.swift in Sources */,
 				DB4214C1239D46E90073DAFA /* GenderSelection.swift in Sources */,
 				DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */,
+				DBD1DF8324002D85002151D6 /* OfficeFileConverter.swift in Sources */,
 				DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DB760E9223EAB66700241855 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB2A3C2A240451A900544B7B /* OfficeFileConverterTests.swift in Sources */,
+				DB00B44A23F1DA4F0064AFE4 /* TestFile.txt in Sources */,
+				DB760EA223EABA0800241855 /* ViewModelTests.swift in Sources */,
+				DB760E9923EAB66700241855 /* SenseEar_ProjectTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DB760E9C23EAB66700241855 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB4214A8239D45CF0073DAFA /* SenseEar-Project */;
+			targetProxy = DB760E9B23EAB66700241855 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DB4214B2239D45CF0073DAFA /* Main.storyboard */ = {
@@ -462,6 +649,48 @@
 			};
 			name = Release;
 		};
+		DB760E9D23EAB66700241855 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06FB963A3FA6F7B3C9F2D4BC /* Pods-SenseEar-ProjectTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56AK266L9G;
+				INFOPLIST_FILE = "SenseEar-ProjectTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "lauren.com.SenseEar-ProjectTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SenseEar-Project.app/SenseEar-Project";
+			};
+			name = Debug;
+		};
+		DB760E9E23EAB66700241855 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0F22E9803F0409D6344C95A /* Pods-SenseEar-ProjectTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 56AK266L9G;
+				INFOPLIST_FILE = "SenseEar-ProjectTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "lauren.com.SenseEar-ProjectTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SenseEar-Project.app/SenseEar-Project";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -479,6 +708,15 @@
 			buildConfigurations = (
 				DB4214BE239D45D00073DAFA /* Debug */,
 				DB4214BF239D45D00073DAFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB760E9F23EAB66700241855 /* Build configuration list for PBXNativeTarget "SenseEar-ProjectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB760E9D23EAB66700241855 /* Debug */,
+				DB760E9E23EAB66700241855 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -11,7 +11,8 @@ import Speech
 import UIKit
 
 extension ViewController {
-    
+        
+    /// Sets up microphone access request to user
     func requestMicrophoneAccess() {
            speechRecogniser?.delegate = self
            
@@ -50,6 +51,7 @@ extension ViewController {
 
        }
     
+    /// Starts recording for the gender selection voice recogntion
       func genderStartRecording() {
           if recognitionTask != nil {
               recognitionTask?.cancel()
@@ -122,6 +124,7 @@ extension ViewController {
           }
       }
       
+    /// Starts recording for the accent selection voice recogntion
       func accentStartRecording() {
           if recognitionTask != nil {
               recognitionTask?.cancel()

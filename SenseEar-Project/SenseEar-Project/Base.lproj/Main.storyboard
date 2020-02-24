@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="7pg-rG-ioZ">
             <objects>
-                <viewController id="S2z-Qn-eFc" customClass="ViewController" customModule="SenseEar_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="S2z-Qn-eFc" customClass="ViewController" customModule="SenseEar_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6dp-ng-7xA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

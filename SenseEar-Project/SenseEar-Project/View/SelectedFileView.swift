@@ -14,14 +14,24 @@ class SelectedFileView: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        UINib(nibName: "SelectedFileView", bundle: nil).instantiate(withOwner: self, options: nil)
-        addSubview(view)
-        view.frame = self.bounds
-        
-    }
+    let nibName = "SelectedFileView"
     
+    required init(coder: NSCoder = NSCoder.empty) {
+        super.init(coder: coder)!
+        
+        guard let views = loadViewFromNib() else { return }
+        views.frame = self.bounds
+        self.addSubview(views)
+        view = views
+
+    }
+
+    func loadViewFromNib() -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+
     func setup(with viewModel: SelectedFileViewModel) {
         
         imageView.image = viewModel.fileTypeLogo.image
@@ -41,5 +51,14 @@ class SelectedFileView: UIView {
         
     }
 
+}
+
+extension NSCoder {
+   class var empty: NSCoder {
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWith: data)
+        archiver.finishEncoding()
+        return NSKeyedUnarchiver(forReadingWith: data as Data)
+   }
 }
  
