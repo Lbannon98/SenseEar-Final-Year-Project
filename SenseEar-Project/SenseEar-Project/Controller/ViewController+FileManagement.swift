@@ -40,7 +40,6 @@ extension ViewController: UIDocumentPickerDelegate {
         self.selectedFileInfoAttachedToView()
     }
     
-    
     /// Controls the functionality behind the text extraction from all file types
     /// - Parameter url: Takes the url of the selected file
     func textExtractionFromSelectedFile(url: URL) -> String {
@@ -55,7 +54,6 @@ extension ViewController: UIDocumentPickerDelegate {
 
           do {
             
-
               //Check if file exists
               if FileManager.default.fileExists(atPath: documentsDirectory.path) {
 
@@ -199,7 +197,6 @@ extension ViewController: UIDocumentPickerDelegate {
         print("Cancelled")
     }
 
-    
     /// Controls extraction from pdf files
     /// - Parameter url: Takes url of the pdf file
     func extractTextFromPDF(url: URL) -> String {

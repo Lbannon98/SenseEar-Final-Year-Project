@@ -11,8 +11,7 @@ import Speech
 import UIKit
 
 extension ViewController {
-    
-    
+        
     /// Sets up microphone access request to user
     func requestMicrophoneAccess() {
            speechRecogniser?.delegate = self
@@ -51,7 +50,6 @@ extension ViewController {
            self.voiceSelectedAccentLbl.frame.size.width = view.bounds.width - 64
 
        }
-    
     
     /// Starts recording for the gender selection voice recogntion
       func genderStartRecording() {
