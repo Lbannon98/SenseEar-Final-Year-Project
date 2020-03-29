@@ -12,6 +12,9 @@
 		DB00B45523F1DB7E0064AFE4 /* TestFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
 		DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
 		DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */; };
+		DB0F28EF2430E978006CFF0E /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0F28EE2430E978006CFF0E /* Keys.plist */; };
+		DB0F28F12430EDFA006CFF0E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F28F02430EDFA006CFF0E /* Keys.swift */; };
+		DB0F28F62431043A006CFF0E /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F28F52431043A006CFF0E /* TextToSpeechService.swift */; };
 		DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB17221523A8E70600CBB8C6 /* CircleButton.swift */; };
 		DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */; };
 		DB24FB3223D8D8040036C32D /* VoiceController+VoiceRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */; };
@@ -61,6 +64,9 @@
 		DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CV - Lauren Bannon.docx"; sourceTree = "<group>"; };
 		DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Module Due Dates - Semester 2.xlsx"; sourceTree = "<group>"; };
 		DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB0F28EE2430E978006CFF0E /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		DB0F28F02430EDFA006CFF0E /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		DB0F28F52431043A006CFF0E /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
 		DB17221523A8E70600CBB8C6 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+FileManagement.swift"; sourceTree = "<group>"; };
 		DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoiceController+VoiceRecognition.swift"; sourceTree = "<group>"; };
@@ -138,6 +144,14 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		DB0F28F22430EEF0006CFF0E /* Text to Speech */ = {
+			isa = PBXGroup;
+			children = (
+				DB0F28F52431043A006CFF0E /* TextToSpeechService.swift */,
+			);
+			path = "Text to Speech";
+			sourceTree = "<group>";
+		};
 		DB17221323A8E65600CBB8C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +195,7 @@
 		DB4214AB239D45CF0073DAFA /* SenseEar-Project */ = {
 			isa = PBXGroup;
 			children = (
+				DB0F28F22430EEF0006CFF0E /* Text to Speech */,
 				DBD1DF862400344F002151D6 /* Conversion */,
 				DB95B2AD23E41FF000BC109F /* View Model */,
 				DB17221323A8E65600CBB8C6 /* View */,
@@ -192,7 +207,9 @@
 				DB4214B7239D45D00073DAFA /* LaunchScreen.storyboard */,
 				DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */,
 				DB4214BA239D45D00073DAFA /* Info.plist */,
+				DB0F28EE2430E978006CFF0E /* Keys.plist */,
 				DB4214C0239D46E90073DAFA /* GenderSelection.swift */,
+				DB0F28F02430EDFA006CFF0E /* Keys.swift */,
 			);
 			path = "SenseEar-Project";
 			sourceTree = "<group>";
@@ -312,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB0F28EF2430E978006CFF0E /* Keys.plist in Resources */,
 				DB4214B9239D45D00073DAFA /* LaunchScreen.storyboard in Resources */,
 				DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */,
 				DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */,
@@ -441,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */,
+				DB0F28F12430EDFA006CFF0E /* Keys.swift in Sources */,
 				DB24FB3223D8D8040036C32D /* VoiceController+VoiceRecognition.swift in Sources */,
 				DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */,
 				DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */,
@@ -451,6 +470,7 @@
 				DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */,
 				DBD1DF8324002D85002151D6 /* OfficeFileConverter.swift in Sources */,
 				DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */,
+				DB0F28F62431043A006CFF0E /* TextToSpeechService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

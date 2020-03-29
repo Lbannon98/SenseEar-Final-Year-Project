@@ -104,6 +104,11 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     //Extracted Text Variable
     var extractedContent: String?
     
+    //Text to Speech variables
+    var genderSelected: String?
+    var accentSelected: String?
+    static var voiceType: VoiceTypes?
+    
     //View Model
     var viewModel: SelectedFileViewModel!
 
@@ -240,7 +245,49 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     @IBAction func generateFile(_ sender: Any) {
-        print("File Generated!!")
+        
+        generateBtn.setTitle("Generating...", for: .normal)
+//        generateBtn.isEnabled = false
+        
+        ViewController.voiceType = .undefined
+        
+        genderSelected = genderSelectionSC.titleForSegment(at: genderSelectionSC.selectedSegmentIndex)
+        
+        accentSelected = accentSelectionSC.titleForSegment(at: accentSelectionSC.selectedSegmentIndex)
+        
+        if genderSelected == "Male" && accentSelected == "UK" {
+
+            ViewController.voiceType = .ukMale
+            
+        } else if genderSelected == "Male" && accentSelected == "US" {
+                   
+           ViewController.voiceType = .usMale
+            
+        } else if genderSelected == "Male" && accentSelected == "AUS" {
+                   
+           ViewController.voiceType = .ausMale
+           
+        } else if genderSelected == "Female" && accentSelected == "UK" {
+                    
+            ViewController.voiceType = .ukFemale
+            
+        } else if genderSelected == "Female" && accentSelected == "US" {
+                    
+            ViewController.voiceType = .usFemale
+            
+        } else if genderSelected == "Female" && accentSelected == "AUS" {
+                    
+            ViewController.voiceType = .ausFemale
+            
+        }
+        
+        TextToSpeechService.shared.writeAudioToFile(text: extractedContent!, voiceType: ViewController.voiceType!) {
+
+            self.generateBtn.setTitle("File Generated", for: .normal)
+            self.generateBtn.isEnabled = true
+
+        }
+        
     }
     
 }
