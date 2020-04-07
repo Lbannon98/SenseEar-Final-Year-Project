@@ -48,9 +48,12 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
         
         DispatchQueue.global(qos: .background).async {
             
-           let postData = self.buildPostRequest(text: text, voiceType: voiceType)
+//            let postData = self.buildPostRequest(firstHalf: TextBuffer.firstHalfOfContents, secondHalf: TextBuffer.secondHalfOfContents, voiceType: voiceType)
+//            let postData = self.buildPostRequestFirstHalf(firstHalf: TextBuffer.firstHalfOfContents, voiceType: voiceType)
+            let postData = self.buildPostRequest(text: text, firstHalf: TextBuffer.firstHalfOfContents, secondHalf: TextBuffer.secondHalfOfContents, voiceType: voiceType)
            let headers = ["X-Goog-Api-Key": APIKey, "Content-Type": "application/json; charset=utf-8"]
-           let response = self.makePostRequest(url: ttsPostAPIUrl, postData: postData, headers: headers)
+            let response = self.makePostRequest(url: ttsPostAPIUrl, text: postData[0], firstHalfOfPostData: postData[1], secondHalfOfPostData: postData[2], headers: headers)
+//           let response = self.makePostRequest(url: ttsPostAPIUrl, postData: postData, headers: headers)
 
            // Get the `audioContent` (as a base64 encoded string) from the response.
            guard let audioContent = response["audioContent"] as? String else {
@@ -119,15 +122,12 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
         
     }
     
-    private func buildPostRequest(text: String, voiceType: VoiceTypes) -> Data {
+    private func buildPostRequest(text: String, firstHalf: String, secondHalf: String, voiceType: VoiceTypes) -> [Data] {
         
-//        let type = ViewController.voiceType!.rawValue
-//
-//        let languageCode = String(type.prefix(4))
-
+        var data:[Data] = []
+        
         var voiceConfig: [String: Any] = [
             "languageCode": "en-UK"
-//            languageCode
         ]
         
         if voiceType != .undefined {
@@ -143,49 +143,242 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                 "audioEncoding": "LINEAR16"
             ]
         ]
+        
+        let firstHalfParameters: [String: Any] = [
+            "input": [
+                "text": firstHalf
+            ],
+            "voice": voiceConfig,
+            "audioConfig": [
+                "audioEncoding": "LINEAR16"
+            ]
+        ]
+        
+        let secondHalfParameters: [String: Any] = [
+            "input": [
+                "text": secondHalf
+            ],
+            "voice": voiceConfig,
+            "audioConfig": [
+                "audioEncoding": "LINEAR16"
+            ]
+        ]
 
         // Convert the Dictionary to Data
-        let data = try! JSONSerialization.data(withJSONObject: parameters)
+        let regualrData = try! JSONSerialization.data(withJSONObject: parameters)
+        let firstHalfData = try! JSONSerialization.data(withJSONObject: firstHalfParameters)
+        let secondHalfData = try! JSONSerialization.data(withJSONObject: secondHalfParameters)
+        
+        data.append(regualrData)
+        data.append(firstHalfData)
+        data.append(secondHalfData)
+        
         return data
     }
     
-    // Make POST request
-    private func makePostRequest(url: String, postData: Data, headers: [String: String] = [:]) -> [String: AnyObject] {
+    private func makePostRequest(url: String, text: Data, firstHalfOfPostData: Data, secondHalfOfPostData: Data, headers: [String: String] = [:]) -> [String: AnyObject] {
+        
         var dict: [String: AnyObject] = [:]
         
+        //Regular Request
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
-        request.httpBody = postData
+        request.httpBody = text
+
+        //First Half Request
+        var firstHalfRequest = URLRequest(url: URL(string: url)!)
+        firstHalfRequest.httpMethod = "POST"
+        firstHalfRequest.httpBody = firstHalfOfPostData
+        
+        //First Half Request
+        var secondHalfRequest = URLRequest(url: URL(string: url)!)
+        secondHalfRequest.httpMethod = "POST"
+        secondHalfRequest.httpBody = secondHalfOfPostData
 
         for header in headers {
             request.addValue(header.value, forHTTPHeaderField: header.key)
+            firstHalfRequest.addValue(header.value, forHTTPHeaderField: header.key)
+            secondHalfRequest.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
         // Using semaphore to make request synchronous
         let semaphore = DispatchSemaphore(value: 0)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+
+        let regularTask = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {
                 dict = json
             }
-            
+
             semaphore.signal()
         }
         
-        task.resume()
-        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+        let firstHalfTask = URLSession.shared.dataTask(with: firstHalfRequest) { data, response, error in
+            if let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {
+                dict = json
+            }
+
+            semaphore.signal()
+        }
         
+        let secondHalfTask = URLSession.shared.dataTask(with: secondHalfRequest) { data, response, error in
+            if let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {
+                dict = json
+            }
+
+            semaphore.signal()
+        }
+
+        regularTask.resume()
+        firstHalfTask.resume()
+        secondHalfTask.resume()
+        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+
         return dict
     }
     
-//    // Implement AVAudioPlayerDelegate "did finish" callback to cleanup and notify listener of completion.
-//    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-//        self.player?.delegate = nil
-//        self.player = nil
-//        self.busy = false
+//    private func buildPostRequestSecondHalf(secondHalf: String, voiceType: VoiceTypes) -> Data {
 //
-//        self.completionHandler!()
-//        self.completionHandler = nil
+//        var voiceConfig: [String: Any] = [
+//            "languageCode": "en-UK"
+//        ]
+//
+//        if voiceType != .undefined {
+//            voiceConfig["name"] = voiceType.rawValue
+//        }
+//
+//        let parameters: [String: Any] = [
+//            "input": [
+//                "text": secondHalf
+//            ],
+//            "voice": voiceConfig,
+//            "audioConfig": [
+//                "audioEncoding": "LINEAR16"
+//            ]
+//        ]
+//
+//        // Convert the Dictionary to Data
+//        let data = try! JSONSerialization.data(withJSONObject: parameters)
+//        return data
 //    }
+    
+//    private func makePostRequestFirstHalf(url: String, postData: Data, headers: [String: String] = [:]) -> [String: AnyObject] {
+//        var dict: [String: AnyObject] = [:]
+//
+//        var request = URLRequest(url: URL(string: url)!)
+//        request.httpMethod = "POST"
+//        request.httpBody = firstHalfOfPostData
+//
+//        for header in headers {
+//            request.addValue(header.value, forHTTPHeaderField: header.key)
+//        }
+//
+//        // Using semaphore to make request synchronous
+//        let semaphore = DispatchSemaphore(value: 0)
+//
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//            if let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {
+//                dict = json
+//            }
+//
+//            semaphore.signal()
+//        }
+//
+//        task.resume()
+//        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+//
+//        return dict
+//    }
+//
+//    private func makePostRequestSecondHalf(url: String, secondHalfOfPostData: Data, headers: [String: String] = [:]) -> [String: AnyObject] {
+//        var dict: [String: AnyObject] = [:]
+//
+//        var request = URLRequest(url: URL(string: url)!)
+//        request.httpMethod = "POST"
+//        request.httpBody = secondHalfOfPostData
+//
+//        for header in headers {
+//            request.addValue(header.value, forHTTPHeaderField: header.key)
+//        }
+//
+//        // Using semaphore to make request synchronous
+//        let semaphore = DispatchSemaphore(value: 0)
+//
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//            if let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {
+//                dict = json
+//            }
+//
+//            semaphore.signal()
+//        }
+//
+//        task.resume()
+//        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+//
+//        return dict
+//    }
+    
+//    private func buildPostRequest(firstHalf: String, secondHalf: String, voiceType: VoiceTypes) -> Data {
+//
+//        var voiceConfig: [String: Any] = [
+//            "languageCode": "en-UK"
+//        ]
+//
+//        if voiceType != .undefined {
+//            voiceConfig["name"] = voiceType.rawValue
+//        }
+//
+//        let parameters: [String: Any] = [
+//            "input": [
+//                "text": firstHalf + secondHalf
+//            ],
+//            "voice": voiceConfig,
+//            "audioConfig": [
+//                "audioEncoding": "LINEAR16"
+//            ]
+//        ]
+//
+//        // Convert the Dictionary to Data
+//        let data = try! JSONSerialization.data(withJSONObject: parameters)
+//        return data
+//    }
+    
+//     Make POST request
+//    private func makePostRequest(url: String, firstHalfOfPostData: Data, secondHalfOfPostData: Data, headers: [String: String] = [:]) -> [String: AnyObject] {
+//        var dict: [String: AnyObject] = [:]
+//
+//        var request = URLRequest(url: URL(string: url)!)
+//        request.httpMethod = "POST"
+//        request.httpBody = postData
+//
+//        for header in headers {
+//            request.addValue(header.value, forHTTPHeaderField: header.key)
+//        }
+//
+//        // Using semaphore to make request synchronous
+//        let semaphore = DispatchSemaphore(value: 0)
+//
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//            if let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] {
+//                dict = json
+//            }
+//
+//            semaphore.signal()
+//        }
+//
+//        task.resume()
+//        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+//
+//        return dict
+//    }
+    
+    // Implement AVAudioPlayerDelegate "did finish" callback to cleanup and notify listener of completion.
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        self.player?.delegate = nil
+        self.player = nil
+//        self.busy = false
+
+        self.completionHandler!()
+        self.completionHandler = nil
+    }
     
 }

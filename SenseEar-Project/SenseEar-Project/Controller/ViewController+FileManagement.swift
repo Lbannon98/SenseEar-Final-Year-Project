@@ -66,8 +66,14 @@ extension ViewController: UIDocumentPickerDelegate {
                                 guard let textExtracted = extractedContent else {
                                     return ""
                                 }
+                            
 
-                              print(textExtracted)
+//                                print(textExtracted)
+                                
+                                let textBuffer = TextBuffer()
+                                let count = textBuffer.splitIntoSeparateBuffers(with: textExtracted)
+
+                                print("Character Count: \(count)")
 
                          } catch {
                               print("No Text File Found! \(error)")
@@ -86,14 +92,25 @@ extension ViewController: UIDocumentPickerDelegate {
                             self.extractedContent = self.extractTextFromPDF(url: pdfFileURL)
                             print("We might have done it!")
                         
-                            print(self.extractedContent!)
+//                            print(self.extractedContent!)
+                        
+                            let textBuffer = TextBuffer()
+                            let count = textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
+
+                            print("Character Count: \(count)")
 
                       } else if selectedFile.pathExtension == "pdf" {
 
                           do {
 
                             self.extractedContent = self.extractTextFromPDF(url: selectedFile)
-                            print(self.extractedContent!)
+                            
+//                            print(self.extractedContent!)
+                            
+                            let textBuffer = TextBuffer()
+                            let count = textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
+
+                            print("Character Count: \(count)")
 
                           } catch {
                               print("Text Extraction Failed! \(error)")
