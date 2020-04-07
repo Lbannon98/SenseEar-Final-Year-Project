@@ -20,6 +20,7 @@
 		DB24FB3223D8D8040036C32D /* VoiceController+VoiceRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */; };
 		DB2A3C2A240451A900544B7B /* OfficeFileConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A3C29240451A900544B7B /* OfficeFileConverterTests.swift */; };
 		DB2A3C2B24045A0300544B7B /* OfficeFileConverter.swift in Resources */ = {isa = PBXBuildFile; fileRef = DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */; };
+		DB2D01DF243C62BB00319F4C /* TextBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D01DE243C62BB00319F4C /* TextBuffer.swift */; };
 		DB2E72A323F99FF60075D7A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B2239D45CF0073DAFA /* Main.storyboard */; };
 		DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AC239D45CF0073DAFA /* AppDelegate.swift */; };
 		DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */; };
@@ -71,6 +72,7 @@
 		DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+FileManagement.swift"; sourceTree = "<group>"; };
 		DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoiceController+VoiceRecognition.swift"; sourceTree = "<group>"; };
 		DB2A3C29240451A900544B7B /* OfficeFileConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConverterTests.swift; sourceTree = "<group>"; };
+		DB2D01DE243C62BB00319F4C /* TextBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBuffer.swift; sourceTree = "<group>"; };
 		DB4214A9239D45CF0073DAFA /* SenseEar-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SenseEar-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4214AC239D45CF0073DAFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				DB0F28F52431043A006CFF0E /* TextToSpeechService.swift */,
+				DB2D01DE243C62BB00319F4C /* TextBuffer.swift */,
 			);
 			path = "Text to Speech";
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				DB0F28F12430EDFA006CFF0E /* Keys.swift in Sources */,
 				DB24FB3223D8D8040036C32D /* VoiceController+VoiceRecognition.swift in Sources */,
 				DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */,
+				DB2D01DF243C62BB00319F4C /* TextBuffer.swift in Sources */,
 				DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */,
 				DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */,
 				DB46BC4223E41F35006903D4 /* SelectedFileView.swift in Sources */,

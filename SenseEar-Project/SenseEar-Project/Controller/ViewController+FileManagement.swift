@@ -67,13 +67,12 @@ extension ViewController: UIDocumentPickerDelegate {
                                     return ""
                                 }
                             
-
-//                                print(textExtracted)
+                                print(textExtracted)
                                 
                                 let textBuffer = TextBuffer()
-                                let count = textBuffer.splitIntoSeparateBuffers(with: textExtracted)
-
-                                print("Character Count: \(count)")
+                                let splitContents = textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
+                                                               
+                               print("File Contents:\n \(splitContents[0] + splitContents[1])")
 
                          } catch {
                               print("No Text File Found! \(error)")
@@ -95,9 +94,9 @@ extension ViewController: UIDocumentPickerDelegate {
 //                            print(self.extractedContent!)
                         
                             let textBuffer = TextBuffer()
-                            let count = textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
-
-                            print("Character Count: \(count)")
+                            let splitContents = textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
+                                                           
+                          print("File Contents:\n \(splitContents[0] + splitContents[1])")
 
                       } else if selectedFile.pathExtension == "pdf" {
 
@@ -105,12 +104,12 @@ extension ViewController: UIDocumentPickerDelegate {
 
                             self.extractedContent = self.extractTextFromPDF(url: selectedFile)
                             
-//                            print(self.extractedContent!)
+                            print(self.extractedContent!)
                             
                             let textBuffer = TextBuffer()
-                            let count = textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
-
-                            print("Character Count: \(count)")
+                            let splitContents = textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
+                                                           
+                           print("File Contents:\n \(splitContents[0] + splitContents[1])")
 
                           } catch {
                               print("Text Extraction Failed! \(error)")
