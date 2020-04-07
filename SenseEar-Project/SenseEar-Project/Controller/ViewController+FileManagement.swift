@@ -70,9 +70,9 @@ extension ViewController: UIDocumentPickerDelegate {
                                 print(textExtracted)
                                 
                                 let textBuffer = TextBuffer()
-                                let splitContents = textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
+                                textBuffer.splitIntoSeparateBuffers(with: textExtracted)
                                                                
-                               print("File Contents:\n \(splitContents[0] + splitContents[1])")
+//                               print("File Contents:\n \(splitContents[0] + splitContents[1])")
 
                          } catch {
                               print("No Text File Found! \(error)")
@@ -94,9 +94,9 @@ extension ViewController: UIDocumentPickerDelegate {
 //                            print(self.extractedContent!)
                         
                             let textBuffer = TextBuffer()
-                            let splitContents = textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
+                           textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
                                                            
-                          print("File Contents:\n \(splitContents[0] + splitContents[1])")
+//                          print("File Contents:\n \(splitContents[0] + splitContents[1])")
 
                       } else if selectedFile.pathExtension == "pdf" {
 
@@ -107,9 +107,9 @@ extension ViewController: UIDocumentPickerDelegate {
                             print(self.extractedContent!)
                             
                             let textBuffer = TextBuffer()
-                            let splitContents = textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
+                            textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
                                                            
-                           print("File Contents:\n \(splitContents[0] + splitContents[1])")
+//                           print("File Contents:\n \(splitContents[0] + splitContents[1])")
 
                           } catch {
                               print("Text Extraction Failed! \(error)")

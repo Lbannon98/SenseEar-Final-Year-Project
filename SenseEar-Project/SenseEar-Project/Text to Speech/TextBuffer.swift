@@ -8,12 +8,10 @@
 
 import Foundation
 
-/// Controls the text division of text over 5000, into separate streams
+/// Controls the division of files that contain more than 5000 charcters (Google's Text-to-Speech Limit)
 class TextBuffer {
     
     public static var dividedContents: [String] = []
-//    public static var firstHalfOfContents: String = ""
-//    public static var secondHalfOfContents: String = ""
     
     /// Controls text buffering into separat files
     /// - Parameter file: takes selected file contents
@@ -21,7 +19,11 @@ class TextBuffer {
     
         let characterCount = selectedFileContents.count
         
-        if characterCount > 5000 && characterCount <= 10000 {
+        if characterCount <= 5000 {
+            
+            print("This file does not need splitting")
+            
+        } else if characterCount > 5000 && characterCount <= 10000 {
 
             let contents = selectedFileContents.splitStringBySetSize(by: characterCount / 2)
             
