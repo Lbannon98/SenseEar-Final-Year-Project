@@ -8,9 +8,8 @@
 
 import UIKit
 import Foundation
-//import AudioToolbox
 import AVFoundation
-
+import AudioToolbox
 
 enum VoiceTypes: String {
     
@@ -35,7 +34,7 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
     private var player: AVAudioPlayer?
     private var completionHandler: (() -> Void)?
     
-    func writeAudioToFile(text: String, voiceType: VoiceTypes = .ukMale, completion: @escaping () -> Void) {
+    func makeTextToSpeechRequest(text: String, voiceType: VoiceTypes = .ukMale, completion: @escaping () -> Void) {
         
         DispatchQueue.global(qos: .background).async {
                         
@@ -45,7 +44,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                 let headers = ["X-Goog-Api-Key": APIKey, "Content-Type": "application/json; charset=utf-8"]
                 let smallResponse = self.makeSmallFilePostRequest(url: ttsPostAPIUrl, postData: postData, headers: headers)
                 
-                // Get the `audioContent` (as a base64 encoded string) from the response.
                 guard let audioContent = smallResponse["audioContent"] as? String else {
                         
                    print("Invalid response: \(smallResponse)")
@@ -56,7 +54,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                    return
                }
                
-               // Decode the base64 string into a Data object
                 guard let smallAudioData = Data(base64Encoded: audioContent) else {
                 
                    DispatchQueue.main.async {
@@ -64,9 +61,11 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                    }
                    return
                }
+                                                    
+//                self.writeAudioDataToAudioFile(with: smallAudioData)
                 
                 DispatchQueue.main.async {
-                    
+
                     self.completionHandler = completion
                     self.player = try! AVAudioPlayer(data: smallAudioData)
                     self.player?.delegate = self
@@ -79,7 +78,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                 let headers = ["X-Goog-Api-Key": APIKey, "Content-Type": "application/json; charset=utf-8"]
                 let mediumResponse = self.makeMediumFilePostRequest(url: ttsPostAPIUrl, firstHalfOfPostData: postData[1], secondHalfOfPostData: postData[0], headers: headers)
                 
-                // Get the `audioContent` (as a base64 encoded string) from the response.
                 guard let audioContent = mediumResponse["audioContent"] as? String else {
                                 
                    print("Invalid response: \(mediumResponse)")
@@ -90,7 +88,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                    return
                }
                
-               // Decode the base64 string into a Data object
                guard let mediumAudioData = Data(base64Encoded: audioContent) else {
                 
                    DispatchQueue.main.async {
@@ -100,7 +97,7 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                }
                 
                 DispatchQueue.main.async {
-                    
+
                     self.completionHandler = completion
                     self.player = try! AVAudioPlayer(data: mediumAudioData)
                     self.player?.delegate = self
@@ -113,7 +110,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                  let headers = ["X-Goog-Api-Key": APIKey, "Content-Type": "application/json; charset=utf-8"]
                 let largeResponse = self.makeLargeFilePostRequest(url: ttsPostAPIUrl, firstHalfOfPostData: postData[3], secondHalfOfPostData: postData[2], thirdHalfOfPostData: postData[1], fourthHalfOfPostData: postData[0], headers: headers)
                  
-                 // Get the `audioContent` (as a base64 encoded string) from the response.
                  guard let audioContent = largeResponse["audioContent"] as? String else {
                                  
                     print("Invalid response: \(largeResponse)")
@@ -124,7 +120,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                     return
                 }
                 
-                // Decode the base64 string into a Data object
                 guard let largeAudioData = Data(base64Encoded: audioContent) else {
                  
                     DispatchQueue.main.async {
@@ -132,48 +127,16 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                     }
                     return
                 }
-                 
-                 DispatchQueue.main.async {
-                     
-                     self.completionHandler = completion
-                     self.player = try! AVAudioPlayer(data: largeAudioData)
-                     self.player?.delegate = self
-                     self.player!.play()
-                 }
+                
+                DispatchQueue.main.async {
+
+                    self.completionHandler = completion
+                    self.player = try! AVAudioPlayer(data: largeAudioData)
+                    self.player?.delegate = self
+                    self.player!.play()
+                }
+                
             }
-            
-//            do {
-//
-//                let filePath = FileManager.default.currentDirectoryPath
-//
-//                let url = URL(fileURLWithPath: filePath)
-//
-//                try audioData.write(to: url, options: .atomic)
-//
-//            } catch {
-//
-//                print(error)
-//
-//            }
-            
-            
-            
-            
-            
-//            var audioFile:audioFile
-//            var audioErr:OSStatus = noErr
-//            audioErr = AudioFileCreateWithURL(fileURL,                  // 9
-//                                              AudioFileTypeID(kAudioFileAIFFType),
-//                                              &asbd,
-//                                              .EraseFile,
-//                                              &audioFile)
-           
-//           DispatchQueue.main.async {
-//               self.completionHandler = completion
-//               self.player = try! AVAudioPlayer(data: audioData)
-//               self.player?.delegate = self
-//               self.player!.play()
-//           }
             
        }
         
@@ -320,7 +283,7 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
         //Small Request
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
-        request.httpBody = postData
+        request.httpBody = postData as Data
 
         for header in headers {
             request.addValue(header.value, forHTTPHeaderField: header.key)
@@ -473,5 +436,51 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
         self.completionHandler!()
         self.completionHandler = nil
     }
+
+     func writeAudioDataToAudioFile(with audioData: Data) {
+            
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+            
+        do {
+        
+            if FileManager.default.fileExists(atPath: documentsDirectory.path) {
+
+                let newFileName = "test"
+                
+                let audioBuffer = self.dataToPCMBuffer(data: audioData as NSData)
+                
+                let audioFilename = documentsDirectory.appendingPathComponent("Audio/\(newFileName)").appendingPathExtension(".caf").absoluteURL
+                            
+                guard let format = AVAudioFormat(commonFormat: .pcmFormatInt16, sampleRate: 44100, channels: 2, interleaved: true) else {
+                    return
+                }
+                
+                let audioFile = try AVAudioFile(forWriting: audioFilename, settings: format.settings, commonFormat: AVAudioCommonFormat.pcmFormatFloat64, interleaved: false)
+                
+                try audioFile.write(from: audioBuffer)
+                                
+            }
+            
+        } catch {
+            print("Please HELP MEEEE:\n \(error)")
+        }
+        
+    }
+    
+    func dataToPCMBuffer(data: NSData) -> AVAudioPCMBuffer {
+        
+        let audioFormat = AVAudioFormat(commonFormat: AVAudioCommonFormat.pcmFormatFloat32, sampleRate: 8000, channels: 1, interleaved: false)
+        
+        let pcmBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat!, frameCapacity: UInt32(data.length) / audioFormat!.streamDescription.pointee.mBytesPerFrame)
+        
+        pcmBuffer!.frameLength = pcmBuffer!.frameCapacity
+        
+        let channels = UnsafeBufferPointer(start: pcmBuffer?.floatChannelData, count: Int(pcmBuffer!.format.channelCount))
+        data.getBytes(UnsafeMutablePointer<Void>(channels[0]) , length: data.length)
+        
+        return pcmBuffer!
+        
+    }
     
 }
+

@@ -10,6 +10,7 @@ import UIKit
 import Speech
 import AVFoundation
 import MobileCoreServices
+import MediaPlayer
 
 enum GenderSelection: Int, CaseIterable, Identifiable, Hashable {
     case male
@@ -108,6 +109,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     var genderSelected: String?
     var accentSelected: String?
     static var voiceType: VoiceTypes?
+    
+    public var player: AVAudioPlayer?
+    public var musicManager: MPMusicPlayerController?
+    public var nowPlayingInfo: [String : Any]?
     
     //View Model
     var viewModel: SelectedFileViewModel!
@@ -243,7 +248,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         clearBtn.isHidden = true
         
     }
-    
     @IBAction func generateFile(_ sender: Any) {
         
         generateBtn.setTitle("Generating...", for: .normal)
@@ -281,13 +285,13 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             
         }
         
-        TextToSpeechService.shared.writeAudioToFile(text: extractedContent!, voiceType: ViewController.voiceType!) {
+        TextToSpeechService.shared.makeTextToSpeechRequest(text: extractedContent!, voiceType: ViewController.voiceType!) {
 
             self.generateBtn.setTitle("File Generated", for: .normal)
             self.generateBtn.isEnabled = true
 
         }
-        
+
     }
     
 }
