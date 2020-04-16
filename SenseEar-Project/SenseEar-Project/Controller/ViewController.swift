@@ -103,12 +103,16 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     var fileTypeLogo: UIImageView?
     
     //Extracted Text Variable
-    var extractedContent: String?
+    var extractedContent: String = ""
     
     //Text to Speech variables
     var genderSelected: String?
     var accentSelected: String?
     static var voiceType: VoiceTypes?
+    
+    //UIElements
+    let microphoneIcon = UIImage(named: "microphone-30.png")
+    let stopIcon = UIImage(named: "stop.png")
     
     public var player: AVAudioPlayer?
     public var musicManager: MPMusicPlayerController?
@@ -146,9 +150,14 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         let cancelConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .light)
         clearBtn.setImage(UIImage(systemName: "multiply.circle.fill", withConfiguration: cancelConfiguration), for: .normal)
-       
-        genderAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
-        accentAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
+                
+        let tintedImage = microphoneIcon?.withRenderingMode(.alwaysTemplate)
+        
+        genderAudioBtn.setImage(tintedImage, for: .normal)
+        genderAudioBtn.tintColor = .white
+        
+        accentAudioBtn.setImage(tintedImage, for: .normal)
+        accentAudioBtn.tintColor = .white
         
         selectedFileView.isHidden = true
         clearBtn.isHidden = true
@@ -200,13 +209,21 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             genderAudioBtn.isEnabled = false
-            self.genderAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
-
+            
+            let tintedImage = microphoneIcon?.withRenderingMode(.alwaysTemplate)
+                   
+            self.genderAudioBtn.setImage(tintedImage, for: .normal)
+            self.genderAudioBtn.tintColor = .white
+            
         } else {
             
             self.genderStartRecording()
-            self.genderAudioBtn.setImage(UIImage(named: "stop.png"), for: .normal)
-
+            
+            let tintedImage = stopIcon?.withRenderingMode(.alwaysTemplate)
+                   
+            self.genderAudioBtn.setImage(tintedImage, for: .normal)
+            self.genderAudioBtn.tintColor = .white
+            
         }
     
     }
@@ -218,12 +235,20 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             accentAudioBtn.isEnabled = false
-            self.accentAudioBtn.setImage(UIImage(named: "microphone-30.png"), for: .normal)
             
+            let tintedImage = microphoneIcon?.withRenderingMode(.alwaysTemplate)
+                   
+            self.accentAudioBtn.setImage(tintedImage, for: .normal)
+            self.accentAudioBtn.tintColor = .white
+                        
         } else {
             
             self.accentStartRecording()
-            self.accentAudioBtn.setImage(UIImage(named: "stop.png"), for: .normal)
+            
+            let tintedImage = stopIcon?.withRenderingMode(.alwaysTemplate)
+                              
+            self.accentAudioBtn.setImage(tintedImage, for: .normal)
+            self.accentAudioBtn.tintColor = .white
 
         }
         
@@ -247,7 +272,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         selectedFileView.isHidden = true
         clearBtn.isHidden = true
         
+        print("Cleared selected file, select another!")
+        
     }
+    
     @IBAction func generateFile(_ sender: Any) {
         
         generateBtn.setTitle("Generating...", for: .normal)
@@ -285,7 +313,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
             
         }
         
-        TextToSpeechService.shared.makeTextToSpeechRequest(text: extractedContent!, voiceType: ViewController.voiceType!) {
+        TextToSpeechService.shared.makeTextToSpeechRequest(text: extractedContent, voiceType: ViewController.voiceType!) {
 
             self.generateBtn.setTitle("File Generated", for: .normal)
             self.generateBtn.isEnabled = true

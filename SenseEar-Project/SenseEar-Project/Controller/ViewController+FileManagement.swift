@@ -63,14 +63,16 @@ extension ViewController: UIDocumentPickerDelegate {
 
                               extractedContent = try String(contentsOfFile: pathToFile, encoding: .utf8)
 
-                                guard let textExtracted = extractedContent else {
-                                    return ""
-                                }
+//                                guard let textExtracted = extractedContent else {
+//                                    return ""
+//                                }
                             
-                                print(textExtracted)
+                                print(extractedContent)
+//                                print(textExtracted)
                                 
                                 let textBuffer = TextBuffer()
-                                textBuffer.splitIntoSeparateBuffers(with: textExtracted)
+                            textBuffer.splitIntoSeparateBuffers(with: extractedContent)
+//                                textBuffer.splitIntoSeparateBuffers(with: textExtracted)
                                                                
 //                               print("File Contents:\n \(splitContents[0] + splitContents[1])")
 
@@ -94,7 +96,7 @@ extension ViewController: UIDocumentPickerDelegate {
 //                            print(self.extractedContent!)
                         
                             let textBuffer = TextBuffer()
-                           textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
+                           textBuffer.splitIntoSeparateBuffers(with: self.extractedContent)
                                                            
 //                          print("File Contents:\n \(splitContents[0] + splitContents[1])")
 
@@ -104,10 +106,10 @@ extension ViewController: UIDocumentPickerDelegate {
 
                             self.extractedContent = self.extractTextFromPDF(url: selectedFile)
                             
-                            print(self.extractedContent!)
+                            print(self.extractedContent)
                             
                             let textBuffer = TextBuffer()
-                            textBuffer.splitIntoSeparateBuffers(with: self.extractedContent!)
+                            textBuffer.splitIntoSeparateBuffers(with: self.extractedContent)
                                                            
 //                           print("File Contents:\n \(splitContents[0] + splitContents[1])")
 
@@ -117,19 +119,13 @@ extension ViewController: UIDocumentPickerDelegate {
 
                       }
 
-             } else {
-                 print("File does not exist!")
              }
-
-          } catch CocoaError.fileReadNoSuchFile {
-
-              print("CAUGHT IT!")
 
           } catch let error {
               fatalError("bad error: \(error)")
           }
 
-        return extractedContent!
+        return extractedContent
 
     }
     
@@ -199,9 +195,9 @@ extension ViewController: UIDocumentPickerDelegate {
 
             selectedFileView.isHidden = true
             clearBtn.isHidden = true
-
-            importBtn.setTitle("Not a text file! Select another file!", for: .normal)
-            importBtn.isHidden = false
+            
+            Alerts.showStandardAlert(on: self, with: "Select another file", message: "This file type is not supported")
+            
         }
 
         viewModel = SelectedFileViewModel(filename: filename!, fileTypeLogo: fileTypeLogo!)
@@ -219,7 +215,7 @@ extension ViewController: UIDocumentPickerDelegate {
 
         let extractor = TextExtractor()
         return extractor.extractText(from: url)
-        return extractedContent!
+        return extractedContent
         
     }
 

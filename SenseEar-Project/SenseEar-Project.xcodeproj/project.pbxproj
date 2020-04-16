@@ -11,6 +11,7 @@
 		DB00B45523F1DB7E0064AFE4 /* TestFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
 		DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
 		DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */; };
+		DB0E1A6624485BA800BD1597 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0E1A6524485BA800BD1597 /* Alerts.swift */; };
 		DB0F28EF2430E978006CFF0E /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0F28EE2430E978006CFF0E /* Keys.plist */; };
 		DB0F28F12430EDFA006CFF0E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F28F02430EDFA006CFF0E /* Keys.swift */; };
 		DB0F28F62431043A006CFF0E /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F28F52431043A006CFF0E /* TextToSpeechService.swift */; };
@@ -67,6 +68,7 @@
 		DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CV - Lauren Bannon.docx"; sourceTree = "<group>"; };
 		DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Module Due Dates - Semester 2.xlsx"; sourceTree = "<group>"; };
 		DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB0E1A6524485BA800BD1597 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		DB0F28EE2430E978006CFF0E /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		DB0F28F02430EDFA006CFF0E /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		DB0F28F52431043A006CFF0E /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				DB0F28EE2430E978006CFF0E /* Keys.plist */,
 				DB4214C0239D46E90073DAFA /* GenderSelection.swift */,
 				DB0F28F02430EDFA006CFF0E /* Keys.swift */,
+				DB0E1A6524485BA800BD1597 /* Alerts.swift */,
 			);
 			path = "SenseEar-Project";
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 			files = (
 				DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */,
 				DB0F28F12430EDFA006CFF0E /* Keys.swift in Sources */,
+				DB0E1A6624485BA800BD1597 /* Alerts.swift in Sources */,
 				DB24FB3223D8D8040036C32D /* VoiceController+VoiceRecognition.swift in Sources */,
 				DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */,
 				DB2D01DF243C62BB00319F4C /* TextBuffer.swift in Sources */,

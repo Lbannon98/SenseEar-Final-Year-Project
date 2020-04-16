@@ -89,7 +89,7 @@
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b40-mJ-6lk" customClass="CircleButton" customModule="SenseEar_Project" customModuleProvider="target">
                                                 <rect key="frame" x="281" y="0.0" width="70" height="70"/>
-                                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="G6z-6V-Umx"/>
                                                     <constraint firstAttribute="width" constant="70" id="XpP-s1-DSX"/>
@@ -139,7 +139,7 @@
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ai2-Kf-PDP" customClass="CircleButton" customModule="SenseEar_Project" customModuleProvider="target">
                                                 <rect key="frame" x="281" y="0.0" width="70" height="70"/>
-                                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="LfZ-5E-n1m"/>
                                                     <constraint firstAttribute="height" constant="70" id="v03-rk-Tfr"/>
