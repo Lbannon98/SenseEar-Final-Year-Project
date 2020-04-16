@@ -62,13 +62,13 @@
                                         <rect key="frame" x="0.0" y="246.66666666666671" width="325" height="26.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Select Gender:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3J-tb-9fO">
-                                                <rect key="frame" x="0.0" y="0.0" width="267.66666666666669" height="26.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="26.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zp-cv-ctT">
-                                                <rect key="frame" x="297.66666666666669" y="13.333333333333314" width="27.333333333333314" height="0.0"/>
+                                                <rect key="frame" x="185.33333333333337" y="13.333333333333314" width="139.66666666666663" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -111,13 +111,13 @@
                                         <rect key="frame" x="0.0" y="403" width="325" height="130"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Select Accent:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c76-DA-Ena">
-                                                <rect key="frame" x="0.0" y="52.000000000000007" width="295" height="26.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="52.000000000000007" width="155.33333333333334" height="26.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lS2-n1-PpV">
-                                                <rect key="frame" x="325" y="52.000000000000007" width="0.0" height="26.333333333333336"/>
+                                                <rect key="frame" x="185.33333333333337" y="65" width="139.66666666666663" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -161,9 +161,9 @@
                                         <rect key="frame" x="0.0" y="663" width="325" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Generate Audio File"/>
+                                        <state key="normal" title="Play Audio"/>
                                         <connections>
-                                            <action selector="generateFile:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="auK-xU-uH1"/>
+                                            <action selector="playAudio:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="auK-xU-uH1"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -206,8 +206,8 @@
                         <outlet property="documentView" destination="DVc-xh-GHA" id="Ijs-m1-Jnx"/>
                         <outlet property="genderAudioBtn" destination="b40-mJ-6lk" id="jWm-Fb-9jN"/>
                         <outlet property="genderSelectionSC" destination="NFJ-t3-faE" id="UoQ-Hj-QLt"/>
-                        <outlet property="generateBtn" destination="MBs-RH-EBc" id="XaN-6I-6AR"/>
                         <outlet property="importBtn" destination="lml-4L-bMs" id="AJK-8X-yif"/>
+                        <outlet property="playAudioBtn" destination="MBs-RH-EBc" id="XaN-6I-6AR"/>
                         <outlet property="selectedFileView" destination="fnd-o5-bim" id="4Dk-jQ-obB"/>
                         <outlet property="voiceSelectedAccentLbl" destination="lS2-n1-PpV" id="t4E-t8-WGh"/>
                         <outlet property="voiceSelectedGenderLbl" destination="3zp-cv-ctT" id="CHw-lE-dgf"/>

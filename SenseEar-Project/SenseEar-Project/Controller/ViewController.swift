@@ -15,9 +15,10 @@ import MediaPlayer
 enum GenderSelection: Int, CaseIterable, Identifiable, Hashable {
     case male
     case female
+    case clear
     
     static func allValues() -> [String] {
-        return [male, female].map({$0.name})
+        return [male, female, clear].map({$0.name})
     }
     
     var id: UUID {
@@ -27,10 +28,12 @@ enum GenderSelection: Int, CaseIterable, Identifiable, Hashable {
     public var name: String {
        switch self {
        case .male:
-           return "Male"
+            return "Male"
        case .female:
-           return "Female"
-       }
+            return "Female"
+       case .clear:
+            return ""
+        }
    }
 }
 
@@ -38,9 +41,10 @@ enum AccentSelection: Int, CaseIterable, Identifiable, Hashable {
     case english
     case american
     case austrailian
+    case clear
     
     static func allValues() -> [String] {
-        return [english, american, austrailian].map({$0.name})
+        return [english, american, austrailian, clear].map({$0.name})
     }
     
     var id: UUID {
@@ -50,12 +54,14 @@ enum AccentSelection: Int, CaseIterable, Identifiable, Hashable {
     public var name: String {
        switch self {
        case .english:
-           return "UK"
+            return "UK"
        case .american:
-           return "US"
+            return "US"
     
        case .austrailian:
             return "AUS"
+       case .clear:
+            return ""
         }
    }
 }
@@ -66,7 +72,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var accentSelectionSC: UISegmentedControl!
     
     @IBOutlet weak var importBtn: UIButton!
-    @IBOutlet weak var generateBtn: UIButton!
+    @IBOutlet weak var playAudioBtn: UIButton!
     @IBOutlet weak var clearBtn: UIButton!
     
     @IBOutlet weak var genderAudioBtn: CircleButton!
@@ -80,18 +86,17 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     //Voice Recognition Variables
     let voiceGenderSelectionDictionary = [
-//        "Male": GenderSelection.male,
         "Mail": GenderSelection.male,
-        "Female": GenderSelection.female] as [String : Any]
+        "Female": GenderSelection.female,
+        "Remove": GenderSelection.clear] as [String : Any]
        
    let voiceAccentSelectionDictionary = [
-        "English": AccentSelection.english,
-        "American": AccentSelection.american,
-        "Austrailian": AccentSelection.austrailian] as [String : Any]
-    
-    var userInputGenderSelection = GenderSelection.female
-    var userInputAccentSelection = AccentSelection.austrailian
-    let speechRecogniser: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale.init(identifier: "en-IRE"))
+        "UK": AccentSelection.english,
+        "US": AccentSelection.american,
+        "AUS": AccentSelection.austrailian,
+        "Remove": AccentSelection.clear] as [String : Any]
+
+    let speechRecogniser: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale.current)
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
@@ -183,9 +188,14 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func genderSelectionSCChanged(_ sender: Any) {
         
         if genderSelectionSC.selectedSegmentIndex == 0 {
+            
+            
             print(GenderSelection.allValues()[0])
+            
         } else {
+            
             print(GenderSelection.allValues()[1])
+            
         }
         
     }
@@ -276,10 +286,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
     }
     
-    @IBAction func generateFile(_ sender: Any) {
+    @IBAction func playAudio(_ sender: Any) {
         
-        generateBtn.setTitle("Generating...", for: .normal)
-//        generateBtn.isEnabled = false
+        playAudioBtn.setTitle("Stop Audio", for: .normal)
         
         ViewController.voiceType = .undefined
         
@@ -315,8 +324,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         TextToSpeechService.shared.makeTextToSpeechRequest(text: extractedContent, voiceType: ViewController.voiceType!) {
 
-            self.generateBtn.setTitle("File Generated", for: .normal)
-            self.generateBtn.isEnabled = true
+            self.playAudioBtn.isEnabled = true
 
         }
 

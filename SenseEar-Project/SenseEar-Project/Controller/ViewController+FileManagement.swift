@@ -62,20 +62,12 @@ extension ViewController: UIDocumentPickerDelegate {
                           do {
 
                               extractedContent = try String(contentsOfFile: pathToFile, encoding: .utf8)
-
-//                                guard let textExtracted = extractedContent else {
-//                                    return ""
-//                                }
                             
                                 print(extractedContent)
-//                                print(textExtracted)
-                                
+                            
                                 let textBuffer = TextBuffer()
                             textBuffer.splitIntoSeparateBuffers(with: extractedContent)
-//                                textBuffer.splitIntoSeparateBuffers(with: textExtracted)
-                                                               
-//                               print("File Contents:\n \(splitContents[0] + splitContents[1])")
-
+                            
                          } catch {
                               print("No Text File Found! \(error)")
                          }
@@ -85,21 +77,17 @@ extension ViewController: UIDocumentPickerDelegate {
                                 selectedFile.pathExtension == "pptx" {
 
                                                         
-                            // OutputPath is a relative path  built from the URL of the selectedFile
+                        // OutputPath is a relative path built from the URL of the selectedFile
                         let outputPath = pathToFile.replacingOccurrences(of: ".\(selectedFile.pathExtension)", with: ".pdf")
                         OfficeFileConverter.convertOfficeDoc(with: pathToFile, to: outputPath)
                         
                             let pdfFileURL = URL(fileURLWithPath: outputPath)
                             self.extractedContent = self.extractTextFromPDF(url: pdfFileURL)
                             print("We might have done it!")
-                        
-//                            print(self.extractedContent!)
-                        
+                                                
                             let textBuffer = TextBuffer()
                            textBuffer.splitIntoSeparateBuffers(with: self.extractedContent)
                                                            
-//                          print("File Contents:\n \(splitContents[0] + splitContents[1])")
-
                       } else if selectedFile.pathExtension == "pdf" {
 
                           do {
@@ -111,8 +99,6 @@ extension ViewController: UIDocumentPickerDelegate {
                             let textBuffer = TextBuffer()
                             textBuffer.splitIntoSeparateBuffers(with: self.extractedContent)
                                                            
-//                           print("File Contents:\n \(splitContents[0] + splitContents[1])")
-
                           } catch {
                               print("Text Extraction Failed! \(error)")
                           }

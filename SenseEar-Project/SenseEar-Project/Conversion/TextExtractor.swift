@@ -16,6 +16,7 @@ class TextExtractor {
     /// - Parameter file: takes selected file url
     func extractText(from file: URL) -> String {
         if let page = PDFDocument(url: file) {
+            
             guard let extractedContent = page.string else {
                 return ""
             }

@@ -53,16 +53,19 @@ extension ViewController {
     
     /// Starts recording for the gender selection voice recogntion
       func genderStartRecording() {
+        
           if recognitionTask != nil {
               recognitionTask?.cancel()
               recognitionTask = nil
           }
+        
           let audioSession = AVAudioSession.sharedInstance()
+        
           do {
               
-              try audioSession.setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.record)), mode: .default)
-              try audioSession.setMode(AVAudioSession.Mode.measurement)
-              try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+                try audioSession.setCategory(.record, mode: .default)
+                try audioSession.setMode(AVAudioSession.Mode.measurement)
+                try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
               
           } catch {
               print("Failed to setup audio session")
@@ -95,13 +98,27 @@ extension ViewController {
                   self.genderAudioBtn.isEnabled = true
                   
                   let bestTranscription = result?.bestTranscription.formattedString
-                  var inGenderSelectionDictionary = self.voiceGenderSelectionDictionary.contains { $0.key == bestTranscription}
+                  let inGenderSelectionDictionary = self.voiceGenderSelectionDictionary.contains { $0.key == bestTranscription}
                   
                   if inGenderSelectionDictionary {
-                      
-                      self.voiceSelectedGenderLbl.text = bestTranscription
-                      self.userInputGenderSelection = self.voiceGenderSelectionDictionary[bestTranscription!]! as! GenderSelection
-                      
+                    
+                    if bestTranscription == "Mail" {
+                        
+                        self.voiceSelectedGenderLbl.text = "Male"
+                        self.genderSelectionSC.selectedSegmentIndex = 0
+                        
+                    } else if bestTranscription == "Remove" {
+                        
+                        self.voiceSelectedGenderLbl.text = ""
+                        self.genderSelectionSC.selectedSegmentIndex = 0
+                        
+                    } else {
+                        
+                        self.voiceSelectedGenderLbl.text = bestTranscription
+                        self.genderSelectionSC.selectedSegmentIndex = 1
+
+                    }
+
                   } else {
                       self.voiceSelectedGenderLbl.text = "Not understood, try again"
                   }
@@ -126,16 +143,19 @@ extension ViewController {
       
     /// Starts recording for the accent selection voice recogntion
       func accentStartRecording() {
+        
           if recognitionTask != nil {
               recognitionTask?.cancel()
               recognitionTask = nil
           }
+        
           let audioSession = AVAudioSession.sharedInstance()
+        
           do {
               
-              try audioSession.setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.record)), mode: .default)
-              try audioSession.setMode(AVAudioSession.Mode.measurement)
-              try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+                try audioSession.setCategory(.record, mode: .default)
+                try audioSession.setMode(AVAudioSession.Mode.measurement)
+                try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
               
           } catch {
               print("Failed to setup audio session")
@@ -168,15 +188,36 @@ extension ViewController {
                   self.accentAudioBtn.isEnabled = true
                   
                   let bestTranscription = result?.bestTranscription.formattedString
-                  var inAccentSelectionDictionary = self.voiceAccentSelectionDictionary.contains {$0.key == bestTranscription}
+                  let inAccentSelectionDictionary = self.voiceAccentSelectionDictionary.contains {$0.key == bestTranscription}
                   
                   if inAccentSelectionDictionary {
-                      
-                      self.voiceSelectedAccentLbl.text = bestTranscription
-                      self.userInputAccentSelection = self.voiceAccentSelectionDictionary[bestTranscription!]! as! AccentSelection
+                    
+                    if bestTranscription == "UK" {
+                        
+                        self.accentSelectionSC.selectedSegmentIndex = 0
+                        self.voiceSelectedAccentLbl.text = bestTranscription
+                        
+                        
+                    } else if bestTranscription == "US" {
+                        
+                        self.accentSelectionSC.selectedSegmentIndex = 1
+                        self.voiceSelectedAccentLbl.text = bestTranscription
+
+                        
+                    } else if bestTranscription == "AUS" {
+                        
+                        self.accentSelectionSC.selectedSegmentIndex = 2
+                        self.voiceSelectedAccentLbl.text = bestTranscription
+
+                    } else {
+                        
+                        self.accentSelectionSC.selectedSegmentIndex = 0
+                        self.voiceSelectedAccentLbl.text = ""
+                        
+                    }
                       
                   } else {
-                      self.voiceSelectedAccentLbl.text = "Not understood, try again"
+                        self.voiceSelectedAccentLbl.text = "Not understood, try again"
                   }
                   
               }
@@ -188,18 +229,16 @@ extension ViewController {
               buffer, _ in
               self.recognitionRequest?.append(buffer)
           }
+        
           audioEngine.prepare()
           
           do {
+            
               try audioEngine.start()
+            
           } catch {
               print("Can't start the engine")
           }
       }
     
 }
-
-fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
-        return input.rawValue
-}
-
