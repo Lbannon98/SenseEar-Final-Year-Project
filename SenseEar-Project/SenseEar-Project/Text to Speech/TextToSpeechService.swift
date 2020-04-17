@@ -34,6 +34,8 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
     private var player: AVAudioPlayer?
     private var completionHandler: (() -> Void)?
     
+    public static var audioData: Data?
+    
     func makeTextToSpeechRequest(text: String, voiceType: VoiceTypes = .ukMale, completion: @escaping () -> Void) {
         
         DispatchQueue.global(qos: .background).async {
@@ -53,24 +55,38 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                    }
                    return
                }
-               
-                guard let smallAudioData = Data(base64Encoded: audioContent) else {
+                                                   
+//                TextToSpeechService.audioData = Data(base64Encoded: audioContent)
+                                    
+//                TextToSpeechService.audioData = Data(base64Encoded: audioContent)
                 
+                guard let smallAudioData = Data(base64Encoded: audioContent) else {
+
+
                    DispatchQueue.main.async {
                        completion()
                    }
                    return
                }
+                
+                TextToSpeechService.audioData = smallAudioData
+                
+                guard let audio = TextToSpeechService.audioData else { return }
+                             
+                print("Audio: \(audio.isEmpty)")
                                                     
 //                self.writeAudioDataToAudioFile(with: smallAudioData)
                 
-                DispatchQueue.main.async {
-
-                    self.completionHandler = completion
-                    self.player = try! AVAudioPlayer(data: smallAudioData)
-                    self.player?.delegate = self
-                    self.player!.play()
-                }
+//                DispatchQueue.main.async {
+//
+//                    guard let audio = TextToSpeechService.audioData else { return }
+//
+//                    self.completionHandler = completion
+//                    self.startAudioPlayer(with: audio)
+////                    self.player = try! AVAudioPlayer(data: smallAudioData)
+//                    self.player?.delegate = self
+//                    self.player!.play()
+//                }
                 
             } else if text.count > 5000 && text.count <= 10000 {
                 
@@ -481,6 +497,20 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
         return pcmBuffer!
         
     }
+    
+    public func startAudioPlayer(with audioData: Data) {
+
+        player = try! AVAudioPlayer(data: audioData)
+        player?.play()
+
+    }
+    
+//    public func stopAudioPlayer() {
+//
+////        self.player = try! AVAudioPlayer(data: audioData)
+//        self.player?.stop()
+//
+//    }
     
 }
 

@@ -28,7 +28,6 @@
 		DB4214B4239D45CF0073DAFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B2239D45CF0073DAFA /* Main.storyboard */; };
 		DB4214B6239D45D00073DAFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B5239D45D00073DAFA /* Assets.xcassets */; };
 		DB4214B9239D45D00073DAFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B7239D45D00073DAFA /* LaunchScreen.storyboard */; };
-		DB4214C1239D46E90073DAFA /* GenderSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214C0239D46E90073DAFA /* GenderSelection.swift */; };
 		DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
 		DB46BC4223E41F35006903D4 /* SelectedFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46BC4123E41F35006903D4 /* SelectedFileView.swift */; };
 		DB5E2BD9243E0D8F0060C8B9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5E2BD8243E0D8F0060C8B9 /* AVFoundation.framework */; };
@@ -85,7 +84,6 @@
 		DB4214B5239D45D00073DAFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB4214B8239D45D00073DAFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB4214BA239D45D00073DAFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB4214C0239D46E90073DAFA /* GenderSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelection.swift; sourceTree = "<group>"; };
 		DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedFileView.xib; sourceTree = "<group>"; };
 		DB46BC4123E41F35006903D4 /* SelectedFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedFileView.swift; sourceTree = "<group>"; };
 		DB5E2BD8243E0D8F0060C8B9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -220,7 +218,6 @@
 				DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */,
 				DB4214BA239D45D00073DAFA /* Info.plist */,
 				DB0F28EE2430E978006CFF0E /* Keys.plist */,
-				DB4214C0239D46E90073DAFA /* GenderSelection.swift */,
 				DB0F28F02430EDFA006CFF0E /* Keys.swift */,
 				DB0E1A6524485BA800BD1597 /* Alerts.swift */,
 			);
@@ -481,7 +478,6 @@
 				DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */,
 				DB46BC4223E41F35006903D4 /* SelectedFileView.swift in Sources */,
 				DBD1DF882400346A002151D6 /* TextExtractor.swift in Sources */,
-				DB4214C1239D46E90073DAFA /* GenderSelection.swift in Sources */,
 				DBA02748243F7B6600A346FB /* ViewController+MediaPlayer.swift in Sources */,
 				DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */,
 				DBD1DF8324002D85002151D6 /* OfficeFileConverter.swift in Sources */,

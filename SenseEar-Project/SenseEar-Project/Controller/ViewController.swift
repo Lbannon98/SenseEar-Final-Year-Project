@@ -66,13 +66,14 @@ enum AccentSelection: Int, CaseIterable, Identifiable, Hashable {
    }
 }
 
-class ViewController: UIViewController, SFSpeechRecognizerDelegate {
+class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlayerDelegate {
 
     @IBOutlet weak var genderSelectionSC: UISegmentedControl!
     @IBOutlet weak var accentSelectionSC: UISegmentedControl!
     
     @IBOutlet weak var importBtn: UIButton!
     @IBOutlet weak var playAudioBtn: UIButton!
+    @IBOutlet weak var pauseAudioBtn: UIButton!
     @IBOutlet weak var clearBtn: UIButton!
     
     @IBOutlet weak var genderAudioBtn: CircleButton!
@@ -119,7 +120,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     let microphoneIcon = UIImage(named: "microphone-30.png")
     let stopIcon = UIImage(named: "stop.png")
     
+    //Media Player Variables
     public var player: AVAudioPlayer?
+    public var completionHandler: (() -> Void)?
     public var musicManager: MPMusicPlayerController?
     public var nowPlayingInfo: [String : Any]?
     
@@ -166,6 +169,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         selectedFileView.isHidden = true
         clearBtn.isHidden = true
+        
+        playAudioBtn.isHidden = false
+        pauseAudioBtn.isHidden = true
+        
     }
     
     public func addValuesToSegmentControls() {
@@ -182,6 +189,42 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         accentSelectionSC.setTitle(AccentSelection.allValues()[0], forSegmentAt: 0)
         accentSelectionSC.setTitle(AccentSelection.allValues()[1], forSegmentAt: 1)
         accentSelectionSC.setTitle(AccentSelection.allValues()[2], forSegmentAt: 2)
+        
+    }
+    
+    public func assignAudioSpecifications() {
+        
+        ViewController.voiceType = .undefined
+        
+        genderSelected = genderSelectionSC.titleForSegment(at: genderSelectionSC.selectedSegmentIndex)
+        
+        accentSelected = accentSelectionSC.titleForSegment(at: accentSelectionSC.selectedSegmentIndex)
+        
+        if genderSelected == "Male" && accentSelected == "UK" {
+
+            ViewController.voiceType = .ukMale
+            
+        } else if genderSelected == "Male" && accentSelected == "US" {
+                   
+           ViewController.voiceType = .usMale
+            
+        } else if genderSelected == "Male" && accentSelected == "AUS" {
+                   
+           ViewController.voiceType = .ausMale
+           
+        } else if genderSelected == "Female" && accentSelected == "UK" {
+                    
+            ViewController.voiceType = .ukFemale
+            
+        } else if genderSelected == "Female" && accentSelected == "US" {
+                    
+            ViewController.voiceType = .usFemale
+            
+        } else if genderSelected == "Female" && accentSelected == "AUS" {
+                    
+            ViewController.voiceType = .ausFemale
+            
+        }
         
     }
     
@@ -284,47 +327,57 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @IBAction func playAudio(_ sender: Any) {
         
-        playAudioBtn.setTitle("Stop Audio", for: .normal)
-        
-        ViewController.voiceType = .undefined
-        
-        genderSelected = genderSelectionSC.titleForSegment(at: genderSelectionSC.selectedSegmentIndex)
-        
-        accentSelected = accentSelectionSC.titleForSegment(at: accentSelectionSC.selectedSegmentIndex)
-        
-        if genderSelected == "Male" && accentSelected == "UK" {
+        if selectedFile == nil {
+            
+            Alerts.showStandardAlert(on: self, with: "Import File", message: "File has not been selected, so there is no audio")
+            
+        } else {
+            
+//            playAudioBtn.isHidden = true
+//            pauseAudioBtn.isHidden = false
+            
+//            pauseAudioBtn.isHidden = false
+//            playAudioBtn.setTitle("Stop Audio", for: .normal)
+            
+            assignAudioSpecifications()
+            
+            TextToSpeechService.shared.makeTextToSpeechRequest(text: extractedContent, voiceType: ViewController.voiceType!) {
 
-            ViewController.voiceType = .ukMale
-            
-        } else if genderSelected == "Male" && accentSelected == "US" {
-                   
-           ViewController.voiceType = .usMale
-            
-        } else if genderSelected == "Male" && accentSelected == "AUS" {
-                   
-           ViewController.voiceType = .ausMale
-           
-        } else if genderSelected == "Female" && accentSelected == "UK" {
-                    
-            ViewController.voiceType = .ukFemale
-            
-        } else if genderSelected == "Female" && accentSelected == "US" {
-                    
-            ViewController.voiceType = .usFemale
-            
-        } else if genderSelected == "Female" && accentSelected == "AUS" {
-                    
-            ViewController.voiceType = .ausFemale
-            
-        }
-        
-        TextToSpeechService.shared.makeTextToSpeechRequest(text: extractedContent, voiceType: ViewController.voiceType!) {
+//                self.player?.play()
+                self.playAudioBtn.isEnabled = true
+//                self.playAudio()
+                
+                self.playAudio()
+                self.player?.play()
 
-            self.playAudioBtn.isEnabled = true
+            }
+            
+            
+//            self.playAudioFromData()
+//            self.player?.play()
+            
+            
 
+//            guard let audio = TextToSpeechService.audioData else { return }
+//            self.playAudio(with: audio)
+            
+            
         }
 
     }
+    
+    
+    @IBAction func pauseAudio(_ sender: Any) {
+        
+        print("AUDIO PAUSED")
+        
+        playAudioBtn.isHidden = true
+        pauseAudioBtn.isHidden = false
+        
+        self.pauseAudio()
+        
+    }
+    
     
 }
 
