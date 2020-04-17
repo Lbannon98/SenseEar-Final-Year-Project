@@ -217,6 +217,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
         if audioEngine.isRunning {
             
             audioEngine.stop()
+            
             recognitionRequest?.endAudio()
             genderAudioBtn.isEnabled = false
             

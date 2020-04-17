@@ -63,7 +63,7 @@ extension ViewController {
         
           do {
               
-                try audioSession.setCategory(.record, mode: .default)
+                try audioSession.setCategory(.playAndRecord, mode: .default)
                 try audioSession.setMode(AVAudioSession.Mode.measurement)
                 try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
               
@@ -153,7 +153,7 @@ extension ViewController {
         
           do {
               
-                try audioSession.setCategory(.record, mode: .default)
+                try audioSession.setCategory(.playAndRecord, mode: .default)
                 try audioSession.setMode(AVAudioSession.Mode.measurement)
                 try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
               
