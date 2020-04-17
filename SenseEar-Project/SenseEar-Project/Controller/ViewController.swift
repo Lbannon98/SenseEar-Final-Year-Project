@@ -188,14 +188,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func genderSelectionSCChanged(_ sender: Any) {
         
         if genderSelectionSC.selectedSegmentIndex == 0 {
-            
-            
             print(GenderSelection.allValues()[0])
-            
         } else {
-            
             print(GenderSelection.allValues()[1])
-            
         }
         
     }
