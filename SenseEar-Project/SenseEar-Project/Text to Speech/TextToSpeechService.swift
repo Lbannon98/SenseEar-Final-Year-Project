@@ -31,8 +31,8 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
     static let shared = TextToSpeechService()
     var textBuffer = TextBuffer()
     
-    private var player: AVAudioPlayer?
-    private var completionHandler: (() -> Void)?
+    public static var audioPlayer = AudioPlayer()
+    public static var completionHandler: (() -> Void)?
     
     public static var audioData: Data?
     
@@ -55,38 +55,17 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                    }
                    return
                }
-                                                   
-//                TextToSpeechService.audioData = Data(base64Encoded: audioContent)
-                                    
-//                TextToSpeechService.audioData = Data(base64Encoded: audioContent)
                 
                 guard let smallAudioData = Data(base64Encoded: audioContent) else {
-
 
                    DispatchQueue.main.async {
                        completion()
                    }
                    return
                }
-                
+                    
                 TextToSpeechService.audioData = smallAudioData
-                
-                guard let audio = TextToSpeechService.audioData else { return }
-                             
-                print("Audio: \(audio.isEmpty)")
-                                                    
-//                self.writeAudioDataToAudioFile(with: smallAudioData)
-                
-//                DispatchQueue.main.async {
-//
-//                    guard let audio = TextToSpeechService.audioData else { return }
-//
-//                    self.completionHandler = completion
-//                    self.startAudioPlayer(with: audio)
-////                    self.player = try! AVAudioPlayer(data: smallAudioData)
-//                    self.player?.delegate = self
-//                    self.player!.play()
-//                }
+                TextToSpeechService.completionHandler = completion
                 
             } else if text.count > 5000 && text.count <= 10000 {
                 
@@ -112,14 +91,9 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                    return
                }
                 
-                DispatchQueue.main.async {
-
-                    self.completionHandler = completion
-                    self.player = try! AVAudioPlayer(data: mediumAudioData)
-                    self.player?.delegate = self
-                    self.player!.play()
-                }
-                
+                TextToSpeechService.audioData = mediumAudioData
+                TextToSpeechService.completionHandler = completion
+ 
             } else if text.count > 10000 && text.count <= 20000 {
                 
                 let postData = self.buildLargeFilePostRequest(firstHalf: TextBuffer.dividedContents[0], secondHalf: TextBuffer.dividedContents[1], thirdHalf: TextBuffer.dividedContents[2], fourthHalf: TextBuffer.dividedContents[3], voiceType: voiceType)
@@ -144,14 +118,9 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                     return
                 }
                 
-                DispatchQueue.main.async {
+                TextToSpeechService.audioData = largeAudioData
+                TextToSpeechService.completionHandler = completion
 
-                    self.completionHandler = completion
-                    self.player = try! AVAudioPlayer(data: largeAudioData)
-                    self.player?.delegate = self
-                    self.player!.play()
-                }
-                
             }
             
        }
@@ -178,7 +147,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
             ]
         ]
 
-        // Convert the Dictionary to Data
         let data = try! JSONSerialization.data(withJSONObject: parameters)
 
         return data
@@ -216,7 +184,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
             ]
         ]
 
-        // Convert the Dictionary to Data
         let firstHalfData = try! JSONSerialization.data(withJSONObject: firstHalfParameters)
         let secondHalfData = try! JSONSerialization.data(withJSONObject: secondHalfParameters)
         
@@ -278,7 +245,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
             ]
         ]
 
-        // Convert the Dictionary to Data
         let firstHalfData = try! JSONSerialization.data(withJSONObject: firstHalfParameters)
         let secondHalfData = try! JSONSerialization.data(withJSONObject: secondHalfParameters)
         let thirdHalfData = try! JSONSerialization.data(withJSONObject: thirdHalfParameters)
@@ -305,7 +271,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
             request.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
-        // Using semaphore to make request synchronous
         let semaphore = DispatchSemaphore(value: 0)
 
         let regularTask = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -342,7 +307,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
             secondHalfRequest.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
-        // Using semaphore to make request synchronous
         let semaphore = DispatchSemaphore(value: 0)
         
         let firstHalfTask = URLSession.shared.dataTask(with: firstHalfRequest) { data, response, error in
@@ -400,7 +364,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
             fourthHalfRequest.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
-        // Using semaphore to make request synchronous
         let semaphore = DispatchSemaphore(value: 0)
         
         let firstHalfTask = URLSession.shared.dataTask(with: firstHalfRequest) { data, response, error in
@@ -444,73 +407,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
 
         return dict
     }
-    
-    // Implement AVAudioPlayerDelegate "did finish" callback to cleanup and notify listener of completion.
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        self.player?.delegate = nil
-        self.player = nil
-        self.completionHandler!()
-        self.completionHandler = nil
-    }
-
-     func writeAudioDataToAudioFile(with audioData: Data) {
-            
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-            
-        do {
-        
-            if FileManager.default.fileExists(atPath: documentsDirectory.path) {
-
-                let newFileName = "test"
-                
-                let audioBuffer = self.dataToPCMBuffer(data: audioData as NSData)
-                
-                let audioFilename = documentsDirectory.appendingPathComponent("Audio/\(newFileName)").appendingPathExtension(".caf").absoluteURL
-                            
-                guard let format = AVAudioFormat(commonFormat: .pcmFormatInt16, sampleRate: 44100, channels: 2, interleaved: true) else {
-                    return
-                }
-                
-                let audioFile = try AVAudioFile(forWriting: audioFilename, settings: format.settings, commonFormat: AVAudioCommonFormat.pcmFormatFloat64, interleaved: false)
-                
-                try audioFile.write(from: audioBuffer)
-                                
-            }
-            
-        } catch {
-            print("Please HELP MEEEE:\n \(error)")
-        }
-        
-    }
-    
-    func dataToPCMBuffer(data: NSData) -> AVAudioPCMBuffer {
-        
-        let audioFormat = AVAudioFormat(commonFormat: AVAudioCommonFormat.pcmFormatFloat32, sampleRate: 8000, channels: 1, interleaved: false)
-        
-        let pcmBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat!, frameCapacity: UInt32(data.length) / audioFormat!.streamDescription.pointee.mBytesPerFrame)
-        
-        pcmBuffer!.frameLength = pcmBuffer!.frameCapacity
-        
-        let channels = UnsafeBufferPointer(start: pcmBuffer?.floatChannelData, count: Int(pcmBuffer!.format.channelCount))
-        data.getBytes(UnsafeMutablePointer<Void>(channels[0]) , length: data.length)
-        
-        return pcmBuffer!
-        
-    }
-    
-    public func startAudioPlayer(with audioData: Data) {
-
-        player = try! AVAudioPlayer(data: audioData)
-        player?.play()
-
-    }
-    
-//    public func stopAudioPlayer() {
-//
-////        self.player = try! AVAudioPlayer(data: audioData)
-//        self.player?.stop()
-//
-//    }
     
 }
 
