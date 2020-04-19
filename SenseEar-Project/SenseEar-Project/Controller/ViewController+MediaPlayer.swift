@@ -11,103 +11,85 @@ import MediaPlayer
 
 extension ViewController {
     
-    public func playAudio() {
-        
-        let audioSession = AVAudioSession.sharedInstance()
-        
-        do {
-                   
-           try audioSession.setCategory(.playback, mode: .default)
-           try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-           
-            self.player = try! AVAudioPlayer(data: TextToSpeechService.audioData!)
-           self.player?.delegate = self
-           
-           self.player?.prepareToPlay()
-            
-            DispatchQueue.main.async {
-                self.player!.play()
-            }
-           
-       } catch {
-           print("Could not play audio")
-       }
-
-    }
-    
-//    public func playAudioFromData() {
+//    public func setupMediaPlayerNotificationView() {
 //
-//        guard let audio = TextToSpeechService.audioData else { return }
+//        let commandCenter = MPRemoteCommandCenter.shared()
 //
-//        let audioSession = AVAudioSession.sharedInstance()
+//        //Add handler for Play Command
+//        commandCenter.playCommand.addTarget { [unowned self] event in
 //
-//        do {
+////            self.player!.play()
+//            return .success
 //
-//            try audioSession.setCategory(.playback, mode: .default)
-//            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+//        }
 //
-//            self.player = try! AVAudioPlayer(data: audio)
-//            self.player?.delegate = self
+//        // Add handler for Pause Command
+//        commandCenter.pauseCommand.addTarget { [unowned self] event in
 //
-//            self.player?.prepareToPlay()
+////            self.player!.pause()
+//            return .success
 //
-//        } catch {
-//            print("Could not play audio")
 //        }
 //
 //    }
     
-    public func pauseAudio() {
-        
-        self.player?.pause()
-        
-    }
-    
-    func setupMediaPlayerNotificationView() {
+    public func setupRemoteTransportControls() {
         
         let commandCenter = MPRemoteCommandCenter.shared()
-        
-        //Add handler for Play Command
-        commandCenter.playCommand.addTarget { [unowned self] event in
+
+        commandCenter.previousTrackCommand.isEnabled = false
+        commandCenter.nextTrackCommand.isEnabled = false
+        commandCenter.skipBackwardCommand.isEnabled = false
+        commandCenter.skipForwardCommand.isEnabled = false
+
+        commandCenter.playCommand.isEnabled = true
+        commandCenter.playCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
             
-            self.player!.play()
-            return .success
-        
-        }
-        
-        // Add handler for Pause Command
-        commandCenter.pauseCommand.addTarget { [unowned self] event in
+            //Update your button here for the play command
+//            TextToSpeechService.audioPlayer.playAudioContent()
+//            self.playAudio()
             
-            self.player!.pause()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatedControlCenterAudio"), object: nil)
             return .success
-        
         }
-        
+
+        commandCenter.pauseCommand.isEnabled = true
+        commandCenter.pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+            
+            //Update your button here for the pause command
+//            TextToSpeechService.audioPlayer.pauseAudioContent()
+//            self.pauseAudio()
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatedControlCenterAudio"), object: nil)
+            return .success
+        }
     }
     
-    func setupNotificationView() {
+    public func setupNotificationView() {
         
         nowPlayingInfo = [String : Any]()
         
         nowPlayingInfo![MPMediaItemPropertyTitle] = filename
         
-        nowPlayingInfo![MPNowPlayingInfoPropertyPlaybackRate] = 1
+        nowPlayingInfo![MPNowPlayingInfoPropertyElapsedPlaybackTime] = TextToSpeechService.audioPlayer.player?.currentTime
+        
+        nowPlayingInfo![MPNowPlayingInfoPropertyPlaybackRate] = TextToSpeechService.audioPlayer.player?.rate
+//        nowPlayingInfo![MPNowPlayingInfoPropertyPlaybackRate] = 1
+        
+        nowPlayingInfo![MPMediaItemPropertyPlaybackDuration] = TextToSpeechService.audioPlayer.player?.duration
         
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
         
-        
     }
     
-    // Implement AVAudioPlayerDelegate "did finish" callback to cleanup and notify listener of completion.
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         
-        playAudioBtn.isHidden = false
-        pauseAudioBtn.isHidden = true
+        let playConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
+            playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: playConfiguration), for: .normal)
+
+        TextToSpeechService.audioPlayer.player?.delegate = nil
+        TextToSpeechService.audioPlayer.player = nil
         
-        self.player?.delegate = nil
-        self.player = nil
-        self.completionHandler!()
-        self.completionHandler = nil
     }
     
 }

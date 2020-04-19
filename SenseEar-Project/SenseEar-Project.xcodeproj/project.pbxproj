@@ -36,6 +36,7 @@
 		DB760EA223EABA0800241855 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB760EA123EABA0800241855 /* ViewModelTests.swift */; };
 		DBA02748243F7B6600A346FB /* ViewController+MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA02747243F7B6600A346FB /* ViewController+MediaPlayer.swift */; };
 		DBA69517243F19CD00DCC064 /* Pods_SenseEar_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */; };
+		DBC0220C244B13A2002D2361 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0220B244B13A2002D2361 /* AudioPlayer.swift */; };
 		DBC9728723FAA5BC00B3A7C4 /* CV - Lauren Bannon.docx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */; };
 		DBC9728823FAA5BF00B3A7C4 /* CV 2019.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */; };
 		DBC9728923FAA5C700B3A7C4 /* Module Due Dates - Semester 2.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */; };
@@ -93,6 +94,7 @@
 		DB760E9A23EAB66700241855 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB760EA123EABA0800241855 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModelTests.swift; path = ViewModelTests/ViewModelTests.swift; sourceTree = "<group>"; };
 		DBA02747243F7B6600A346FB /* ViewController+MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+MediaPlayer.swift"; sourceTree = "<group>"; };
+		DBC0220B244B13A2002D2361 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConverter.swift; sourceTree = "<group>"; };
 		DBD1DF872400346A002151D6 /* TextExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtractor.swift; sourceTree = "<group>"; };
 		E10428519F0FBD23813A16BF /* Pods_SenseEar_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenseEar_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +207,8 @@
 		DB4214AB239D45CF0073DAFA /* SenseEar-Project */ = {
 			isa = PBXGroup;
 			children = (
+				DBC0220A244B1394002D2361 /* AudioPlayer */,
+				DBC02206244B0F66002D2361 /* Alerts */,
 				DB0F28F22430EEF0006CFF0E /* Text to Speech */,
 				DBD1DF862400344F002151D6 /* Conversion */,
 				DB95B2AD23E41FF000BC109F /* View Model */,
@@ -219,7 +223,6 @@
 				DB4214BA239D45D00073DAFA /* Info.plist */,
 				DB0F28EE2430E978006CFF0E /* Keys.plist */,
 				DB0F28F02430EDFA006CFF0E /* Keys.swift */,
-				DB0E1A6524485BA800BD1597 /* Alerts.swift */,
 			);
 			path = "SenseEar-Project";
 			sourceTree = "<group>";
@@ -242,6 +245,22 @@
 				DB60B3D623E488550015DFB7 /* SelectedFileViewModel.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DBC02206244B0F66002D2361 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				DB0E1A6524485BA800BD1597 /* Alerts.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		DBC0220A244B1394002D2361 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				DBC0220B244B13A2002D2361 /* AudioPlayer.swift */,
+			);
+			path = AudioPlayer;
 			sourceTree = "<group>";
 		};
 		DBD1DF862400344F002151D6 /* Conversion */ = {
@@ -478,6 +497,7 @@
 				DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */,
 				DB46BC4223E41F35006903D4 /* SelectedFileView.swift in Sources */,
 				DBD1DF882400346A002151D6 /* TextExtractor.swift in Sources */,
+				DBC0220C244B13A2002D2361 /* AudioPlayer.swift in Sources */,
 				DBA02748243F7B6600A346FB /* ViewController+MediaPlayer.swift in Sources */,
 				DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */,
 				DBD1DF8324002D85002151D6 /* OfficeFileConverter.swift in Sources */,

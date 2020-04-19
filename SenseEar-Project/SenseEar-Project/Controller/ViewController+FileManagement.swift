@@ -127,7 +127,7 @@ extension ViewController: UIDocumentPickerDelegate {
             let image = UIImage(named: "text-file-50.png")
             fileTypeLogo = UIImageView(image: image)
 
-            importBtn.setTitle("Import File", for: .normal)
+            importBtn.setTitle("Upload File", for: .normal)
 
             selectedFileView.isHidden = false
             clearBtn.isHidden = false
@@ -137,7 +137,7 @@ extension ViewController: UIDocumentPickerDelegate {
             let image = UIImage(named: "icons8-pdf-48-2.png")
             fileTypeLogo = UIImageView(image: image)
 
-            importBtn.setTitle("Import File", for: .normal)
+            importBtn.setTitle("Upload File", for: .normal)
 
             selectedFileView.isHidden = false
             clearBtn.isHidden = false
@@ -147,7 +147,7 @@ extension ViewController: UIDocumentPickerDelegate {
             let image = UIImage(named: "icons8-microsoft-word-48.png")
             fileTypeLogo = UIImageView(image: image)
 
-            importBtn.setTitle("Import File", for: .normal)
+            importBtn.setTitle("Upload File", for: .normal)
 
             selectedFileView.isHidden = false
             clearBtn.isHidden = false
@@ -157,7 +157,7 @@ extension ViewController: UIDocumentPickerDelegate {
             let image = UIImage(named: "icons8-microsoft-excel-48.png")
             fileTypeLogo = UIImageView(image: image)
 
-            importBtn.setTitle("Import File", for: .normal)
+            importBtn.setTitle("Upload File", for: .normal)
 
             selectedFileView.isHidden = false
             clearBtn.isHidden = false
@@ -167,7 +167,7 @@ extension ViewController: UIDocumentPickerDelegate {
             let image = UIImage(named: "icons8-microsoft-powerpoint-48.png")
             fileTypeLogo = UIImageView(image: image)
 
-            importBtn.setTitle("Import File", for: .normal)
+            importBtn.setTitle("Upload File", for: .normal)
 
             selectedFileView.isHidden = false
             clearBtn.isHidden = false

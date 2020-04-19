@@ -11,6 +11,7 @@ import Speech
 import AVFoundation
 import MobileCoreServices
 import MediaPlayer
+import Dispatch
 
 enum GenderSelection: Int, CaseIterable, Identifiable, Hashable {
     case male
@@ -72,9 +73,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     @IBOutlet weak var accentSelectionSC: UISegmentedControl!
     
     @IBOutlet weak var importBtn: UIButton!
-    @IBOutlet weak var playAudioBtn: UIButton!
-    @IBOutlet weak var pauseAudioBtn: UIButton!
+    @IBOutlet weak var playPauseAudioBtn: UIButton!
+    @IBOutlet weak var replayBtn: UIButton!
     @IBOutlet weak var clearBtn: UIButton!
+    @IBOutlet weak var generateAudioBtn: UIButton!
     
     @IBOutlet weak var genderAudioBtn: CircleButton!
     @IBOutlet weak var accentAudioBtn: CircleButton!
@@ -121,8 +123,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     let stopIcon = UIImage(named: "stop.png")
     
     //Media Player Variables
-    public var player: AVAudioPlayer?
-    public var completionHandler: (() -> Void)?
+    var isPaused = false
+    var isPlaying = false
+    var extractedAudio = Data()
     public var musicManager: MPMusicPlayerController?
     public var nowPlayingInfo: [String : Any]?
     
@@ -154,9 +157,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         documentView.layer.borderWidth = 2
         documentView.layer.borderColor = UIColor.black.cgColor
         
-        importBtn.setTitle("Import File", for: .normal)
+        importBtn.setTitle("Upload File", for: .normal)
         
-        let cancelConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .light)
+        let cancelConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
         clearBtn.setImage(UIImage(systemName: "multiply.circle.fill", withConfiguration: cancelConfiguration), for: .normal)
                 
         let tintedImage = microphoneIcon?.withRenderingMode(.alwaysTemplate)
@@ -169,10 +172,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         
         selectedFileView.isHidden = true
         clearBtn.isHidden = true
-        
-        playAudioBtn.isHidden = false
-        pauseAudioBtn.isHidden = true
-        
+
     }
     
     public func addValuesToSegmentControls() {
@@ -224,8 +224,36 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
                     
             ViewController.voiceType = .ausFemale
             
+        } else {
+            
+            Alerts.showStandardAlert(on: self, with: "Try Again", message: "Audio specifications did not assign correctly!")
+            
         }
         
+    }
+    
+//    func updatePlayerIcons() {
+//
+//        if AudioPlayer.isPaused == false {
+//
+//            let playConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
+//            playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: playConfiguration), for: .normal)
+//
+//        } else {
+//
+//            let pauseConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
+//            playPauseAudioBtn.setImage(UIImage(systemName: "pause", withConfiguration: pauseConfiguration), for: .normal)
+//
+//        }
+//
+//    }
+    
+    func getAudioData() -> Data {
+        
+        guard let audio = TextToSpeechService.audioData else { fatalError("Couldn't get audio data") }
+        extractedAudio = audio
+        
+        return extractedAudio
     }
     
     @IBAction func genderSelectionSCChanged(_ sender: Any) {
@@ -321,64 +349,95 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         selectedFileView.isHidden = true
         clearBtn.isHidden = true
         
+        generateAudioBtn.setTitle("Generate Audio", for: .normal)
+        generateAudioBtn.isEnabled = true
+        
+        TextToSpeechService.audioPlayer.resetAudioData()
+        
         print("Cleared selected file, select another!")
         
     }
     
-    @IBAction func playAudio(_ sender: Any) {
+    @IBAction func generateAudio(_ sender: Any) {
         
         if selectedFile == nil {
             
-            Alerts.showStandardAlert(on: self, with: "Import File", message: "File has not been selected, so there is no audio")
+            Alerts.showStandardAlert(on: self, with: "Upload File", message: "File has not been selected, there is nothing to generate")
             
         } else {
             
-//            playAudioBtn.isHidden = true
-//            pauseAudioBtn.isHidden = false
-            
-//            pauseAudioBtn.isHidden = false
-//            playAudioBtn.setTitle("Stop Audio", for: .normal)
-            
             assignAudioSpecifications()
             
-            TextToSpeechService.shared.makeTextToSpeechRequest(text: extractedContent, voiceType: ViewController.voiceType!) {
-
-//                self.player?.play()
-                self.playAudioBtn.isEnabled = true
-//                self.playAudio()
+            TextToSpeechService.shared.makeTextToSpeechRequest(text: self.extractedContent, voiceType: ViewController.voiceType!) {
+                                                                
+            }
+                                            
+            sleep(3)
+            
+            TextToSpeechService.audioPlayer.getAudioData()
+                    
+            generateAudioBtn.setTitle("Audio Generated", for: .normal)
+            generateAudioBtn.isEnabled = false
+            
+        }
+        
+    }
+    
+    @IBAction func playPauseAudio(_ sender: Any) {
+        
+        if selectedFile == nil {
+            
+            Alerts.showStandardAlert(on: self, with: "Upload File", message: "File has not been selected, so there is no audio")
+            
+        } else {
+            
+             guard let player = TextToSpeechService.audioPlayer.player else { return }
                 
-                self.playAudio()
-                self.player?.play()
+            player.delegate = self
+            
+            if isPlaying {
+                                
+                player.pause()
+
+                isPlaying = false
+                isPaused = true
+
+                let playConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
+                playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: playConfiguration), for: .normal)
+
+            } else {
+                                
+                player.play()
+
+                isPlaying = true
+                isPaused = false
+
+                let pauseConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
+                playPauseAudioBtn.setImage(UIImage(systemName: "pause", withConfiguration: pauseConfiguration), for: .normal)
 
             }
-            
-            
-//            self.playAudioFromData()
-//            self.player?.play()
-            
-            
-
-//            guard let audio = TextToSpeechService.audioData else { return }
-//            self.playAudio(with: audio)
-            
             
         }
 
     }
     
-    
-    @IBAction func pauseAudio(_ sender: Any) {
+    @IBAction func replayAudio(_ sender: Any) {
         
-        print("AUDIO PAUSED")
+        if selectedFile == nil {
+            
+            Alerts.showStandardAlert(on: self, with: "Upload File", message: "File has not been selected, so there is no audio")
+            
+        } else {
         
-        playAudioBtn.isHidden = true
-        pauseAudioBtn.isHidden = false
-        
-        self.pauseAudio()
-        
+            guard let player = TextToSpeechService.audioPlayer.player else { return }
+            
+            player.stop()
+            player.currentTime = 0
+            isPlaying = false
+            
+        }
     }
-    
-    
+     
 }
 
 
