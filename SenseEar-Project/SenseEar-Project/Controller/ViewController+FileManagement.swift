@@ -24,9 +24,9 @@ extension ViewController: UIDocumentPickerDelegate {
         let storageRef = storage.reference()
 
         selectedFile = url.absoluteURL
-        filename = selectedFile?.lastPathComponent
+        ViewController.filename = selectedFile?.lastPathComponent
 
-        let documentRef = storageRef.child("documents/\(filename!)")
+        let documentRef = storageRef.child("documents/\(ViewController.filename!)")
 
         let uploadTask = documentRef.putFile(from: selectedFile!, metadata: nil) { metadata, error in
           guard let metadata = metadata else {
@@ -57,53 +57,51 @@ extension ViewController: UIDocumentPickerDelegate {
               //Check if file exists
               if FileManager.default.fileExists(atPath: documentsDirectory.path) {
 
-                      if selectedFile.pathExtension == "txt" {
+                  if selectedFile.pathExtension == "txt" {
 
-                          do {
+                      do {
 
-                              extractedContent = try String(contentsOfFile: pathToFile, encoding: .utf8)
-                            
-                                print(extractedContent)
-                            
-                                let textBuffer = TextBuffer()
-                            textBuffer.splitIntoSeparateBuffers(with: extractedContent)
-                            
-                         } catch {
-                              print("No Text File Found! \(error)")
-                         }
+                        extractedContent = try String(contentsOfFile: pathToFile, encoding: .utf8)
+                        
+                        print(extractedContent)
+                    
+                        let textBuffer = TextDivider()
+                        textBuffer.splitIntoSeparateBuffers(with: extractedContent)
+                        
+                     } catch {
+                          print("No Text File Found! \(error)")
+                     }
 
-                      } else if selectedFile.pathExtension == "docx" ||
-                                selectedFile.pathExtension == "xlsx" ||
-                                selectedFile.pathExtension == "pptx" {
-
+                  } else if selectedFile.pathExtension == "docx" ||
+                        selectedFile.pathExtension == "xlsx" ||
+                        selectedFile.pathExtension == "pptx" {
                                                         
                         // OutputPath is a relative path built from the URL of the selectedFile
                         let outputPath = pathToFile.replacingOccurrences(of: ".\(selectedFile.pathExtension)", with: ".pdf")
                         OfficeFileConverter.convertOfficeDoc(with: pathToFile, to: outputPath)
                         
-                            let pdfFileURL = URL(fileURLWithPath: outputPath)
-                            self.extractedContent = self.extractTextFromPDF(url: pdfFileURL)
-                            print("We might have done it!")
-                                                
-                            let textBuffer = TextBuffer()
-                           textBuffer.splitIntoSeparateBuffers(with: self.extractedContent)
+                        let pdfFileURL = URL(fileURLWithPath: outputPath)
+                        self.extractedContent = self.extractTextFromPDF(url: pdfFileURL)
+                                            
+                        let textBuffer = TextDivider()
+                       textBuffer.splitIntoSeparateBuffers(with: self.extractedContent)
                                                            
-                      } else if selectedFile.pathExtension == "pdf" {
+                  } else if selectedFile.pathExtension == "pdf" {
 
-                          do {
+                      do {
 
-                            self.extractedContent = self.extractTextFromPDF(url: selectedFile)
-                            
-                            print(self.extractedContent)
-                            
-                            let textBuffer = TextBuffer()
-                            textBuffer.splitIntoSeparateBuffers(with: self.extractedContent)
-                                                           
-                          } catch {
-                              print("Text Extraction Failed! \(error)")
-                          }
-
+                        self.extractedContent = self.extractTextFromPDF(url: selectedFile)
+                        
+                        print(self.extractedContent)
+                        
+                        let textBuffer = TextDivider()
+                        textBuffer.splitIntoSeparateBuffers(with: self.extractedContent)
+                                                       
+                      } catch {
+                          print("Text Extraction Failed! \(error)")
                       }
+
+                  }
 
              }
 
@@ -125,7 +123,7 @@ extension ViewController: UIDocumentPickerDelegate {
         if file.pathExtension == "txt" {
 
             let image = UIImage(named: "text-file-50.png")
-            fileTypeLogo = UIImageView(image: image)
+            ViewController.fileTypeLogo = UIImageView(image: image)
 
             importBtn.setTitle("Upload File", for: .normal)
 
@@ -135,7 +133,7 @@ extension ViewController: UIDocumentPickerDelegate {
         } else if file.pathExtension == "pdf" {
 
             let image = UIImage(named: "icons8-pdf-48-2.png")
-            fileTypeLogo = UIImageView(image: image)
+            ViewController.fileTypeLogo = UIImageView(image: image)
 
             importBtn.setTitle("Upload File", for: .normal)
 
@@ -145,7 +143,7 @@ extension ViewController: UIDocumentPickerDelegate {
         } else if file.pathExtension == "docx" {
 
             let image = UIImage(named: "icons8-microsoft-word-48.png")
-            fileTypeLogo = UIImageView(image: image)
+            ViewController.fileTypeLogo = UIImageView(image: image)
 
             importBtn.setTitle("Upload File", for: .normal)
 
@@ -155,7 +153,7 @@ extension ViewController: UIDocumentPickerDelegate {
         } else if file.pathExtension == "xlsx" {
 
             let image = UIImage(named: "icons8-microsoft-excel-48.png")
-            fileTypeLogo = UIImageView(image: image)
+            ViewController.fileTypeLogo = UIImageView(image: image)
 
             importBtn.setTitle("Upload File", for: .normal)
 
@@ -165,7 +163,7 @@ extension ViewController: UIDocumentPickerDelegate {
         } else if file.pathExtension == "pptx" {
 
             let image = UIImage(named: "icons8-microsoft-powerpoint-48.png")
-            fileTypeLogo = UIImageView(image: image)
+            ViewController.fileTypeLogo = UIImageView(image: image)
 
             importBtn.setTitle("Upload File", for: .normal)
 
@@ -174,10 +172,10 @@ extension ViewController: UIDocumentPickerDelegate {
 
         } else {
 
-            filename = ""
+            ViewController.filename = ""
 
             let image = UIImage()
-            fileTypeLogo = UIImageView(image: image)
+            ViewController.fileTypeLogo = UIImageView(image: image)
 
             selectedFileView.isHidden = true
             clearBtn.isHidden = true
@@ -186,7 +184,7 @@ extension ViewController: UIDocumentPickerDelegate {
             
         }
 
-        viewModel = SelectedFileViewModel(filename: filename!, fileTypeLogo: fileTypeLogo!)
+        viewModel = SelectedFileViewModel(filename: ViewController.filename!, fileTypeLogo: ViewController.fileTypeLogo!)
         selectedFileView.setup(with: viewModel)
 
     }

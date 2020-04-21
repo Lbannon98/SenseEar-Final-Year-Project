@@ -24,7 +24,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lml-4L-bMs">
                                                 <rect key="frame" x="147.66666666666666" y="125" width="30" height="36"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <connections>
                                                     <action selector="importFiles:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="PLR-Xp-XY8"/>
                                                 </connections>
@@ -59,16 +59,16 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="tBz-Vj-m6L" userLabel="Gender Labels Stack">
-                                        <rect key="frame" x="0.0" y="315.66666666666669" width="325" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="315.66666666666669" width="325" height="10"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Select Gender:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3J-tb-9fO">
-                                                <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="157" height="10"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zp-cv-ctT">
-                                                <rect key="frame" x="185.33333333333337" y="0.0" width="139.66666666666663" height="0.0"/>
+                                                <rect key="frame" x="187" y="5" width="138" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="K89-W5-cQL" userLabel="Gender Selection Stack">
-                                        <rect key="frame" x="0.0" y="345.66666666666669" width="325" height="70"/>
+                                        <rect key="frame" x="0.0" y="355.66666666666669" width="325" height="70"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NFJ-t3-faE" userLabel="GenderSelection">
                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="71"/>
@@ -108,7 +108,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="txp-2q-roJ" userLabel="Accent Labels Stack">
-                                        <rect key="frame" x="0.0" y="445.66666666666669" width="325" height="26.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="455.66666666666669" width="325" height="26.333333333333314"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Select Accent:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c76-DA-Ena">
                                                 <rect key="frame" x="0.0" y="0.0" width="295" height="26.333333333333332"/>
@@ -125,7 +125,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="feW-9M-SnD" userLabel="Accent Selection Stack">
-                                        <rect key="frame" x="0.0" y="502" width="325" height="70"/>
+                                        <rect key="frame" x="0.0" y="512" width="325" height="70"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oiw-MD-Oty" userLabel="AccentSelection">
                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="71"/>
@@ -158,13 +158,12 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Noi-h1-x5h">
-                                        <rect key="frame" x="0.0" y="602" width="325" height="25"/>
+                                        <rect key="frame" x="0.0" y="612" width="325" height="15"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="ZFN-8g-heL"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="325" id="g0X-14-dg0"/>
+                                            <constraint firstAttribute="height" constant="15" id="ZFN-8g-heL"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <state key="normal" title="Generate Audio"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <connections>
                                             <action selector="generateAudio:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="ujv-e3-8CD"/>
                                         </connections>
@@ -188,7 +187,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jq-44-RYI">
                                                 <rect key="frame" x="178" y="0.0" width="147" height="42"/>
                                                 <state key="normal" image="arrow.clockwise" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="large" weight="regular"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="regular"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="replayAudio:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="xz9-NR-k7C"/>

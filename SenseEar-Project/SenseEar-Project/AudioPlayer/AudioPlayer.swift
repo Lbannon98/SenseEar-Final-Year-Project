@@ -13,128 +13,32 @@ import MediaPlayer
 
 class AudioPlayer {
 
-    var player: AVAudioPlayer?
-    public static var isPaused = false
-    public static var remainingTime: Int?
+    var player: AVAudioPlayer? = nil
     
-    var currentTime = Int()
-//    var currentTimeMins: Int?
-//    var currentTimeSecs: Int?
+    public static var extractedAudio: Data?
     
-    public var timer: Timer?
-    
-    var vc: ViewController?
-    
-    var extractedAudio: Data?
-    let audioSession = AVAudioSession()
-    
-    var isPlaying: Bool {
-        return player?.isPlaying ?? false
-    }
-    
-    init() {
-        
-        do {
-            
-            guard let vc = vc else { return }
-            
-            vc.setupRemoteTransportControls()
-            
-        } catch {
-            
-            print("ERROR\(error)")
-            
-        }
+    public var musicManager: MPMusicPlayerController?
+    public var nowPlayingInfo: [String : Any]?
 
-    }
-    
     func getAudioData() {
         
-        try! self.audioSession.setCategory(.playback, mode: .default)
-        try! self.audioSession.setMode(AVAudioSession.Mode.measurement)
-        try! self.audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-        
         guard let audio = TextToSpeechService.audioData else { fatalError("Couldn't get audio data") }
-        extractedAudio = audio
-        
-        player = try! AVAudioPlayer(data: extractedAudio!)
+        AudioPlayer.extractedAudio = audio
+                
+        player = try! AVAudioPlayer(data: audio)
 
     }
     
     func resetAudioData() {
         
-        extractedAudio = nil
+        TextToSpeechService.audioData = Data()
         
-    }
-    
-    func playAudioContent(completion: ((_ isFinish: Bool, _ player: AVAudioPlayer, _ currentTimeInSec: Int, _ restTimeInSec: Int) -> ())? = nil) {
-
-        try! self.audioSession.setCategory(.playback, mode: .default)
-        try! self.audioSession.setMode(AVAudioSession.Mode.measurement)
-        try! self.audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-
-        guard let audio = TextToSpeechService.audioData else { return }
-        extractedAudio = audio
-
-        self.player = try! AVAudioPlayer(data: extractedAudio!)
-
-        self.player?.play()
-
-        vc?.setupNotificationView()
-
-        if timer == nil {
-
-            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                self.currentTime = Int(self.player!.currentTime)
-                AudioPlayer.remainingTime = Int(self.player!.duration) - Int(self.currentTime)
-                
-                print("Current Time: \(self.currentTime)")
-                print("Remaining Time: \(AudioPlayer.remainingTime)")
-
-                if AudioPlayer.remainingTime == 0 {
-                    completion?(true, self.player!, self.currentTime, AudioPlayer.remainingTime!)
-                    if self.timer != nil {
-                        self.timer!.invalidate()
-                        self.timer = nil
-                    }
-                } else {
-                    completion?(false, self.player!, self.currentTime, AudioPlayer.remainingTime!)
-                }
-            }
-
-        }
-
-    }
-
-    func pauseAudioContent() {
-
-        if player!.isPlaying {
+        do {
             
-            player?.pause()
-            AudioPlayer.isPaused = true
+            player = nil
             
-        } else {
-           AudioPlayer.isPaused = false
-        }
-        
-        vc?.setupNotificationView()
-        
-        if timer != nil {
-            timer!.invalidate()
-            timer = nil
-        }
-
-    }
-    
-    public func stopAudioContent() {
-        
-        player?.stop()
-        
-        vc?.setupNotificationView()
-
-        if timer != nil {
-            timer!.invalidate()
-            timer = nil
+        } catch {
+            print("ERROR: \(error)")
         }
         
     }

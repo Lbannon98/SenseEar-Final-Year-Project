@@ -29,12 +29,12 @@ let APIKey = valueForAPIKey(named:"GOOGLE_TTS_API_KEY")
 class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
     
     static let shared = TextToSpeechService()
-    var textBuffer = TextBuffer()
+    var textBuffer = TextDivider()
     
     public static var audioPlayer = AudioPlayer()
-    public static var completionHandler: (() -> Void)?
+    var completionHandler: (() -> Void)?
     
-    public static var audioData: Data?
+    public static var audioData: Data? = nil
     
     func makeTextToSpeechRequest(text: String, voiceType: VoiceTypes = .ukMale, completion: @escaping () -> Void) {
         
@@ -65,11 +65,11 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                }
                     
                 TextToSpeechService.audioData = smallAudioData
-                TextToSpeechService.completionHandler = completion
+                self.completionHandler = completion
                 
             } else if text.count > 5000 && text.count <= 10000 {
                 
-                let postData = self.buildMediumFilePostRequest(firstHalf: TextBuffer.dividedContents[0], secondHalf: TextBuffer.dividedContents[1], voiceType: voiceType)
+                let postData = self.buildMediumFilePostRequest(firstHalf: TextDivider.dividedContents[0], secondHalf: TextDivider.dividedContents[1], voiceType: voiceType)
                 let headers = ["X-Goog-Api-Key": APIKey, "Content-Type": "application/json; charset=utf-8"]
                 let mediumResponse = self.makeMediumFilePostRequest(url: ttsPostAPIUrl, firstHalfOfPostData: postData[1], secondHalfOfPostData: postData[0], headers: headers)
                 
@@ -92,11 +92,11 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                }
                 
                 TextToSpeechService.audioData = mediumAudioData
-                TextToSpeechService.completionHandler = completion
+                self.completionHandler = completion
  
             } else if text.count > 10000 && text.count <= 20000 {
                 
-                let postData = self.buildLargeFilePostRequest(firstHalf: TextBuffer.dividedContents[0], secondHalf: TextBuffer.dividedContents[1], thirdHalf: TextBuffer.dividedContents[2], fourthHalf: TextBuffer.dividedContents[3], voiceType: voiceType)
+                let postData = self.buildLargeFilePostRequest(firstHalf: TextDivider.dividedContents[0], secondHalf: TextDivider.dividedContents[1], thirdHalf: TextDivider.dividedContents[2], fourthHalf: TextDivider.dividedContents[3], voiceType: voiceType)
                  let headers = ["X-Goog-Api-Key": APIKey, "Content-Type": "application/json; charset=utf-8"]
                 let largeResponse = self.makeLargeFilePostRequest(url: ttsPostAPIUrl, firstHalfOfPostData: postData[3], secondHalfOfPostData: postData[2], thirdHalfOfPostData: postData[1], fourthHalfOfPostData: postData[0], headers: headers)
                  
@@ -119,7 +119,7 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                 }
                 
                 TextToSpeechService.audioData = largeAudioData
-                TextToSpeechService.completionHandler = completion
+                self.completionHandler = completion
 
             }
             

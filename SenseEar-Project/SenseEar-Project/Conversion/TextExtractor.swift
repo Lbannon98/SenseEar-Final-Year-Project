@@ -9,7 +9,7 @@
 import Foundation
 import PDFKit
 
-/// Controls the text extraction functionality
+/// Controls the text extraction functionality for PDF Files
 class TextExtractor {
     
     /// Controls text extraction from PDF files
