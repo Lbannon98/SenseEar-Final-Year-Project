@@ -38,13 +38,13 @@ enum GenderSelection: Int, CaseIterable, Identifiable, Hashable {
 }
 
 enum AccentSelection: Int, CaseIterable, Identifiable, Hashable {
-    case english
-    case american
-    case austrailian
+    case uk
+    case us
+    case aus
     case clear
     
     static func allValues() -> [String] {
-        return [english, american, austrailian, clear].map({$0.name})
+        return [uk, us, aus, clear].map({$0.name})
     }
     
     var id: UUID {
@@ -53,12 +53,11 @@ enum AccentSelection: Int, CaseIterable, Identifiable, Hashable {
     
     public var name: String {
        switch self {
-       case .english:
+       case .uk:
             return "UK"
-       case .american:
+       case .us:
             return "US"
-    
-       case .austrailian:
+       case .aus:
             return "AUS"
        case .clear:
             return ""
@@ -93,9 +92,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         "Remove": GenderSelection.clear] as [String : Any]
        
    let voiceAccentSelectionDictionary = [
-        "UK": AccentSelection.english,
-        "US": AccentSelection.american,
-        "AUS": AccentSelection.austrailian,
+        "UK": AccentSelection.uk,
+        "US": AccentSelection.us,
+        "AUS": AccentSelection.aus,
         "Remove": AccentSelection.clear] as [String : Any]
 
     let speechRecogniser: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale.current)
