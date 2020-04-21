@@ -84,7 +84,7 @@ extension ViewController: UIDocumentPickerDelegate {
                         self.extractedContent = self.extractTextFromPDF(url: pdfFileURL)
                                             
                         let textBuffer = TextDivider()
-                       textBuffer.splitIntoSeparateBuffers(with: self.extractedContent)
+                        textBuffer.splitIntoSeparateBuffers(with: self.extractedContent)
                                                            
                   } else if selectedFile.pathExtension == "pdf" {
 
