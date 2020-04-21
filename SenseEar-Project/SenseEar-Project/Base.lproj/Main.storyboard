@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S2z-Qn-eFc">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S2z-Qn-eFc">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,29 +12,29 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="S2z-Qn-eFc" customClass="ViewController" customModule="SenseEar_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6dp-ng-7xA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="feC-OK-Bic" userLabel="Container Stack">
-                                <rect key="frame" x="31.5" y="48" width="351" height="784"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="feC-OK-Bic" userLabel="Container Stack">
+                                <rect key="frame" x="25" y="49" width="325" height="699"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVc-xh-GHA">
-                                        <rect key="frame" x="0.0" y="0.0" width="351" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="285.66666666666669"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lml-4L-bMs">
-                                                <rect key="frame" x="160.5" y="12" width="30" height="36"/>
+                                                <rect key="frame" x="147.66666666666666" y="125" width="30" height="36"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <connections>
                                                     <action selector="importFiles:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="PLR-Xp-XY8"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnd-o5-bim" customClass="SelectedFileView" customModule="SenseEar_Project" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="15" width="261" height="30"/>
+                                                <rect key="frame" x="40" y="14.999999999999986" width="235" height="255.66666666666663"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBD-9B-WXF" userLabel="Clear Btn">
-                                                <rect key="frame" x="303" y="5" width="40" height="40"/>
+                                                <rect key="frame" x="277" y="5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="0BJ-NU-jIZ"/>
                                                     <constraint firstAttribute="width" constant="40" id="bxM-rG-vzq"/>
@@ -51,6 +51,7 @@
                                             <constraint firstItem="fnd-o5-bim" firstAttribute="leading" secondItem="DVc-xh-GHA" secondAttribute="leading" constant="40" id="9ol-w9-OCM"/>
                                             <constraint firstItem="lml-4L-bMs" firstAttribute="centerX" secondItem="DVc-xh-GHA" secondAttribute="centerX" id="MXW-zE-9sV"/>
                                             <constraint firstItem="fnd-o5-bim" firstAttribute="top" secondItem="DVc-xh-GHA" secondAttribute="top" constant="15" id="QNQ-aM-wzA"/>
+                                            <constraint firstAttribute="trailing" secondItem="fnd-o5-bim" secondAttribute="trailing" constant="50" id="XbT-gZ-jn6"/>
                                             <constraint firstAttribute="trailing" secondItem="JBD-9B-WXF" secondAttribute="trailing" constant="8" id="Ys5-K8-mFf"/>
                                             <constraint firstItem="JBD-9B-WXF" firstAttribute="leading" secondItem="fnd-o5-bim" secondAttribute="trailing" constant="2" id="gNM-TV-fua"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JBD-9B-WXF" secondAttribute="bottom" constant="15" id="qZu-D7-cNh"/>
@@ -58,16 +59,16 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="tBz-Vj-m6L" userLabel="Gender Labels Stack">
-                                        <rect key="frame" x="0.0" y="123" width="351" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="315.66666666666669" width="325" height="10"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Select Gender:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3J-tb-9fO">
-                                                <rect key="frame" x="0.0" y="0.0" width="168.5" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="157" height="10"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zp-cv-ctT">
-                                                <rect key="frame" x="198.5" y="13.5" width="152.5" height="0.0"/>
+                                                <rect key="frame" x="187" y="5" width="138" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -75,10 +76,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="K89-W5-cQL" userLabel="Gender Selection Stack">
-                                        <rect key="frame" x="0.0" y="212.5" width="351" height="70"/>
+                                        <rect key="frame" x="0.0" y="355.66666666666669" width="325" height="70"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NFJ-t3-faE" userLabel="GenderSelection">
-                                                <rect key="frame" x="0.0" y="0.0" width="211" height="71"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="71"/>
                                                 <segments>
                                                     <segment title="First"/>
                                                     <segment title="Second"/>
@@ -88,8 +89,8 @@
                                                 </connections>
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b40-mJ-6lk" customClass="CircleButton" customModule="SenseEar_Project" customModuleProvider="target">
-                                                <rect key="frame" x="281" y="0.0" width="70" height="70"/>
-                                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="255" y="0.0" width="70" height="70"/>
+                                                <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="G6z-6V-Umx"/>
                                                     <constraint firstAttribute="width" constant="70" id="XpP-s1-DSX"/>
@@ -107,16 +108,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="txp-2q-roJ" userLabel="Accent Labels Stack">
-                                        <rect key="frame" x="0.0" y="345.5" width="351" height="206.5"/>
+                                        <rect key="frame" x="0.0" y="455.66666666666669" width="325" height="26.333333333333314"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Select Accent:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c76-DA-Ena">
-                                                <rect key="frame" x="0.0" y="90" width="168.5" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="26.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lS2-n1-PpV">
-                                                <rect key="frame" x="198.5" y="103.5" width="152.5" height="0.0"/>
+                                                <rect key="frame" x="325" y="0.0" width="0.0" height="26.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -124,10 +125,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="feW-9M-SnD" userLabel="Accent Selection Stack">
-                                        <rect key="frame" x="0.0" y="615" width="351" height="70"/>
+                                        <rect key="frame" x="0.0" y="512" width="325" height="70"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oiw-MD-Oty" userLabel="AccentSelection">
-                                                <rect key="frame" x="0.0" y="0.0" width="211" height="71"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="71"/>
                                                 <segments>
                                                     <segment title="First"/>
                                                     <segment title="Second"/>
@@ -138,8 +139,8 @@
                                                 </connections>
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ai2-Kf-PDP" customClass="CircleButton" customModule="SenseEar_Project" customModuleProvider="target">
-                                                <rect key="frame" x="281" y="0.0" width="70" height="70"/>
-                                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="255" y="0.0" width="70" height="70"/>
+                                                <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="LfZ-5E-n1m"/>
                                                     <constraint firstAttribute="height" constant="70" id="v03-rk-Tfr"/>
@@ -156,28 +157,60 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBs-RH-EBc">
-                                        <rect key="frame" x="0.0" y="748" width="351" height="36"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Noi-h1-x5h">
+                                        <rect key="frame" x="0.0" y="612" width="325" height="15"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="ZFN-8g-heL"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Generate Audio File"/>
                                         <connections>
-                                            <action selector="generateFile:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="auK-xU-uH1"/>
+                                            <action selector="generateAudio:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="ujv-e3-8CD"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="dAG-lH-qaL" userLabel="Audio Controls Stack">
+                                        <rect key="frame" x="0.0" y="657" width="325" height="42"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBs-RH-EBc">
+                                                <rect key="frame" x="0.0" y="0.0" width="147" height="42"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="147" id="M0D-Eq-Vlk"/>
+                                                </constraints>
+                                                <state key="normal" image="play" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="large" weight="regular"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="playPauseAudio:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="auK-xU-uH1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jq-44-RYI">
+                                                <rect key="frame" x="178" y="0.0" width="147" height="42"/>
+                                                <state key="normal" image="arrow.clockwise" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="regular"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="replayAudio:" destination="S2z-Qn-eFc" eventType="touchUpInside" id="xz9-NR-k7C"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="feW-9M-SnD" firstAttribute="centerX" secondItem="feC-OK-Bic" secondAttribute="centerX" id="1ve-3G-djp"/>
                                     <constraint firstItem="txp-2q-roJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="feC-OK-Bic" secondAttribute="leading" id="5oG-jt-Kep"/>
+                                    <constraint firstItem="Noi-h1-x5h" firstAttribute="centerX" secondItem="feC-OK-Bic" secondAttribute="centerX" id="63y-6t-hmy"/>
                                     <constraint firstItem="txp-2q-roJ" firstAttribute="centerX" secondItem="feC-OK-Bic" secondAttribute="centerX" id="6ni-rh-o4M"/>
-                                    <constraint firstItem="MBs-RH-EBc" firstAttribute="centerX" secondItem="feC-OK-Bic" secondAttribute="centerX" id="8Xs-r2-YMy"/>
                                     <constraint firstItem="K89-W5-cQL" firstAttribute="centerX" secondItem="feC-OK-Bic" secondAttribute="centerX" id="IKK-34-EXC"/>
+                                    <constraint firstItem="Noi-h1-x5h" firstAttribute="top" secondItem="oiw-MD-Oty" secondAttribute="bottom" constant="30" id="JHJ-0i-J9w"/>
                                     <constraint firstItem="oiw-MD-Oty" firstAttribute="firstBaseline" secondItem="txp-2q-roJ" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="JNy-VM-KI1"/>
+                                    <constraint firstItem="Noi-h1-x5h" firstAttribute="top" secondItem="feW-9M-SnD" secondAttribute="bottom" constant="30" id="JWw-gt-zQR"/>
+                                    <constraint firstItem="Noi-h1-x5h" firstAttribute="top" secondItem="ai2-Kf-PDP" secondAttribute="bottom" constant="30" id="Jda-Bm-FQd"/>
+                                    <constraint firstItem="dAG-lH-qaL" firstAttribute="top" secondItem="Noi-h1-x5h" secondAttribute="bottom" constant="30" id="NdY-cw-Wfr"/>
                                     <constraint firstItem="K89-W5-cQL" firstAttribute="firstBaseline" secondItem="tBz-Vj-m6L" secondAttribute="baseline" constant="20" symbolType="layoutAnchor" id="Qd1-Qs-skv"/>
                                     <constraint firstItem="NFJ-t3-faE" firstAttribute="firstBaseline" secondItem="tBz-Vj-m6L" secondAttribute="baseline" constant="20" symbolType="layoutAnchor" id="SLC-GD-d1C"/>
                                     <constraint firstItem="DVc-xh-GHA" firstAttribute="centerX" secondItem="feC-OK-Bic" secondAttribute="centerX" id="WCi-AW-hAl"/>
                                     <constraint firstItem="tBz-Vj-m6L" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="feC-OK-Bic" secondAttribute="leading" id="c87-Sk-Swc"/>
-                                    <constraint firstAttribute="width" secondItem="feC-OK-Bic" secondAttribute="height" multiplier="13:29" id="ec4-t7-WuL"/>
                                     <constraint firstItem="txp-2q-roJ" firstAttribute="firstBaseline" secondItem="K89-W5-cQL" secondAttribute="baseline" constant="28" symbolType="layoutAnchor" id="rly-ye-XEP"/>
                                     <constraint firstItem="K89-W5-cQL" firstAttribute="centerX" secondItem="feC-OK-Bic" secondAttribute="centerX" id="ty5-g2-eFM"/>
                                     <constraint firstItem="feW-9M-SnD" firstAttribute="firstBaseline" secondItem="txp-2q-roJ" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="w2t-Ye-Cbe"/>
@@ -188,11 +221,20 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="MBs-RH-EBc" firstAttribute="centerX" secondItem="2NF-Vc-Ohg" secondAttribute="centerX" id="KvK-xb-oSJ"/>
+                            <constraint firstItem="dAG-lH-qaL" firstAttribute="centerX" secondItem="2NF-Vc-Ohg" secondAttribute="centerX" id="Cee-9s-SX3"/>
+                            <constraint firstItem="DVc-xh-GHA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2NF-Vc-Ohg" secondAttribute="top" constant="5" id="ITC-SP-8oo"/>
+                            <constraint firstItem="dAG-lH-qaL" firstAttribute="centerX" secondItem="2NF-Vc-Ohg" secondAttribute="centerX" id="Jf3-Cq-J1m"/>
+                            <constraint firstItem="tBz-Vj-m6L" firstAttribute="leading" secondItem="2NF-Vc-Ohg" secondAttribute="leading" constant="25" id="LB8-EU-deF"/>
+                            <constraint firstItem="K89-W5-cQL" firstAttribute="leading" secondItem="2NF-Vc-Ohg" secondAttribute="leading" constant="25" id="Q2o-Fd-P4J"/>
+                            <constraint firstItem="2NF-Vc-Ohg" firstAttribute="trailing" secondItem="dAG-lH-qaL" secondAttribute="trailing" constant="25" id="QdS-U2-lqB"/>
+                            <constraint firstItem="2NF-Vc-Ohg" firstAttribute="trailing" secondItem="feW-9M-SnD" secondAttribute="trailing" constant="25" id="RtQ-jo-D1F"/>
+                            <constraint firstItem="feW-9M-SnD" firstAttribute="leading" secondItem="2NF-Vc-Ohg" secondAttribute="leading" constant="25" id="XMh-IT-e3p"/>
                             <constraint firstItem="2NF-Vc-Ohg" firstAttribute="bottom" secondItem="feC-OK-Bic" secondAttribute="bottom" constant="30" id="bkL-LB-Gwq"/>
-                            <constraint firstItem="2NF-Vc-Ohg" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="feC-OK-Bic" secondAttribute="trailing" constant="25" id="g9q-Pn-Gpg"/>
-                            <constraint firstItem="feC-OK-Bic" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2NF-Vc-Ohg" secondAttribute="leading" constant="25" id="nby-yB-c0M"/>
-                            <constraint firstItem="feC-OK-Bic" firstAttribute="top" secondItem="2NF-Vc-Ohg" secondAttribute="top" constant="4" id="vwP-Gs-sGq"/>
+                            <constraint firstItem="2NF-Vc-Ohg" firstAttribute="trailing" secondItem="feC-OK-Bic" secondAttribute="trailing" constant="25" id="g9q-Pn-Gpg"/>
+                            <constraint firstItem="dAG-lH-qaL" firstAttribute="leading" secondItem="2NF-Vc-Ohg" secondAttribute="leading" constant="25" id="gig-yV-Nlp"/>
+                            <constraint firstItem="2NF-Vc-Ohg" firstAttribute="trailing" secondItem="DVc-xh-GHA" secondAttribute="trailing" constant="25" id="oG7-TF-oWm"/>
+                            <constraint firstItem="DVc-xh-GHA" firstAttribute="leading" secondItem="2NF-Vc-Ohg" secondAttribute="leading" constant="25" id="sDm-k9-UQd"/>
+                            <constraint firstItem="feC-OK-Bic" firstAttribute="top" secondItem="2NF-Vc-Ohg" secondAttribute="top" constant="5" id="vwP-Gs-sGq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2NF-Vc-Ohg"/>
                     </view>
@@ -203,8 +245,10 @@
                         <outlet property="documentView" destination="DVc-xh-GHA" id="Ijs-m1-Jnx"/>
                         <outlet property="genderAudioBtn" destination="b40-mJ-6lk" id="jWm-Fb-9jN"/>
                         <outlet property="genderSelectionSC" destination="NFJ-t3-faE" id="UoQ-Hj-QLt"/>
-                        <outlet property="generateBtn" destination="MBs-RH-EBc" id="XaN-6I-6AR"/>
+                        <outlet property="generateAudioBtn" destination="Noi-h1-x5h" id="8H4-hD-D6Z"/>
                         <outlet property="importBtn" destination="lml-4L-bMs" id="AJK-8X-yif"/>
+                        <outlet property="playPauseAudioBtn" destination="MBs-RH-EBc" id="H7A-Ku-AYb"/>
+                        <outlet property="replayBtn" destination="3Jq-44-RYI" id="1Tj-fT-2la"/>
                         <outlet property="selectedFileView" destination="fnd-o5-bim" id="4Dk-jQ-obB"/>
                         <outlet property="voiceSelectedAccentLbl" destination="lS2-n1-PpV" id="t4E-t8-WGh"/>
                         <outlet property="voiceSelectedGenderLbl" destination="3zp-cv-ctT" id="CHw-lE-dgf"/>
@@ -212,7 +256,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9LX-bH-pAl" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
+            <point key="canvasLocation" x="136.80000000000001" y="95.320197044334975"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="play" catalog="system" width="120" height="128"/>
+    </resources>
 </document>

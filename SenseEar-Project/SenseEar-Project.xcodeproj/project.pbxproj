@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		67A511DB25D4D9133B22605D /* Pods_SenseEar_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */; };
 		DB00B44A23F1DA4F0064AFE4 /* TestFile.txt in Sources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
 		DB00B45523F1DB7E0064AFE4 /* TestFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44123F1B9D90064AFE4 /* TestFile.txt */; };
 		DB06068123EAD0A00008B06A /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
 		DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */; };
+		DB0E1A6624485BA800BD1597 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0E1A6524485BA800BD1597 /* Alerts.swift */; };
+		DB0F28EF2430E978006CFF0E /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB0F28EE2430E978006CFF0E /* Keys.plist */; };
+		DB0F28F12430EDFA006CFF0E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F28F02430EDFA006CFF0E /* Keys.swift */; };
+		DB0F28F62431043A006CFF0E /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0F28F52431043A006CFF0E /* TextToSpeechService.swift */; };
 		DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB17221523A8E70600CBB8C6 /* CircleButton.swift */; };
 		DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */; };
 		DB24FB3223D8D8040036C32D /* VoiceController+VoiceRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */; };
 		DB2A3C2A240451A900544B7B /* OfficeFileConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2A3C29240451A900544B7B /* OfficeFileConverterTests.swift */; };
 		DB2A3C2B24045A0300544B7B /* OfficeFileConverter.swift in Resources */ = {isa = PBXBuildFile; fileRef = DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */; };
+		DB2D01DF243C62BB00319F4C /* TextDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D01DE243C62BB00319F4C /* TextDivider.swift */; };
 		DB2E72A323F99FF60075D7A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B2239D45CF0073DAFA /* Main.storyboard */; };
 		DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AC239D45CF0073DAFA /* AppDelegate.swift */; };
 		DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */; };
@@ -24,12 +28,15 @@
 		DB4214B4239D45CF0073DAFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B2239D45CF0073DAFA /* Main.storyboard */; };
 		DB4214B6239D45D00073DAFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B5239D45D00073DAFA /* Assets.xcassets */; };
 		DB4214B9239D45D00073DAFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B7239D45D00073DAFA /* LaunchScreen.storyboard */; };
-		DB4214C1239D46E90073DAFA /* GenderSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214C0239D46E90073DAFA /* GenderSelection.swift */; };
 		DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */; };
 		DB46BC4223E41F35006903D4 /* SelectedFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46BC4123E41F35006903D4 /* SelectedFileView.swift */; };
+		DB5E2BD9243E0D8F0060C8B9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5E2BD8243E0D8F0060C8B9 /* AVFoundation.framework */; };
 		DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB60B3D623E488550015DFB7 /* SelectedFileViewModel.swift */; };
 		DB760E9923EAB66700241855 /* SenseEar_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB760E9823EAB66700241855 /* SenseEar_ProjectTests.swift */; };
 		DB760EA223EABA0800241855 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB760EA123EABA0800241855 /* ViewModelTests.swift */; };
+		DBA69517243F19CD00DCC064 /* Pods_SenseEar_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */; };
+		DBB32033244F3D5500C65EEC /* ViewController+MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB32032244F3D5500C65EEC /* ViewController+MediaPlayer.swift */; };
+		DBC0220C244B13A2002D2361 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0220B244B13A2002D2361 /* AudioPlayer.swift */; };
 		DBC9728723FAA5BC00B3A7C4 /* CV - Lauren Bannon.docx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */; };
 		DBC9728823FAA5BF00B3A7C4 /* CV 2019.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */; };
 		DBC9728923FAA5C700B3A7C4 /* Module Due Dates - Semester 2.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */; };
@@ -61,10 +68,15 @@
 		DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CV - Lauren Bannon.docx"; sourceTree = "<group>"; };
 		DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Module Due Dates - Semester 2.xlsx"; sourceTree = "<group>"; };
 		DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB0E1A6524485BA800BD1597 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		DB0F28EE2430E978006CFF0E /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		DB0F28F02430EDFA006CFF0E /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		DB0F28F52431043A006CFF0E /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
 		DB17221523A8E70600CBB8C6 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+FileManagement.swift"; sourceTree = "<group>"; };
 		DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoiceController+VoiceRecognition.swift"; sourceTree = "<group>"; };
 		DB2A3C29240451A900544B7B /* OfficeFileConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConverterTests.swift; sourceTree = "<group>"; };
+		DB2D01DE243C62BB00319F4C /* TextDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDivider.swift; sourceTree = "<group>"; };
 		DB4214A9239D45CF0073DAFA /* SenseEar-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SenseEar-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4214AC239D45CF0073DAFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,14 +85,16 @@
 		DB4214B5239D45D00073DAFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB4214B8239D45D00073DAFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB4214BA239D45D00073DAFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB4214C0239D46E90073DAFA /* GenderSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelection.swift; sourceTree = "<group>"; };
 		DB46BC3F23E41EDC006903D4 /* SelectedFileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedFileView.xib; sourceTree = "<group>"; };
 		DB46BC4123E41F35006903D4 /* SelectedFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedFileView.swift; sourceTree = "<group>"; };
+		DB5E2BD8243E0D8F0060C8B9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DB60B3D623E488550015DFB7 /* SelectedFileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedFileViewModel.swift; sourceTree = "<group>"; };
 		DB760E9623EAB66700241855 /* SenseEar-ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SenseEar-ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB760E9823EAB66700241855 /* SenseEar_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenseEar_ProjectTests.swift; sourceTree = "<group>"; };
 		DB760E9A23EAB66700241855 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB760EA123EABA0800241855 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModelTests.swift; path = ViewModelTests/ViewModelTests.swift; sourceTree = "<group>"; };
+		DBB32032244F3D5500C65EEC /* ViewController+MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+MediaPlayer.swift"; sourceTree = "<group>"; };
+		DBC0220B244B13A2002D2361 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConverter.swift; sourceTree = "<group>"; };
 		DBD1DF872400346A002151D6 /* TextExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtractor.swift; sourceTree = "<group>"; };
 		E10428519F0FBD23813A16BF /* Pods_SenseEar_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenseEar_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67A511DB25D4D9133B22605D /* Pods_SenseEar_Project.framework in Frameworks */,
+				DBA69517243F19CD00DCC064 /* Pods_SenseEar_Project.framework in Frameworks */,
+				DB5E2BD9243E0D8F0060C8B9 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +135,7 @@
 		D91D570BE667CBB8BB00FBC9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB5E2BD8243E0D8F0060C8B9 /* AVFoundation.framework */,
 				4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */,
 				E10428519F0FBD23813A16BF /* Pods_SenseEar_ProjectTests.framework */,
 			);
@@ -138,6 +154,15 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		DB0F28F22430EEF0006CFF0E /* Text to Speech */ = {
+			isa = PBXGroup;
+			children = (
+				DB0F28F52431043A006CFF0E /* TextToSpeechService.swift */,
+				DB2D01DE243C62BB00319F4C /* TextDivider.swift */,
+			);
+			path = "Text to Speech";
+			sourceTree = "<group>";
+		};
 		DB17221323A8E65600CBB8C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +179,7 @@
 				DB4214B0239D45CF0073DAFA /* ViewController.swift */,
 				DB24FB2F23D8D7970036C32D /* ViewController+FileManagement.swift */,
 				DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */,
+				DBB32032244F3D5500C65EEC /* ViewController+MediaPlayer.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -181,6 +207,9 @@
 		DB4214AB239D45CF0073DAFA /* SenseEar-Project */ = {
 			isa = PBXGroup;
 			children = (
+				DBC0220A244B1394002D2361 /* AudioPlayer */,
+				DBC02206244B0F66002D2361 /* Alerts */,
+				DB0F28F22430EEF0006CFF0E /* Text to Speech */,
 				DBD1DF862400344F002151D6 /* Conversion */,
 				DB95B2AD23E41FF000BC109F /* View Model */,
 				DB17221323A8E65600CBB8C6 /* View */,
@@ -192,7 +221,8 @@
 				DB4214B7239D45D00073DAFA /* LaunchScreen.storyboard */,
 				DB0CDD2523D0B0B200DA1708 /* GoogleService-Info.plist */,
 				DB4214BA239D45D00073DAFA /* Info.plist */,
-				DB4214C0239D46E90073DAFA /* GenderSelection.swift */,
+				DB0F28EE2430E978006CFF0E /* Keys.plist */,
+				DB0F28F02430EDFA006CFF0E /* Keys.swift */,
 			);
 			path = "SenseEar-Project";
 			sourceTree = "<group>";
@@ -215,6 +245,22 @@
 				DB60B3D623E488550015DFB7 /* SelectedFileViewModel.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DBC02206244B0F66002D2361 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				DB0E1A6524485BA800BD1597 /* Alerts.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		DBC0220A244B1394002D2361 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				DBC0220B244B13A2002D2361 /* AudioPlayer.swift */,
+			);
+			path = AudioPlayer;
 			sourceTree = "<group>";
 		};
 		DBD1DF862400344F002151D6 /* Conversion */ = {
@@ -312,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB0F28EF2430E978006CFF0E /* Keys.plist in Resources */,
 				DB4214B9239D45D00073DAFA /* LaunchScreen.storyboard in Resources */,
 				DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */,
 				DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */,
@@ -441,16 +488,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB17221623A8E70600CBB8C6 /* CircleButton.swift in Sources */,
+				DB0F28F12430EDFA006CFF0E /* Keys.swift in Sources */,
+				DB0E1A6624485BA800BD1597 /* Alerts.swift in Sources */,
 				DB24FB3223D8D8040036C32D /* VoiceController+VoiceRecognition.swift in Sources */,
+				DBB32033244F3D5500C65EEC /* ViewController+MediaPlayer.swift in Sources */,
 				DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */,
+				DB2D01DF243C62BB00319F4C /* TextDivider.swift in Sources */,
 				DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */,
 				DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */,
 				DB46BC4223E41F35006903D4 /* SelectedFileView.swift in Sources */,
 				DBD1DF882400346A002151D6 /* TextExtractor.swift in Sources */,
-				DB4214C1239D46E90073DAFA /* GenderSelection.swift in Sources */,
+				DBC0220C244B13A2002D2361 /* AudioPlayer.swift in Sources */,
 				DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */,
 				DBD1DF8324002D85002151D6 /* OfficeFileConverter.swift in Sources */,
 				DB24FB3023D8D7970036C32D /* ViewController+FileManagement.swift in Sources */,
+				DB0F28F62431043A006CFF0E /* TextToSpeechService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,11 +668,83 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 56AK266L9G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/SenseEar-Project/AudioKit-iOS",
+				);
 				INFOPLIST_FILE = "SenseEar-Project/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"stdc++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FIRAnalyticsConnector\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseInstallations\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleDataTransport\"",
+					"-framework",
+					"\"GoogleDataTransportCCTSupport\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"MediaPlayer\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"PDFNet\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"Tools\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"nanopb\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "lauren.com.SenseEar-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -636,11 +760,83 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 56AK266L9G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/SenseEar-Project/AudioKit-iOS",
+				);
 				INFOPLIST_FILE = "SenseEar-Project/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"stdc++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FIRAnalyticsConnector\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseInstallations\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleDataTransport\"",
+					"-framework",
+					"\"GoogleDataTransportCCTSupport\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"MediaPlayer\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"PDFNet\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"Tools\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"nanopb\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "lauren.com.SenseEar-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";

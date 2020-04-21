@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import PDFNet
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         PTPDFNet.initialize("Insert Commercial License Key Here After Purchase")
+        
+        let audioSession = AVAudioSession.sharedInstance()
+                       
+        do {
+           
+           try! audioSession.setCategory(.playback, mode: .default)
+           try! audioSession.setMode(AVAudioSession.Mode.measurement)
+           try! audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+           
+        } catch {
+           print("Setting category to AVAudioSessionCategoryPlayback failed: \(error)")
+        }
         
         return true
     }

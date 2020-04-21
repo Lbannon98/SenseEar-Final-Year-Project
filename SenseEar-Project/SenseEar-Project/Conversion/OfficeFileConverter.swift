@@ -17,6 +17,7 @@ class OfficeFileConverter: NSObject {
     ///   - inputPath: Input path of Office files
     ///   - outputPath: Output path of converted pdf file
     class func convertOfficeDoc(with inputPath: String, to outputPath: String) {
+        
         // Start with a PDFDoc (the conversion destination)
         let pdfDoc: PTPDFDoc = PTPDFDoc()
 
