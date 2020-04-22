@@ -6,6 +6,7 @@
 //  Copyright © 2019 Lauren Bannon. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Speech
 import MobileCoreServices
@@ -104,7 +105,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     
     //File Management Variables
     public static var filename: String?
-    var selectedFile: URL?
+    public static var selectedFile: URL?
     var newConvertedPdf: URL?
     public static var fileTypeLogo: UIImageView?
     
@@ -126,12 +127,15 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     var isPaused = false
     var isPlaying = false
     
+    //History Variables
+    var selectedFileStack: [HistoryDataSource] = []
+    
     //View Model
     var viewModel: SelectedFileViewModel!
 
     init(filename: String?, selectedFile: URL?, viewModel: SelectedFileViewModel!) {
         ViewController.filename = filename
-        self.selectedFile = selectedFile
+        ViewController.selectedFile = selectedFile
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -148,6 +152,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         setUp()
         addValuesToSegmentControls()
         requestMicrophoneAccess()
+        
     }
     
     public func setUp() {
@@ -327,7 +332,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         selectedFileView.isHidden = true
         clearBtn.isHidden = true
         
-        selectedFile = nil
+        ViewController.selectedFile = nil
         
         generateAudioBtn.setTitle("Generate Audio", for: .normal)
         generateAudioBtn.isEnabled = false
@@ -340,7 +345,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     
     @IBAction func generateAudio(_ sender: Any) {
                 
-        if selectedFile == nil {
+        if ViewController.selectedFile == nil {
             
             Alerts.showStandardAlert(on: self, with: "Upload File", message: "File has not been selected, there is nothing to generate")
             
@@ -371,6 +376,13 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
             self.setupRemoteTransportControls()
             self.setupNotificationView()
             
+            let date = Date()
+            let time = date.formatTime(format: "HH:mm")
+            
+            selectedFileStack = [HistoryDataSource(image: ViewController.fileTypeLogo!.image!, name: ViewController.filename!, time: time)]
+                          
+            HistoryViewController.arrayData.append(contentsOf: selectedFileStack)
+            
             generateAudioBtn.setTitle("Audio Generated", for: .normal)
             
         }
@@ -379,11 +391,11 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     
     @IBAction func playPauseAudio(_ sender: Any) {
         
-        if selectedFile == nil && AudioPlayer.extractedAudio == nil {
+        if ViewController.selectedFile == nil && AudioPlayer.extractedAudio == nil {
             
             Alerts.showStandardAlert(on: self, with: "Upload File", message: "File has not been selected, so there is no audio")
             
-        } else if selectedFile != nil && AudioPlayer.extractedAudio == nil {
+        } else if ViewController.selectedFile != nil && AudioPlayer.extractedAudio == nil {
             
              Alerts.showStandardAlert(on: self, with: "Generate Audio", message: "File has been selected, but audio needs to be generated, press Generate Audio")
             
@@ -425,11 +437,11 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     
     @IBAction func replayAudio(_ sender: Any) {
         
-        if selectedFile == nil && AudioPlayer.extractedAudio == nil {
+        if ViewController.selectedFile == nil && AudioPlayer.extractedAudio == nil {
             
             Alerts.showStandardAlert(on: self, with: "Upload File", message: "File has not been selected, and no audio was generated")
             
-        } else if selectedFile != nil && AudioPlayer.extractedAudio == nil {
+        } else if ViewController.selectedFile != nil && AudioPlayer.extractedAudio == nil {
             
              Alerts.showStandardAlert(on: self, with: "Generate Audio", message: "File has been selected, but audio needs to be generated, press Generate Audio")
             
@@ -441,6 +453,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
             player.currentTime = 0
             isPlaying = false
             
+            let playConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
+            playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: playConfiguration), for: .normal)
+            
         }
     }
     
@@ -451,6 +466,14 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
 
     }
      
+}
+
+extension Date {
+   func formatTime(format: String) -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        return dateformat.string(from: self)
+    }
 }
 
 

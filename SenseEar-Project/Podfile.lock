@@ -83,6 +83,7 @@ PODS:
   - Nimble (8.0.5)
   - PDFNet (7.0.4.73314)
   - PromisesObjC (1.2.8)
+  - UIEmptyState (4.0.1)
 
 DEPENDENCIES:
   - Firebase
@@ -91,6 +92,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - Nimble
   - PDFNet (from `https://www.pdftron.com/downloads/ios/cocoapods/pdfnet/latest.podspec`)
+  - UIEmptyState
 
 SPEC REPOS:
   trunk:
@@ -111,6 +113,7 @@ SPEC REPOS:
     - nanopb
     - Nimble
     - PromisesObjC
+    - UIEmptyState
 
 EXTERNAL SOURCES:
   PDFNet:
@@ -135,7 +138,8 @@ SPEC CHECKSUMS:
   Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
   PDFNet: bbce7f70c79ac433173640d9f21190381af6f873
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  UIEmptyState: 767376694d9402452fb3c0a5a5283176c6a53c92
 
-PODFILE CHECKSUM: b74ccf8b09f65cec1d202f12c5f4840a72af99ef
+PODFILE CHECKSUM: 57d453914c3fc54f4ca4a12e9df1c4dd130c04ea
 
 COCOAPODS: 1.8.4
