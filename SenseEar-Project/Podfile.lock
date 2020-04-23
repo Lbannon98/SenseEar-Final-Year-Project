@@ -81,7 +81,7 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - Nimble (8.0.5)
-  - PDFNet (7.0.4.73314)
+  - PDFNet (6.10.4.70914)
   - PromisesObjC (1.2.8)
   - UIEmptyState (4.0.1)
 
@@ -91,7 +91,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Storage
   - Nimble
-  - PDFNet (from `https://www.pdftron.com/downloads/ios/cocoapods/pdfnet/latest.podspec`)
+  - PDFNet (from `https://www.pdftron.com/downloads/ios/staging/cocoapods/pdfnet/6.10.4.70914.podspec`)
   - UIEmptyState
 
 SPEC REPOS:
@@ -117,7 +117,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   PDFNet:
-    :podspec: https://www.pdftron.com/downloads/ios/cocoapods/pdfnet/latest.podspec
+    :podspec: https://www.pdftron.com/downloads/ios/staging/cocoapods/pdfnet/6.10.4.70914.podspec
 
 SPEC CHECKSUMS:
   Firebase: 5d77105d9740a07ca6b16927ca971db7e860faaf
@@ -136,10 +136,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
-  PDFNet: bbce7f70c79ac433173640d9f21190381af6f873
+  PDFNet: b955776a58a4ef3384f5d1d965c031198732447d
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   UIEmptyState: 767376694d9402452fb3c0a5a5283176c6a53c92
 
-PODFILE CHECKSUM: 57d453914c3fc54f4ca4a12e9df1c4dd130c04ea
+PODFILE CHECKSUM: 3ca583115ddae88090c91874f455444dca2a7902
 
 COCOAPODS: 1.8.4

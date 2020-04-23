@@ -9,7 +9,8 @@ target 'SenseEar-Project' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
-  pod 'PDFNet', podspec: 'https://www.pdftron.com/downloads/ios/cocoapods/pdfnet/latest.podspec'
+  pod 'PDFNet', podspec: 'https://www.pdftron.com/downloads/ios/staging/cocoapods/pdfnet/6.10.4.70914.podspec'
+
   pod 'UIEmptyState'
   
   target 'SenseEar-ProjectTests' do
