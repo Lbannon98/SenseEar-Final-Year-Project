@@ -303,25 +303,25 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sho-aO-QsZ">
-                                            <rect key="frame" x="105" y="11" width="265" height="0.0"/>
+                                            <rect key="frame" x="115" y="15" width="255" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UoX-21-ouv">
-                                            <rect key="frame" x="306" y="59" width="64" height="20"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoX-21-ouv">
+                                            <rect key="frame" x="306" y="79" width="59" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="sho-aO-QsZ" firstAttribute="top" secondItem="Fqe-U9-zgw" secondAttribute="topMargin" id="A0L-Tp-pRc"/>
+                                        <constraint firstAttribute="trailing" secondItem="UoX-21-ouv" secondAttribute="trailing" constant="10" id="1RW-4K-zlG"/>
                                         <constraint firstItem="UoX-21-ouv" firstAttribute="leading" secondItem="JbW-U9-F3s" secondAttribute="trailing" constant="211" id="U6D-6y-KKW"/>
-                                        <constraint firstAttribute="trailing" secondItem="UoX-21-ouv" secondAttribute="trailing" constant="10" id="fbC-3K-Wmg"/>
+                                        <constraint firstItem="sho-aO-QsZ" firstAttribute="top" secondItem="Fqe-U9-zgw" secondAttribute="top" constant="15" id="WvB-G5-mJ1"/>
+                                        <constraint firstItem="UoX-21-ouv" firstAttribute="bottom" secondItem="Fqe-U9-zgw" secondAttribute="bottomMargin" id="XLT-ai-Zxp"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="sho-aO-QsZ" secondAttribute="trailing" constant="-11" id="nWE-Zp-9X4"/>
-                                        <constraint firstItem="sho-aO-QsZ" firstAttribute="leading" secondItem="JbW-U9-F3s" secondAttribute="trailing" constant="10" id="tTg-w0-r12"/>
+                                        <constraint firstItem="sho-aO-QsZ" firstAttribute="leading" secondItem="JbW-U9-F3s" secondAttribute="trailing" constant="20" id="tTg-w0-r12"/>
                                         <constraint firstItem="JbW-U9-F3s" firstAttribute="centerY" secondItem="Fqe-U9-zgw" secondAttribute="centerY" id="viB-LF-M7l"/>
                                         <constraint firstItem="JbW-U9-F3s" firstAttribute="leading" secondItem="Fqe-U9-zgw" secondAttribute="leading" constant="15" id="yg7-ND-sH4"/>
                                     </constraints>

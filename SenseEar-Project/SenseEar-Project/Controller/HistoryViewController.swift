@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import UIEmptyState
+import FirebaseDatabase
 
 class HistoryDataSource {
     
@@ -31,6 +32,8 @@ class HistoryViewController: UITableViewController {
     var viewModel: SelectedFileViewModel?
     let cellReuseIdentifier = "HistoryCell"
     
+    var vc: ViewController? = ViewController(filename: nil, selectedFile: nil, viewModel: nil)
+    
     public static var arrayData: [HistoryDataSource] = []
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,11 +53,15 @@ class HistoryViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         self.reloadEmptyStateForTableView(self.tableView)
     }
        
     override func viewDidLoad() {
         setUp()
+        
+        self.vc?.readingHistoryDataFromFirebase()
+        sleep(2)
     }
     
     public func setUp() {

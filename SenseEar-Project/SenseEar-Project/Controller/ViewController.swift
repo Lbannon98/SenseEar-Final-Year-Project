@@ -12,6 +12,8 @@ import Speech
 import MobileCoreServices
 import AVFoundation
 import MediaPlayer
+import FirebaseDatabase
+import FirebaseStorage
 
 enum GenderSelection: Int, CaseIterable, Identifiable, Hashable {
     case male
@@ -128,7 +130,14 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     var isPlaying = false
     
     //History Variables
+    public static var firebaseDBRef = Database.database().reference()
+    public var time: String?
+    public static var historyFilename: String?
+    public static var historyTime: String?
+    public static var historyImage: UIImage?
     var selectedFileStack: [HistoryDataSource] = []
+    var firbaseDBHandle: DatabaseHandle?
+    var sortingTimeStamp: [Date] = []
     
     //View Model
     var viewModel: SelectedFileViewModel!
@@ -233,6 +242,66 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
             
             Alerts.showStandardAlert(on: self, with: "Try Again", message: "Audio specifications did not assign correctly!")
             
+        }
+        
+    }
+    
+    func writeHistoryDatatoFirebase() {
+        
+        ViewController.firebaseDBRef.child("history-data/\(UUID().uuidString)").setValue([
+            
+            "filename" : ViewController.filename!,
+            "time" : time!
+        
+        ])
+        
+    }
+    
+    func setHistoryFileImage() {
+        
+        if ViewController.historyFilename?.contains("txt") == true {
+            
+        }
+             
+        if ViewController.historyFilename?.contains("txt") == true {
+
+          ViewController.historyImage = UIImage(named: "text-file-50.png")
+
+      } else if ViewController.historyFilename?.contains("pdf") == true {
+
+          ViewController.historyImage = UIImage(named: "icons8-pdf-48-2.png")
+
+      } else if ViewController.historyFilename?.contains("docx") == true {
+
+          ViewController.historyImage = UIImage(named: "icons8-microsoft-word-48.png")
+
+      } else if ViewController.historyFilename?.contains("xlsx") == true {
+
+          ViewController.historyImage = UIImage(named: "icons8-microsoft-excel-48.png")
+          
+      } else if ViewController.historyFilename?.contains("pptx") == true {
+
+           ViewController.historyImage = UIImage(named: "icons8-microsoft-powerpoint-48.png")
+      
+      }
+      
+    }
+    
+    public func readingHistoryDataFromFirebase() {
+                
+        firbaseDBHandle = ViewController.firebaseDBRef.child("history-data").observe(.childAdded) { (snapshot) in
+            
+            let data = snapshot.value as? [String : AnyObject] ?? [:]
+            
+            ViewController.historyTime = data["time"]! as? String
+            ViewController.historyFilename = data["filename"]! as? String
+            
+            self.setHistoryFileImage()
+            
+            self.selectedFileStack = [HistoryDataSource(image: ViewController.historyImage!, name: ViewController.historyFilename!, time: ViewController.historyTime!)]
+            
+            HistoryViewController.arrayData.append(contentsOf: self.selectedFileStack)
+        
         }
         
     }
@@ -359,15 +428,15 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
                        
             if TextDivider.characterCount! <= 5000 {
                 
-                sleep(10)
+                sleep(12)
                 
             } else if TextDivider.characterCount! > 5000 && TextDivider.characterCount! <= 10000 {
             
-                sleep(15)
+                sleep(18)
                 
             } else {
                 
-                sleep(20)
+                sleep(22)
                 
             }
             
@@ -375,13 +444,13 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
             
             self.setupRemoteTransportControls()
             self.setupNotificationView()
-            
+
             let date = Date()
-            let time = date.formatTime(format: "HH:mm")
-            
-            selectedFileStack = [HistoryDataSource(image: ViewController.fileTypeLogo!.image!, name: ViewController.filename!, time: time)]
-                          
+            time = date.formatTime(format: "MM-dd-yyyy HH:mm")
+                         
             HistoryViewController.arrayData.append(contentsOf: selectedFileStack)
+           
+            self.writeHistoryDatatoFirebase()
             
             generateAudioBtn.setTitle("Audio Generated", for: .normal)
             
