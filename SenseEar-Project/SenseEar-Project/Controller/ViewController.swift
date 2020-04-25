@@ -167,6 +167,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     public func setUp() {
         
         documentView.layer.borderWidth = 2
+        documentView.layer.cornerRadius = 20
         documentView.layer.borderColor = UIColor.black.cgColor
         
         importBtn.setTitle("Upload File", for: .normal)
