@@ -28,40 +28,38 @@ class HistoryDataSource {
 class HistoryViewController: UITableViewController {
     
     @IBOutlet var tableview: UITableView!
+    @IBOutlet var emptyStateView: UIView!
     
-    var viewModel: SelectedFileViewModel?
     let cellReuseIdentifier = "HistoryCell"
     
     var vc: ViewController? = ViewController(filename: nil, selectedFile: nil, viewModel: nil)
     
     public static var arrayData: [HistoryDataSource] = []
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        DispatchQueue.main.async {
-            self.tableview.reloadData()
-        }
-        
-        if HistoryViewController.arrayData.isEmpty == true {
-            self.tableview.separatorStyle = .none
-        } else {
-            self.tableView.separatorStyle = .singleLine
-        }
-        
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.reloadEmptyStateForTableView(self.tableView)
+                
+        self.tableview.reloadData()
+
+        self.reloadEmptyState()
+
+        if HistoryViewController.arrayData.count > 0 {
+
+           self.tableView.separatorStyle = .singleLine
+
+       } else {
+
+           self.tableview.separatorStyle = .none
+
+       }
+
     }
        
     override func viewDidLoad() {
-        setUp()
         
+        setUp()
         self.vc?.readingHistoryDataFromFirebase()
-        sleep(2)
+        
     }
     
     public func setUp() {
@@ -73,13 +71,12 @@ class HistoryViewController: UITableViewController {
         
         self.emptyStateDataSource = self
         self.emptyStateDelegate = self
-            
+        
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return HistoryViewController.arrayData.count
-        
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -96,17 +93,17 @@ class HistoryViewController: UITableViewController {
 }
 
 extension HistoryViewController: UIEmptyStateDataSource, UIEmptyStateDelegate {
-    
+
     var emptyStateImage: UIImage? {
         return #imageLiteral(resourceName: "empty-state-history")
     }
 
     var emptyStateTitle: NSAttributedString {
-        
+
         let attrs = [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1),
                      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22)]
         return NSAttributedString(string: "No History", attributes: attrs)
-        
+
     }
-    
+
 }
