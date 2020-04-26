@@ -122,7 +122,7 @@ extension ViewController {
                 }
 
               } else {
-                  self.voiceSelectedGenderLbl.text = "Not understood, try again"
+                  self.voiceSelectedGenderLbl.text = "Try again"
               }
   
           }
@@ -221,7 +221,7 @@ extension ViewController {
                 }
                   
               } else {
-                    self.voiceSelectedAccentLbl.text = "Not understood, try again"
+                    self.voiceSelectedAccentLbl.text = "Try again"
               }
               
           }

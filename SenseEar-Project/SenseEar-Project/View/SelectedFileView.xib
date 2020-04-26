@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f9b-8Q-XAU">
-                    <rect key="frame" x="5" y="6" width="110" height="99"/>
+                    <rect key="frame" x="5" y="6" width="110" height="106"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uod-5J-Yi8">
                     <rect key="frame" x="15" y="114" width="90" height="0.0"/>
@@ -38,10 +38,10 @@
                 <constraint firstItem="f9b-8Q-XAU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Jk2-BR-K6I"/>
                 <constraint firstItem="uod-5J-Yi8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="O6R-XH-MZu"/>
                 <constraint firstItem="uod-5J-Yi8" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Ynn-Kh-FWf"/>
-                <constraint firstItem="uod-5J-Yi8" firstAttribute="firstBaseline" secondItem="f9b-8Q-XAU" secondAttribute="baseline" constant="30.5" symbolType="layoutAnchor" id="ZUy-mL-mFN"/>
                 <constraint firstItem="f9b-8Q-XAU" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="cn5-GD-NBY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="f9b-8Q-XAU" secondAttribute="top" constant="38" id="fA8-98-fwK"/>
                 <constraint firstItem="f9b-8Q-XAU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="frN-Bk-E9K"/>
+                <constraint firstItem="uod-5J-Yi8" firstAttribute="top" secondItem="f9b-8Q-XAU" secondAttribute="bottom" constant="2" id="q8a-PP-LLk"/>
                 <constraint firstItem="uod-5J-Yi8" firstAttribute="centerX" secondItem="f9b-8Q-XAU" secondAttribute="centerX" id="yTG-qy-aDN"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>

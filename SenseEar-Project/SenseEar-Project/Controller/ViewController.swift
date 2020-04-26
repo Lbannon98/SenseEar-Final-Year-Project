@@ -122,6 +122,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     //UIElements
     let microphoneIcon = UIImage(named: "microphone-30.png")
     let stopIcon = UIImage(named: "stop.png")
+    let iconConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
     
     //Media Player Variables
     public var musicManager: MPMusicPlayerController?
@@ -172,8 +173,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         
         importBtn.setTitle("Upload File", for: .normal)
         
-        let cancelConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
-        clearBtn.setImage(UIImage(systemName: "multiply.circle.fill", withConfiguration: cancelConfiguration), for: .normal)
+        clearBtn.setImage(UIImage(systemName: "multiply.circle.fill", withConfiguration: iconConfiguration), for: .normal)
                 
         let tintedImage = microphoneIcon?.withRenderingMode(.alwaysTemplate)
         
@@ -403,7 +403,12 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         generateAudioBtn.setTitle("Generate Audio", for: .normal)
         generateAudioBtn.isEnabled = false
         
+        voiceSelectedGenderLbl.text = nil
+        voiceSelectedAccentLbl.text = nil
+        
         TextToSpeechService.audioPlayer.resetAudioData()
+        
+        playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: iconConfiguration), for: .normal)
         
         print("Cleared selected file, select another!")
         
@@ -480,8 +485,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
                 isPlaying = false
                 isPaused = true
 
-                let playConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
-                playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: playConfiguration), for: .normal)
+                playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: iconConfiguration), for: .normal)
 
             } else {
                                 
@@ -492,8 +496,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
                 isPlaying = true
                 isPaused = false
 
-                let pauseConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
-                playPauseAudioBtn.setImage(UIImage(systemName: "pause", withConfiguration: pauseConfiguration), for: .normal)
+                playPauseAudioBtn.setImage(UIImage(systemName: "pause", withConfiguration: iconConfiguration), for: .normal)
 
             }
             
@@ -519,16 +522,14 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
             player.currentTime = 0
             isPlaying = false
             
-            let playConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
-            playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: playConfiguration), for: .normal)
+            playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: iconConfiguration), for: .normal)
             
         }
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
 
-        let playConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
-        playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: playConfiguration), for: .normal)
+        playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: iconConfiguration), for: .normal)
 
     }
      
