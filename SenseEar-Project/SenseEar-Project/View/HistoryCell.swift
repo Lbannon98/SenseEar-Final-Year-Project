@@ -14,10 +14,12 @@ class HistoryCell: UITableViewCell {
     @IBOutlet weak var nameOfFile: UILabel!
     @IBOutlet weak var time: UILabel!
     
-    func setUp(with datasource: HistoryDataSource) {
+    func setup(with datasource: HistoryDataSource) {
+        
         fileTypeImage.image = datasource.image
         nameOfFile.text = datasource.name
         time.text = datasource.time
+        
     }
     
 }

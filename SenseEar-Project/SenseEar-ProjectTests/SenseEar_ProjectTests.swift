@@ -17,8 +17,8 @@ class SenseEar_ProjectTests: XCTestCase {
     
     override func setUp() {
       super.setUp()
-      
-        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        
+       viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController
         
     }
 
@@ -90,6 +90,45 @@ class SenseEar_ProjectTests: XCTestCase {
           
            //Then
            expect(textExtracted).toNot(beNil())
+    }
+    
+    func testTextExtractor() {
+           
+           //Given
+           let testBundle = Bundle(for: type(of: self))
+
+           guard let fileURL = testBundle.url(forResource: "CV 2019", withExtension: "pdf")
+             else { fatalError() }
+
+           print("FILE URL: \(fileURL.description)")
+           
+           //When
+           let textExtracted = viewController.extractTextFromPDF(url: fileURL)
+           
+           print("TEXT EXTRACTED: \(String(textExtracted))")
+          
+           //Then
+           expect(textExtracted).toNot(beNil())
+    }
+    
+    func testtextExtractionFromSelectedFile() {
+           
+        //Given
+        let testBundle = Bundle(for: type(of: self))
+
+        guard let fileURL = testBundle.url(forResource: "CV 2019", withExtension: "pdf")
+             else { fatalError() }
+
+        print("FILE URL: \(fileURL.description)")
+           
+        //When
+        let textExtracted = viewController.textExtractionFromSelectedFile(url: fileURL)
+           
+        print("TEXT EXTRACTED: \(String(textExtracted))")
+          
+        //Then
+        expect(textExtracted).toNot(beNil())
+        
     }
     
     func testTextExtractionFromWordDoc() {

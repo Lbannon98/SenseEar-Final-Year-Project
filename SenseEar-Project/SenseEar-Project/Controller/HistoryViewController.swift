@@ -85,7 +85,7 @@ class HistoryViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! HistoryCell
         
-        cell.setUp(with: datasource)
+        cell.setup(with: datasource)
 
         return cell
     }

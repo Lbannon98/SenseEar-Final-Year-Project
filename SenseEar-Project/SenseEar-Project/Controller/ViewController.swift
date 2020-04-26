@@ -259,31 +259,27 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     }
     
     func setHistoryFileImage() {
-        
-        if ViewController.historyFilename?.contains("txt") == true {
-            
-        }
              
         if ViewController.historyFilename?.contains("txt") == true {
 
-          ViewController.historyImage = UIImage(named: "text-file-50.png")
+            ViewController.historyImage = UIImage(named: "text-file-50.png")
 
       } else if ViewController.historyFilename?.contains("pdf") == true {
 
-          ViewController.historyImage = UIImage(named: "icons8-pdf-48-2.png")
+            ViewController.historyImage = UIImage(named: "icons8-pdf-48-2.png")
 
       } else if ViewController.historyFilename?.contains("docx") == true {
 
-          ViewController.historyImage = UIImage(named: "icons8-microsoft-word-48.png")
+            ViewController.historyImage = UIImage(named: "icons8-microsoft-word-48.png")
 
       } else if ViewController.historyFilename?.contains("xlsx") == true {
 
-          ViewController.historyImage = UIImage(named: "icons8-microsoft-excel-48.png")
+            ViewController.historyImage = UIImage(named: "icons8-microsoft-excel-48.png")
           
       } else if ViewController.historyFilename?.contains("pptx") == true {
 
-           ViewController.historyImage = UIImage(named: "icons8-microsoft-powerpoint-48.png")
-      
+            ViewController.historyImage = UIImage(named: "icons8-microsoft-powerpoint-48.png")
+
       }
       
     }
@@ -539,11 +535,16 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
 }
 
 extension Date {
-   func formatTime(format: String) -> String {
+    
+    func formatTime(format: String) -> String {
+        
         let dateformat = DateFormatter()
         dateformat.dateFormat = format
+        
         return dateformat.string(from: self)
+        
     }
+    
 }
 
 
