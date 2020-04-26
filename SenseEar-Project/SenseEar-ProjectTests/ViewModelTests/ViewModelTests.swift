@@ -24,21 +24,6 @@ class ViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testViewModelValueAssignment() {
-
-        //Given
-        let image = UIImage(named: "icons8-pdf-48-2.png")
-        let fileTypeLogo = UIImageView(image: image)
-
-        //When
-        let viewModel: SelectedFileViewModel = SelectedFileViewModel(filename: "Deadly.pdf", fileTypeLogo: fileTypeLogo)
-
-        //Then
-        expect(viewModel.filename).to(equal("Deadly.pdf"))
-        expect(viewModel.fileTypeLogo.image).to(equal(image))
-
-    }
-    
     func testSelectedFileViewSetupFunctionWithViewModel() {
         
         //Given
@@ -51,8 +36,8 @@ class ViewModelTests: XCTestCase {
         selectedFileView.setup(with: viewModel)
 
         //Then
-        expect(viewModel.fileTypeLogo.image).to(equal(selectedFileView.imageView.image))
-        expect(viewModel.filename).to(equal(selectedFileView.label.text))
+        expect(viewModel.fileTypeLogo.image).to(equal(selectedFileView.fileLogoType.image))
+        expect(viewModel.filename).to(equal(selectedFileView.filename.text))
         
     }
     
@@ -73,8 +58,8 @@ class ViewModelTests: XCTestCase {
         expect(viewModel.fileTypeLogo.image).to(equal(image2))
         expect(viewModel.filename).to(equal(""))
 
-        expect(self.selectedFileView.imageView.image).to(beNil())
-        expect(self.selectedFileView.label.text).to(equal(""))
+        expect(self.selectedFileView.fileLogoType.image).to(beNil())
+        expect(self.selectedFileView.filename.text).to(equal(""))
 
     }
     

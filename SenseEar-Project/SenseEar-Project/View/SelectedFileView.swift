@@ -11,8 +11,8 @@ import UIKit
 class SelectedFileView: UIView {
 
     @IBOutlet var view: UIView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var fileLogoType: UIImageView!
+    @IBOutlet weak var filename: UILabel!
     
     let nibName = "SelectedFileView"
     
@@ -34,15 +34,15 @@ class SelectedFileView: UIView {
 
     func setup(with viewModel: SelectedFileViewModel) {
         
-        imageView.image = viewModel.fileTypeLogo.image
-        label.text = viewModel.filename
+        fileLogoType.image = viewModel.fileTypeLogo.image
+        filename.text = viewModel.filename
         
     }
     
     func clear(with viewModel: SelectedFileViewModel) {
        
-        imageView.image = nil
-        label.text = ""
+        fileLogoType.image = nil
+        filename.text = ""
         
         let image = UIImage()
     

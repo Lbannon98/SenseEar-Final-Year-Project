@@ -35,6 +35,7 @@ class AudioPlayer {
         
         do {
             
+            player?.stop()
             player = nil
             
         } catch {

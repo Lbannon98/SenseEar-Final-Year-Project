@@ -8,6 +8,9 @@ PODS:
     - FirebaseAnalytics (= 6.2.1)
   - Firebase/CoreOnly (6.15.0):
     - FirebaseCore (= 6.6.0)
+  - Firebase/Database (6.15.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (~> 6.1.4)
   - Firebase/Storage (6.15.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 3.5.0)
@@ -33,6 +36,10 @@ PODS:
     - GoogleUtilities/Logger (~> 6.5)
     - nanopb (~> 0.3.901)
   - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseDatabase (6.1.4):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - leveldb-library (~> 1.22)
   - FirebaseInstallations (1.1.0):
     - FirebaseCore (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.5)
@@ -75,22 +82,26 @@ PODS:
   - GoogleUtilities/UserDefaults (6.5.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.3.1)
+  - leveldb-library (1.22)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - Nimble (8.0.5)
-  - PDFNet (7.0.4.73314)
+  - PDFNet (6.10.4.70914)
   - PromisesObjC (1.2.8)
+  - UIEmptyState (4.0.1)
 
 DEPENDENCIES:
   - Firebase
   - Firebase/Analytics
   - Firebase/Core
+  - Firebase/Database
   - Firebase/Storage
   - Nimble
-  - PDFNet (from `https://www.pdftron.com/downloads/ios/cocoapods/pdfnet/latest.podspec`)
+  - PDFNet (from `https://www.pdftron.com/downloads/ios/staging/cocoapods/pdfnet/6.10.4.70914.podspec`)
+  - UIEmptyState
 
 SPEC REPOS:
   trunk:
@@ -100,6 +111,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
+    - FirebaseDatabase
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseStorage
@@ -108,13 +120,15 @@ SPEC REPOS:
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - GTMSessionFetcher
+    - leveldb-library
     - nanopb
     - Nimble
     - PromisesObjC
+    - UIEmptyState
 
 EXTERNAL SOURCES:
   PDFNet:
-    :podspec: https://www.pdftron.com/downloads/ios/cocoapods/pdfnet/latest.podspec
+    :podspec: https://www.pdftron.com/downloads/ios/staging/cocoapods/pdfnet/6.10.4.70914.podspec
 
 SPEC CHECKSUMS:
   Firebase: 5d77105d9740a07ca6b16927ca971db7e860faaf
@@ -123,6 +137,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 4aeb81ff53dcd9a3634ca725dc1fb8c2a4622046
   FirebaseCoreDiagnostics: 5e78803ab276bc5b50340e3c539c06c3de35c649
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseDatabase: 0144e0706a4761f1b0e8679572eba8095ddb59be
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
   FirebaseInstanceID: 6668efc1655a4052c083f287a7141f1ead12f9c2
   FirebaseStorage: 6c5263796af3b1be82ed173598aade47535fe125
@@ -131,11 +146,13 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: cad3cd6cdbdbad6b5c2c9206ec413402755faaaa
   GoogleUtilities: f8de7ddf8c706f58e9b405d53e38bbdaa2731e5a
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
+  leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
-  PDFNet: bbce7f70c79ac433173640d9f21190381af6f873
+  PDFNet: b955776a58a4ef3384f5d1d965c031198732447d
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  UIEmptyState: 767376694d9402452fb3c0a5a5283176c6a53c92
 
-PODFILE CHECKSUM: b74ccf8b09f65cec1d202f12c5f4840a72af99ef
+PODFILE CHECKSUM: de7a3af7e93f773d57b1410575fa38330132edde
 
 COCOAPODS: 1.8.4

@@ -20,15 +20,14 @@ extension ViewController: UIDocumentPickerDelegate {
     ///   - url: The url of the selected file
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
 
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
+        ViewController.selectedFile = url.absoluteURL
+        ViewController.filename = ViewController.selectedFile?.lastPathComponent
+        
+        let firebaseStorageRef = Storage.storage().reference()
 
-        selectedFile = url.absoluteURL
-        ViewController.filename = selectedFile?.lastPathComponent
+        let documentRef = firebaseStorageRef.child("documents/\(ViewController.filename!)")
 
-        let documentRef = storageRef.child("documents/\(ViewController.filename!)")
-
-        let uploadTask = documentRef.putFile(from: selectedFile!, metadata: nil) { metadata, error in
+        let uploadTask = documentRef.putFile(from: ViewController.selectedFile!, metadata: nil) { metadata, error in
           guard let metadata = metadata else {
             print(error!)
             return
@@ -36,8 +35,9 @@ extension ViewController: UIDocumentPickerDelegate {
             
         }
         
-        self.textExtractionFromSelectedFile(url: selectedFile!)
+        self.textExtractionFromSelectedFile(url: ViewController.selectedFile!)
         self.selectedFileInfoAttachedToView()
+
     }
     
     /// Controls the functionality behind the text extraction from all file types
@@ -46,7 +46,7 @@ extension ViewController: UIDocumentPickerDelegate {
 
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return "" }
 
-        guard let selectedFile = self.selectedFile else {
+        guard let selectedFile = ViewController.selectedFile else {
             return ""
         }
         
@@ -116,7 +116,7 @@ extension ViewController: UIDocumentPickerDelegate {
     /// Controls the functionality behind the view being updated
     func selectedFileInfoAttachedToView() {
 
-        guard let file = selectedFile else {
+        guard let file = ViewController.selectedFile else {
              return
         }
 
