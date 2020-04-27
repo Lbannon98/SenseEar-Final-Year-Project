@@ -25,6 +25,8 @@
 		DB2A3C2B24045A0300544B7B /* OfficeFileConverter.swift in Resources */ = {isa = PBXBuildFile; fileRef = DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */; };
 		DB2D01DF243C62BB00319F4C /* TextDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D01DE243C62BB00319F4C /* TextDivider.swift */; };
 		DB2E72A323F99FF60075D7A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4214B2239D45CF0073DAFA /* Main.storyboard */; };
+		DB3B019C2456E0B200BF482F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B019B2456E0B200BF482F /* CoreGraphics.framework */; };
+		DB3B01A22456E16A00BF482F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB3B01A12456E16A00BF482F /* Keys.plist */; };
 		DB4214AD239D45CF0073DAFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AC239D45CF0073DAFA /* AppDelegate.swift */; };
 		DB4214AF239D45CF0073DAFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */; };
 		DB4214B1239D45CF0073DAFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4214B0239D45CF0073DAFA /* ViewController.swift */; };
@@ -95,6 +97,9 @@
 		DB24FB3123D8D8040036C32D /* VoiceController+VoiceRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VoiceController+VoiceRecognition.swift"; sourceTree = "<group>"; };
 		DB2A3C29240451A900544B7B /* OfficeFileConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConverterTests.swift; sourceTree = "<group>"; };
 		DB2D01DE243C62BB00319F4C /* TextDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDivider.swift; sourceTree = "<group>"; };
+		DB3B019B2456E0B200BF482F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DB3B019D2456E0C300BF482F /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB3B01A12456E16A00BF482F /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		DB4214A9239D45CF0073DAFA /* SenseEar-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SenseEar-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4214AC239D45CF0073DAFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB4214AE239D45CF0073DAFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB3B019C2456E0B200BF482F /* CoreGraphics.framework in Frameworks */,
 				DBA69517243F19CD00DCC064 /* Pods_SenseEar_Project.framework in Frameworks */,
 				DB5E2BD9243E0D8F0060C8B9 /* AVFoundation.framework in Frameworks */,
 			);
@@ -170,6 +176,8 @@
 		D91D570BE667CBB8BB00FBC9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB3B019D2456E0C300BF482F /* FirebaseCore.framework */,
+				DB3B019B2456E0B200BF482F /* CoreGraphics.framework */,
 				DB6334CC2452500D006B885B /* Framework-dynamic */,
 				DB6334CE24525013006B885B /* Framework-dynamic */,
 				DB6334D024525036006B885B /* Framework-dynamic */,
@@ -278,6 +286,7 @@
 				DB4214BA239D45D00073DAFA /* Info.plist */,
 				DB0F28F02430EDFA006CFF0E /* Keys.swift */,
 				DB1C48F5245253B200A6981C /* Keys.plist */,
+				DB3B01A12456E16A00BF482F /* Keys.plist */,
 			);
 			path = "SenseEar-Project";
 			sourceTree = "<group>";
@@ -504,6 +513,7 @@
 				DB4214B9239D45D00073DAFA /* LaunchScreen.storyboard in Resources */,
 				DB0CDD2623D0B0B200DA1708 /* GoogleService-Info.plist in Resources */,
 				DB46BC4023E41EDC006903D4 /* SelectedFileView.xib in Resources */,
+				DB3B01A22456E16A00BF482F /* Keys.plist in Resources */,
 				DB4214B6239D45D00073DAFA /* Assets.xcassets in Resources */,
 				DB4214B4239D45CF0073DAFA /* Main.storyboard in Resources */,
 			);
