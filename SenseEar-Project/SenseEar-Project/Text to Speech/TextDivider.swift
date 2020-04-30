@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 /// Controls the division of files that contain more than 5000 charcters (Google's Text-to-Speech Limit)
 class TextDivider {
