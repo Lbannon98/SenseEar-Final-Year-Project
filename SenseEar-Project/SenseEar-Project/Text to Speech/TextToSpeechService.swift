@@ -71,7 +71,7 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                 
                 let postData = self.buildMediumFilePostRequest(firstHalf: TextDivider.dividedContents[0], secondHalf: TextDivider.dividedContents[1], voiceType: voiceType)
                 let headers = ["X-Goog-Api-Key": APIKey, "Content-Type": "application/json; charset=utf-8"]
-                let mediumResponse = self.makeMediumFilePostRequest(url: ttsPostAPIUrl, firstHalfOfPostData: postData[0], secondHalfOfPostData: postData[1], headers: headers)
+                let mediumResponse = self.makeMediumFilePostRequest(url: ttsPostAPIUrl, firstHalfOfPostData: postData[1], secondHalfOfPostData: postData[0], headers: headers)
                 
                 guard let audioContent = mediumResponse["audioContent"] as? String else {
                                 
@@ -98,7 +98,7 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
                 
                 let postData = self.buildLargeFilePostRequest(firstHalf: TextDivider.dividedContents[0], secondHalf: TextDivider.dividedContents[1], thirdHalf: TextDivider.dividedContents[2], fourthHalf: TextDivider.dividedContents[3], voiceType: voiceType)
                  let headers = ["X-Goog-Api-Key": APIKey, "Content-Type": "application/json; charset=utf-8"]
-                let largeResponse = self.makeLargeFilePostRequest(url: ttsPostAPIUrl, firstHalfOfPostData: postData[0], secondHalfOfPostData: postData[1], thirdHalfOfPostData: postData[2], fourthHalfOfPostData: postData[3], headers: headers)
+                let largeResponse = self.makeLargeFilePostRequest(url: ttsPostAPIUrl, firstHalfOfPostData: postData[3], secondHalfOfPostData: postData[2], thirdHalfOfPostData: postData[1], fourthHalfOfPostData: postData[0], headers: headers)
                  
                  guard let audioContent = largeResponse["audioContent"] as? String else {
                                  

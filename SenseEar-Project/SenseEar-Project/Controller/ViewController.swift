@@ -123,6 +123,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     let microphoneIcon = UIImage(named: "microphone-30.png")
     let stopIcon = UIImage(named: "stop.png")
     let iconConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
+    let audioIconConfiguration = UIImage.SymbolConfiguration(pointSize: 26, weight: .regular)
     
     //Media Player Variables
     public var musicManager: MPMusicPlayerController?
@@ -174,13 +175,11 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         importBtn.setTitle("Upload File", for: .normal)
         
         clearBtn.setImage(UIImage(systemName: "multiply.circle.fill", withConfiguration: iconConfiguration), for: .normal)
-                
-        let tintedImage = microphoneIcon?.withRenderingMode(.alwaysTemplate)
         
-        genderAudioBtn.setImage(tintedImage, for: .normal)
+        genderAudioBtn.setImage(UIImage(systemName: "mic.fill", withConfiguration: audioIconConfiguration), for: .normal)
         genderAudioBtn.tintColor = .white
         
-        accentAudioBtn.setImage(tintedImage, for: .normal)
+        accentAudioBtn.setImage(UIImage(systemName: "mic.fill", withConfiguration: audioIconConfiguration), for: .normal)
         accentAudioBtn.tintColor = .white
         
         selectedFileView.isHidden = true
@@ -192,18 +191,26 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     
     public func addValuesToSegmentControls() {
         
+        let fontSize = UIFont.systemFont(ofSize: 18)
+        
         //GenderSC
         genderSelectionSC.selectedSegmentIndex = 0
+        
+        genderSelectionSC.setTitleTextAttributes([NSAttributedString.Key.font: fontSize], for: .normal)
         
         genderSelectionSC.setTitle(GenderSelection.allValues()[0], forSegmentAt: 0)
         genderSelectionSC.setTitle(GenderSelection.allValues()[1], forSegmentAt: 1)
         
+        
         //AccentSC
         accentSelectionSC.selectedSegmentIndex = 0
+        
+        accentSelectionSC.setTitleTextAttributes([NSAttributedString.Key.font: fontSize], for: .normal)
         
         accentSelectionSC.setTitle(AccentSelection.allValues()[0], forSegmentAt: 0)
         accentSelectionSC.setTitle(AccentSelection.allValues()[1], forSegmentAt: 1)
         accentSelectionSC.setTitle(AccentSelection.allValues()[2], forSegmentAt: 2)
+        
         
     }
     
@@ -334,19 +341,15 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
             recognitionRequest?.endAudio()
             genderAudioBtn.isEnabled = false
             
-            let tintedImage = microphoneIcon?.withRenderingMode(.alwaysTemplate)
-                   
-            self.genderAudioBtn.setImage(tintedImage, for: .normal)
+            self.genderAudioBtn.setImage(UIImage(systemName: "mic.fill", withConfiguration: audioIconConfiguration), for: .normal)
+            
             self.genderAudioBtn.tintColor = .white
             
         } else {
             
             self.genderStartRecording()
             
-            let tintedImage = stopIcon?.withRenderingMode(.alwaysTemplate)
-                   
-            self.genderAudioBtn.setImage(tintedImage, for: .normal)
-            self.genderAudioBtn.tintColor = .white
+            self.genderAudioBtn.setImage(UIImage(systemName: "stop.fill", withConfiguration: audioIconConfiguration), for: .normal)
             
         }
     
@@ -360,19 +363,15 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
             recognitionRequest?.endAudio()
             accentAudioBtn.isEnabled = false
             
-            let tintedImage = microphoneIcon?.withRenderingMode(.alwaysTemplate)
-                   
-            self.accentAudioBtn.setImage(tintedImage, for: .normal)
+            self.accentAudioBtn.setImage(UIImage(systemName: "mic.fill", withConfiguration: audioIconConfiguration), for: .normal)
+
             self.accentAudioBtn.tintColor = .white
                         
         } else {
             
             self.accentStartRecording()
             
-            let tintedImage = stopIcon?.withRenderingMode(.alwaysTemplate)
-                              
-            self.accentAudioBtn.setImage(tintedImage, for: .normal)
-            self.accentAudioBtn.tintColor = .white
+            self.accentAudioBtn.setImage(UIImage(systemName: "stop.fill", withConfiguration: audioIconConfiguration), for: .normal)
 
         }
         

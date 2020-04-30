@@ -64,7 +64,7 @@ extension ViewController: UIDocumentPickerDelegate {
                         extractedContent = try String(contentsOfFile: pathToFile, encoding: .utf8)
                         
                         print(extractedContent)
-                    
+                        
                         let textBuffer = TextDivider()
                         textBuffer.splitIntoSeparateBuffers(with: extractedContent)
                         
@@ -82,7 +82,7 @@ extension ViewController: UIDocumentPickerDelegate {
                         
                         let pdfFileURL = URL(fileURLWithPath: outputPath)
                         self.extractedContent = self.extractTextFromPDF(url: pdfFileURL)
-                                            
+                               
                         let textBuffer = TextDivider()
                         textBuffer.splitIntoSeparateBuffers(with: self.extractedContent)
                                                            
@@ -129,6 +129,15 @@ extension ViewController: UIDocumentPickerDelegate {
 
             selectedFileView.isHidden = false
             clearBtn.isHidden = false
+            
+            if TextDivider.characterCount! > 20000 {
+                           
+                 selectedFileView.isHidden = true
+                 clearBtn.isHidden = true
+                 
+                 Alerts.showStandardAlert(on: self, with: "Select another file", message: "This file size is too large!")
+               
+           }
 
         } else if file.pathExtension == "pdf" {
 
@@ -139,6 +148,15 @@ extension ViewController: UIDocumentPickerDelegate {
 
             selectedFileView.isHidden = false
             clearBtn.isHidden = false
+            
+            if TextDivider.characterCount! > 20000 {
+                           
+                 selectedFileView.isHidden = true
+                 clearBtn.isHidden = true
+                 
+                 Alerts.showStandardAlert(on: self, with: "Select another file", message: "This file size is too large!")
+               
+           }
 
         } else if file.pathExtension == "docx" {
 
@@ -149,6 +167,15 @@ extension ViewController: UIDocumentPickerDelegate {
 
             selectedFileView.isHidden = false
             clearBtn.isHidden = false
+            
+            if TextDivider.characterCount! > 20000 {
+                
+                  selectedFileView.isHidden = true
+                  clearBtn.isHidden = true
+                  
+                  Alerts.showStandardAlert(on: self, with: "Select another file", message: "This file size is too large!")
+                
+            }
 
         } else if file.pathExtension == "xlsx" {
 
@@ -159,6 +186,15 @@ extension ViewController: UIDocumentPickerDelegate {
 
             selectedFileView.isHidden = false
             clearBtn.isHidden = false
+            
+            if TextDivider.characterCount! > 20000 {
+                           
+                 selectedFileView.isHidden = true
+                 clearBtn.isHidden = true
+                 
+                 Alerts.showStandardAlert(on: self, with: "Select another file", message: "This file size is too large!")
+               
+           }
 
         } else if file.pathExtension == "pptx" {
 
@@ -169,6 +205,15 @@ extension ViewController: UIDocumentPickerDelegate {
 
             selectedFileView.isHidden = false
             clearBtn.isHidden = false
+            
+            if TextDivider.characterCount! > 20000 {
+                           
+                 selectedFileView.isHidden = true
+                 clearBtn.isHidden = true
+                 
+                 Alerts.showStandardAlert(on: self, with: "Select another file", message: "This file size is too large!")
+               
+           }
 
         } else {
 
