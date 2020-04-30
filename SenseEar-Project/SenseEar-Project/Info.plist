@@ -25,7 +25,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Your speech will be detected after tapping the button</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>This will allow the user to select the gneder and accent of the configured voice as well as generate the audio file.</string>
+	<string>This will allow the user to select the gender and accent of the configured voice as well as generate the audio file.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

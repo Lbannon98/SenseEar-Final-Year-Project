@@ -65,9 +65,6 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Select Gender:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3J-tb-9fO">
                                                 <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="6"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="140" id="6Bw-xV-Nsw"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -117,9 +114,6 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Select Accent:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c76-DA-Ena">
                                                 <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="140" id="SCb-jt-bgI"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -216,7 +210,7 @@
                                     <constraint firstItem="Noi-h1-x5h" firstAttribute="top" secondItem="feW-9M-SnD" secondAttribute="bottom" constant="25" id="YVO-fI-tAA"/>
                                     <constraint firstItem="tBz-Vj-m6L" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="feC-OK-Bic" secondAttribute="leading" id="c87-Sk-Swc"/>
                                     <constraint firstItem="NFJ-t3-faE" firstAttribute="top" secondItem="y3J-tb-9fO" secondAttribute="bottom" constant="25" id="h9V-Ad-bz6"/>
-                                    <constraint firstItem="txp-2q-roJ" firstAttribute="firstBaseline" secondItem="K89-W5-cQL" secondAttribute="baseline" constant="28" symbolType="layoutAnchor" id="rly-ye-XEP"/>
+                                    <constraint firstItem="txp-2q-roJ" firstAttribute="firstBaseline" secondItem="K89-W5-cQL" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="rly-ye-XEP"/>
                                     <constraint firstItem="K89-W5-cQL" firstAttribute="centerX" secondItem="feC-OK-Bic" secondAttribute="centerX" id="ty5-g2-eFM"/>
                                     <constraint firstItem="feW-9M-SnD" firstAttribute="firstBaseline" secondItem="txp-2q-roJ" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="w2t-Ye-Cbe"/>
                                     <constraint firstItem="tBz-Vj-m6L" firstAttribute="centerX" secondItem="feC-OK-Bic" secondAttribute="centerX" id="xid-wm-A5B"/>

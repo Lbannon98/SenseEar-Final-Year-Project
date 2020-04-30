@@ -13,7 +13,6 @@ class TextDivider {
     
     public static var dividedContents: [String] = []
     public static var characterCount: Int?
-    public var vc: ViewController?
     
     /// Controls text buffering into separat files
     /// - Parameter file: takes selected file contents
@@ -74,11 +73,9 @@ class TextDivider {
             print("Character Count: \(TextDivider.dividedContents[3].count)")
             
         } else {
-            
-            Alerts.showStandardAlert(on: vc!, with: "Select another file", message: "This file size is too large!")
-            
+             print("Select another file, this file size is too big!")
         }
-    
+            
         return TextDivider.dividedContents
     
     }
