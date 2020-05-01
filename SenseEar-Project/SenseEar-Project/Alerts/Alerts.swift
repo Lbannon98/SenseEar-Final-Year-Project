@@ -19,4 +19,12 @@ struct Alerts {
         
     }
     
+    static func showFileTooLargeAlert(on vc: UIViewController) {
+        
+        let alert = UIAlertController(title: "Select another file", message: "This file size is too large!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        vc.present(alert, animated: true, completion: nil)
+        
+    }
+    
 }
