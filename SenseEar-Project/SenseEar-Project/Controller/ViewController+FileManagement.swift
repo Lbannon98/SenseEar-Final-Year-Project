@@ -151,10 +151,10 @@ extension ViewController: UIDocumentPickerDelegate {
             
             if TextDivider.characterCount! > 20000 {
                            
-                 selectedFileView.isHidden = true
-                 clearBtn.isHidden = true
+                selectedFileView.isHidden = true
+                clearBtn.isHidden = true
                  
-                 Alerts.showStandardAlert(on: self, with: "Select another file", message: "This file size is too large!")
+                Alerts.showFileTooLargeAlert(on: self)
                
            }
 
@@ -170,10 +170,10 @@ extension ViewController: UIDocumentPickerDelegate {
             
             if TextDivider.characterCount! > 20000 {
                 
-                  selectedFileView.isHidden = true
-                  clearBtn.isHidden = true
+                selectedFileView.isHidden = true
+                clearBtn.isHidden = true
                   
-                  Alerts.showStandardAlert(on: self, with: "Select another file", message: "This file size is too large!")
+                Alerts.showFileTooLargeAlert(on: self)
                 
             }
 
@@ -189,10 +189,10 @@ extension ViewController: UIDocumentPickerDelegate {
             
             if TextDivider.characterCount! > 20000 {
                            
-                 selectedFileView.isHidden = true
-                 clearBtn.isHidden = true
+                selectedFileView.isHidden = true
+                clearBtn.isHidden = true
                  
-                 Alerts.showStandardAlert(on: self, with: "Select another file", message: "This file size is too large!")
+                Alerts.showFileTooLargeAlert(on: self)
                
            }
 
@@ -208,10 +208,10 @@ extension ViewController: UIDocumentPickerDelegate {
             
             if TextDivider.characterCount! > 20000 {
                            
-                 selectedFileView.isHidden = true
-                 clearBtn.isHidden = true
+                selectedFileView.isHidden = true
+                clearBtn.isHidden = true
                  
-                 Alerts.showStandardAlert(on: self, with: "Select another file", message: "This file size is too large!")
+                Alerts.showFileTooLargeAlert(on: self)
                
            }
 
