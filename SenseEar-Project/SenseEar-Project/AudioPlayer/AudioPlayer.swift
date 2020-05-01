@@ -16,9 +16,6 @@ class AudioPlayer {
     var player: AVAudioPlayer? = nil
     
     public static var extractedAudio: Data?
-    
-    public var musicManager: MPMusicPlayerController?
-    public var nowPlayingInfo: [String : Any]?
 
     func getAudioData() {
         
