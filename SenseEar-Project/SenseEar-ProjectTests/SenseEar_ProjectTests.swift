@@ -62,7 +62,6 @@ class SenseEar_ProjectTests: XCTestCase {
           else { fatalError() }
 
         print("FILE URL: \(fileURL.description)")
-        print("FILE URL: \(fileURL.lastPathComponent)")
         
         //When
         let textExtracted = viewController.textExtractionFromSelectedFile(url: fileURL)
