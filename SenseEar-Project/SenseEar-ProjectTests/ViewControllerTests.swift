@@ -54,18 +54,5 @@ class ViewControllerTests: XCTestCase {
         expect(historyRef.key).toNot(beNil())
         
     }
-    
-    func testDateFormatter() {
-        
-        //Given
-        let date = Date()
-        let format = "MM-dd-yyyy HH:mm"
-        
-        //When
-        let time = date.formatTime(format: format)
-        
-        //Then
-        expect(time).toNot(beNil())
-    }
 
 }
