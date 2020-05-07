@@ -265,7 +265,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         
     }
     
-    /// Controls the setting og the file logo for he history page
+    /// Controls the setting of the file logo for the history page
     func setHistoryFileImage() {
              
         if ViewController.historyFilename?.contains("txt") == true {

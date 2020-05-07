@@ -41,7 +41,7 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
     /// - Parameters:
     ///   - text: Extracted text from selected file
     ///   - voiceType: Voice type chosen by user
-    ///   - completion: Ensures the complettion of the function
+    ///   - completion: Ensures the completion of the function
     func makeTextToSpeechRequest(text: String, voiceType: VoiceTypes = .ukMale, completion: @escaping () -> Void) {
         
         DispatchQueue.global(qos: .background).async {

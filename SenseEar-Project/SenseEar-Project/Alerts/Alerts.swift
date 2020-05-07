@@ -14,7 +14,7 @@ struct Alerts {
     /// Displays standard alert for error handling
     /// - Parameters:
     ///   - vc: View Controller for displaying alert
-    ///   - title: Title mesage of the alert
+    ///   - title: Title message of the alert
     ///   - message: Message of the alert
     static func showStandardAlert(on vc: UIViewController, with title: String, message: String) {
         

@@ -85,8 +85,8 @@ class TextDivider {
 extension String {
 
     /// Controls the splitting of strings by a given length
-    /// - Parameter length: Splits the stirng by this integer
-    /// - Returns: Aray fo strings which will contain the split text content
+    /// - Parameter length: Splits the string by this integer
+    /// - Returns: Array of strings which will contain the split text content
     func splitStringBySetSize(by length: Int) -> [String] {
         var startIndex = self.startIndex
         var results = [Substring]()

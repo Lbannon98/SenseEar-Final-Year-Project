@@ -35,7 +35,7 @@ class SelectedFileView: UIView {
     }
 
     /// Controls setup of view with the selected file metadata
-    /// - Parameter viewModel: view model takes the parameters of the metadata
+    /// - Parameter viewModel: View model takes the parameters of the metadata
     func setup(with viewModel: SelectedFileViewModel) {
         
         fileLogoType.image = viewModel.fileTypeLogo.image
@@ -44,7 +44,7 @@ class SelectedFileView: UIView {
     }
     
     /// Controls the clearing of the view
-    /// - Parameter viewModel: view model which takes the parameters of the metadata
+    /// - Parameter viewModel: View model which takes the parameters of the metadata
     func clear(with viewModel: SelectedFileViewModel) {
        
         fileLogoType.image = nil
