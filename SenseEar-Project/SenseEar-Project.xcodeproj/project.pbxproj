@@ -39,18 +39,17 @@
 		DB60B3D723E488550015DFB7 /* SelectedFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB60B3D623E488550015DFB7 /* SelectedFileViewModel.swift */; };
 		DB760E9923EAB66700241855 /* SenseEar_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB760E9823EAB66700241855 /* SenseEar_ProjectTests.swift */; };
 		DB760EA223EABA0800241855 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB760EA123EABA0800241855 /* ViewModelTests.swift */; };
-		DB76B202245587510055CC98 /* DocumentPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB76B201245587510055CC98 /* DocumentPickerTests.swift */; };
 		DBA69517243F19CD00DCC064 /* Pods_SenseEar_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EECC2777BDE412F54CDB7D5 /* Pods_SenseEar_Project.framework */; };
 		DBB32033244F3D5500C65EEC /* ViewController+MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB32032244F3D5500C65EEC /* ViewController+MediaPlayer.swift */; };
 		DBBEB4B5244F4EF90031BF99 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBEB4B4244F4EF90031BF99 /* HistoryViewController.swift */; };
 		DBBEB4BD244F618D0031BF99 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBEB4BC244F618D0031BF99 /* HistoryCell.swift */; };
 		DBC0220C244B13A2002D2361 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0220B244B13A2002D2361 /* AudioPlayer.swift */; };
 		DBC9728723FAA5BC00B3A7C4 /* CV - Lauren Bannon.docx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */; };
-		DBC9728823FAA5BF00B3A7C4 /* CV 2019.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */; };
 		DBC9728923FAA5C700B3A7C4 /* Module Due Dates - Semester 2.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */; };
 		DBC9728A23FAA5CA00B3A7C4 /* Intent.pptx in Resources */ = {isa = PBXBuildFile; fileRef = DB00B44023F1B9D90064AFE4 /* Intent.pptx */; };
 		DBD1DF8324002D85002151D6 /* OfficeFileConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */; };
 		DBD1DF882400346A002151D6 /* TextExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1DF872400346A002151D6 /* TextExtractor.swift */; };
+		DBECE76824632C1300DB1AA6 /* Slide 3 - AI Searching Part 1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DBECE76724632C1300DB1AA6 /* Slide 3 - AI Searching Part 1.pdf */; };
 		F1F98CD5F1ED7033103E9348 /* Pods_SenseEar_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10428519F0FBD23813A16BF /* Pods_SenseEar_ProjectTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +78,6 @@
 		D0F22E9803F0409D6344C95A /* Pods-SenseEar-ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SenseEar-ProjectTests.release.xcconfig"; path = "Target Support Files/Pods-SenseEar-ProjectTests/Pods-SenseEar-ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		DB00B44023F1B9D90064AFE4 /* Intent.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Intent.pptx; sourceTree = "<group>"; };
 		DB00B44123F1B9D90064AFE4 /* TestFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TestFile.txt; path = "/Users/laurenbannon/Desktop/College/Year 4/Semester 1/Software Project/Project/SenseEar Project (New)/SenseEar-Project/SenseEar-ProjectTests/Assets/TestFile.txt"; sourceTree = "<absolute>"; };
-		DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "CV 2019.pdf"; sourceTree = "<group>"; };
 		DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CV - Lauren Bannon.docx"; sourceTree = "<group>"; };
 		DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Module Due Dates - Semester 2.xlsx"; sourceTree = "<group>"; };
 		DB02D4A7245593D40087E738 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
@@ -123,13 +121,13 @@
 		DB760E9823EAB66700241855 /* SenseEar_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenseEar_ProjectTests.swift; sourceTree = "<group>"; };
 		DB760E9A23EAB66700241855 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB760EA123EABA0800241855 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModelTests.swift; path = ViewModelTests/ViewModelTests.swift; sourceTree = "<group>"; };
-		DB76B201245587510055CC98 /* DocumentPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerTests.swift; sourceTree = "<group>"; };
 		DBB32032244F3D5500C65EEC /* ViewController+MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+MediaPlayer.swift"; sourceTree = "<group>"; };
 		DBBEB4B4244F4EF90031BF99 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		DBBEB4BC244F618D0031BF99 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		DBC0220B244B13A2002D2361 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		DBD1DF8224002D85002151D6 /* OfficeFileConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeFileConverter.swift; sourceTree = "<group>"; };
 		DBD1DF872400346A002151D6 /* TextExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtractor.swift; sourceTree = "<group>"; };
+		DBECE76724632C1300DB1AA6 /* Slide 3 - AI Searching Part 1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Slide 3 - AI Searching Part 1.pdf"; path = "../../../../../../../../../../Google Drive/College/Year 4/Semester 1/Introduction to AI/Exams/Slides/Slide 3 - AI Searching Part 1.pdf"; sourceTree = "<group>"; };
 		E10428519F0FBD23813A16BF /* Pods_SenseEar_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SenseEar_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -195,8 +193,8 @@
 		DB00B43F23F1B9490064AFE4 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				DBECE76724632C1300DB1AA6 /* Slide 3 - AI Searching Part 1.pdf */,
 				DB00B44323F1B9D90064AFE4 /* CV - Lauren Bannon.docx */,
-				DB00B44223F1B9D90064AFE4 /* CV 2019.pdf */,
 				DB00B44023F1B9D90064AFE4 /* Intent.pptx */,
 				DB00B44423F1B9D90064AFE4 /* Module Due Dates - Semester 2.xlsx */,
 				DB00B44123F1B9D90064AFE4 /* TestFile.txt */,
@@ -350,7 +348,6 @@
 			children = (
 				DB02D4A924559E830087E738 /* HistoryTests.swift */,
 				DB02D4A7245593D40087E738 /* ViewControllerTests.swift */,
-				DB76B201245587510055CC98 /* DocumentPickerTests.swift */,
 				DB00B43F23F1B9490064AFE4 /* Assets */,
 				DB760EA123EABA0800241855 /* ViewModelTests.swift */,
 				DB2A3C29240451A900544B7B /* OfficeFileConverterTests.swift */,
@@ -523,8 +520,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBECE76824632C1300DB1AA6 /* Slide 3 - AI Searching Part 1.pdf in Resources */,
 				DB2A3C2B24045A0300544B7B /* OfficeFileConverter.swift in Resources */,
-				DBC9728823FAA5BF00B3A7C4 /* CV 2019.pdf in Resources */,
 				DBC9728923FAA5C700B3A7C4 /* Module Due Dates - Semester 2.xlsx in Resources */,
 				DBC9728723FAA5BC00B3A7C4 /* CV - Lauren Bannon.docx in Resources */,
 				DB2E72A323F99FF60075D7A6 /* Main.storyboard in Resources */,
@@ -677,7 +674,6 @@
 				DB2A3C2A240451A900544B7B /* OfficeFileConverterTests.swift in Sources */,
 				DB00B44A23F1DA4F0064AFE4 /* TestFile.txt in Sources */,
 				DB760EA223EABA0800241855 /* ViewModelTests.swift in Sources */,
-				DB76B202245587510055CC98 /* DocumentPickerTests.swift in Sources */,
 				DB760E9923EAB66700241855 /* SenseEar_ProjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

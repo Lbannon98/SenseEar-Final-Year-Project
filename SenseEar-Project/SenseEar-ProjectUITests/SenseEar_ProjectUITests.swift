@@ -14,7 +14,8 @@ class SenseEar_ProjectUITests: XCTestCase {
         super.setUp()
         
         let app = XCUIApplication()
-               app.launch()
+        app.launch()
+        
     }
     
     override func tearDown() {
@@ -52,8 +53,5 @@ class SenseEar_ProjectUITests: XCTestCase {
         okButton.tap()
         
     }
-    
-    
-    
     
 }

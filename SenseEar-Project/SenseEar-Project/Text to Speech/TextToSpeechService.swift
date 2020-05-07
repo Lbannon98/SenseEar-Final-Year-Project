@@ -36,6 +36,12 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
     
     public static var audioData: Data? = nil
     
+    
+    /// Controls API request for all file sizes and returns response of audio data
+    /// - Parameters:
+    ///   - text: Extracted text from selected file
+    ///   - voiceType: Voice type chosen by user
+    ///   - completion: Ensures the complettion of the function
     func makeTextToSpeechRequest(text: String, voiceType: VoiceTypes = .ukMale, completion: @escaping () -> Void) {
         
         DispatchQueue.global(qos: .background).async {
@@ -127,6 +133,12 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
         
     }
     
+    
+    /// Builds the request for files containing less than 5000 characters
+    /// - Parameters:
+    ///   - text: Extracted text from selected file
+    ///   - voiceType: Voice type chosen by user
+    /// - Returns: Data which is then passed into the function which will make the request
     private func buildSmallFilePostRequest(text: String, voiceType: VoiceTypes) -> Data {
         
         var voiceConfig: [String: Any] = [
@@ -152,6 +164,12 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
         return data
     }
     
+    /// Builds the request for files containing more than 5000 characters but less than or equal to 10000 characters
+    /// - Parameters:
+    ///   - firstHalf: First half of the split text that was extracted from the selected file
+    ///   - secondHalf: Second half of the split text that was extracted from the selected file
+    ///   - voiceType: Voice type chosen by user
+    /// - Returns: Data array where the indexes will be passed into the function which will make the request
     private func buildMediumFilePostRequest(firstHalf: String, secondHalf: String, voiceType: VoiceTypes) -> [Data] {
         
         var data:[Data] = []
@@ -193,6 +211,14 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
         return data
     }
     
+    /// Builds the request for files containing more than 10000 characters but less than or equal to 20000 characters
+    /// - Parameters:
+    ///   - firstHalf: First half of the split text that was extracted from the selected file
+    ///   - secondHalf: Second half of the split text that was extracted from the selected file
+    ///   - thirdHalf: Third half of the split text that was extracted from the selected file
+    ///   - fourthHalf: Fourth half of the split text that was extracted from the selected file
+    ///   - voiceType: Voice type chosen by user
+    /// - Returns: Data array where the indexes will be passed into the function which will make the request
     private func buildLargeFilePostRequest(firstHalf: String, secondHalf: String, thirdHalf: String, fourthHalf: String, voiceType: VoiceTypes) -> [Data] {
         
         var data:[Data] = []
@@ -258,6 +284,12 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
         return data
     }
     
+    /// Makes the request for files containing less than 5000 characters
+    /// - Parameters:
+    ///   - url: Post URL for request to be made
+    ///   - postData: Data returned from the build request function
+    ///   - headers: Headers for the request to be made
+    /// - Returns: Returns a dictionary of the json data
     private func makeSmallFilePostRequest(url: String, postData: Data, headers: [String: String] = [:]) -> [String: AnyObject] {
         
         var dict: [String: AnyObject] = [:]
@@ -287,7 +319,14 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
 
         return dict
     }
-    
+
+    /// Makes the request for files containing more than 5000 characters but less than or equal to 10000 characters
+    /// - Parameters:
+    ///   - url: Post URL for request to be made
+    ///   - firstHalfOfPostData: First index of the data array returned from the build request function
+    ///   - secondHalfOfPostData: Second index of the data array returned from the build request function
+    ///   - headers: Headers for the request to be made
+    /// - Returns: Returns a dictionary of the json data
     private func makeMediumFilePostRequest(url: String, firstHalfOfPostData: Data, secondHalfOfPostData: Data, headers: [String: String] = [:]) -> [String: AnyObject] {
         
         var dict: [String: AnyObject] = [:]
@@ -333,6 +372,15 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
         return dict
     }
     
+    /// Makes the request for files containing more than 10000 characters but less than or equal to 20000 characters
+    /// - Parameters:
+    ///   - url: Post URL for request to be made
+    ///   - firstHalfOfPostData: First index of the data array returned from the build request function
+    ///   - secondHalfOfPostData: Second index of the data array returned from the build request function
+    ///   - thirdHalfOfPostData: Third index of the data array returned from the build request function
+    ///   - fourthHalfOfPostData: Fourth index of the data array returned from the build request function
+    ///   - headers: Headers for the request to be made
+    /// - Returns: Returns a dictionary of the json data
     private func makeLargeFilePostRequest(url: String, firstHalfOfPostData: Data, secondHalfOfPostData: Data, thirdHalfOfPostData: Data, fourthHalfOfPostData: Data, headers: [String: String] = [:]) -> [String: AnyObject] {
         
         var dict: [String: AnyObject] = [:]

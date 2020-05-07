@@ -54,5 +54,27 @@ class ViewControllerTests: XCTestCase {
         expect(historyRef.key).toNot(beNil())
         
     }
+    
+    func testTextToSpeechService() {
+        
+        //Given
+        let testBundle = Bundle(for: type(of: self))
+
+        guard let fileURL = testBundle.url(forResource: "TestFile", withExtension: "txt")
+          else { fatalError() }
+        
+        let textExtracted = viewController.textExtractionFromSelectedFile(url: fileURL)
+        
+        let voice = VoiceTypes.ausMale
+        
+        //When
+        TextToSpeechService.shared.makeTextToSpeechRequest(text: textExtracted, voiceType: voice) {}
+        
+        sleep(5)
+        
+        //Then
+        expect(TextToSpeechService.audioData).toNot(beNil())
+        
+    }
 
 }
