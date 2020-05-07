@@ -8,6 +8,9 @@
 
 import Foundation
 
+/// Controls the addition of confidential keys by assigning a value to the key set in the Keys.plist
+/// - Parameter keyname: Key accesses the value of the API Key
+/// - Returns: Value of the API Key
 func valueForAPIKey(named keyname:String) -> String {
     
     let filePath = Bundle.main.path(forResource: "Keys", ofType: "plist")

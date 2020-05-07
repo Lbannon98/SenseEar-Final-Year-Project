@@ -36,7 +36,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
     
     public static var audioData: Data? = nil
     
-    
     /// Controls API request for all file sizes and returns response of audio data
     /// - Parameters:
     ///   - text: Extracted text from selected file
@@ -132,7 +131,6 @@ class TextToSpeechService: NSObject, AVAudioPlayerDelegate {
        }
         
     }
-    
     
     /// Builds the request for files containing less than 5000 characters
     /// - Parameters:
