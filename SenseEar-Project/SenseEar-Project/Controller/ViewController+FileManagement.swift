@@ -234,6 +234,8 @@ extension ViewController: UIDocumentPickerDelegate {
 
     }
 
+    /// Controls the cancellation of the Document Picker
+    /// - Parameter controller: Document Picker View Controller initialised when "Upload File" button is pressed
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("Cancelled")
     }

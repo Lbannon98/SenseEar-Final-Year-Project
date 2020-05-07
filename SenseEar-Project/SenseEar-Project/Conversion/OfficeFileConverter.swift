@@ -18,14 +18,13 @@ class OfficeFileConverter: NSObject {
     ///   - outputPath: Output path of converted pdf file
     class func convertOfficeDoc(with inputPath: String, to outputPath: String) {
         
-        // Start with a PDFDoc (the conversion destination)
-        let pdfDoc: PTPDFDoc = PTPDFDoc()
+        let pdfDocoument: PTPDFDoc = PTPDFDoc()
 
-        // perform the conversion with no optional parameters
-        PTConvert.office(toPDF: pdfDoc, in_filename: inputPath, options: nil)
+        PTConvert.office(toPDF: pdfDocoument, in_filename: inputPath, options: nil)
 
-        pdfDoc.save(toFile: outputPath, flags: e_ptremove_unused.rawValue)
+        pdfDocoument.save(toFile: outputPath, flags: e_ptremove_unused.rawValue)
 
         print("Saved: \(outputPath)")
+        
     }
 }

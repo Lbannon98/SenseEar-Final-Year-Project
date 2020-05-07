@@ -14,6 +14,8 @@ class HistoryCell: UITableViewCell {
     @IBOutlet weak var nameOfFile: UILabel!
     @IBOutlet weak var time: UILabel!
     
+    /// Controls setup of the cell with the selected file metadata within the datasource
+    /// - Parameter datasource: Datasource takes the parameters of the metadata
     func setup(with datasource: HistoryDataSource) {
         
         fileTypeImage.image = datasource.image

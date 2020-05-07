@@ -11,6 +11,7 @@ import MediaPlayer
 
 extension ViewController {
     
+    /// Controls the linking of the audio to the control centre
     public func setupRemoteTransportControls() {
             
         let commandCenter = MPRemoteCommandCenter.shared()
@@ -48,6 +49,7 @@ extension ViewController {
 
     }
     
+    /// Controls the setting up of the view in the control centre
     public func setupNotificationView() {
                
         guard let player = TextToSpeechService.audioPlayer.player else { return }
@@ -68,8 +70,10 @@ extension ViewController {
        
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
            
-    }
-      
+    }    
+    
+    /// Controls the update of the view when audio state is changed
+    /// - Parameter isPause: Boolean value controlling if the audio is paused
    func updateNowPlaying(isPause: Bool) {
        
         guard let player = TextToSpeechService.audioPlayer.player else { return }

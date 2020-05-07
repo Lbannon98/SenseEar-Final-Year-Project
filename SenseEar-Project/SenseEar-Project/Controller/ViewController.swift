@@ -108,7 +108,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     //File Management Variables
     public static var filename: String?
     public static var selectedFile: URL?
-    var newConvertedPdf: URL?
     public static var fileTypeLogo: UIImageView?
     
     //Extracted Text Variable
@@ -117,7 +116,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     //Text to Speech variables
     var genderSelected: String?
     var accentSelected: String?
-    static var voiceType: VoiceTypes?
+    public static var voiceType: VoiceTypes?
     
     //UIElements
     let microphoneIcon = UIImage(named: "microphone-30.png")
@@ -139,7 +138,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
     public static var historyImage: UIImage?
     var selectedFileStack: [HistoryDataSource] = []
     var firbaseDBHandle: DatabaseHandle?
-    var sortingTimeStamp: [Date] = []
     
     //View Model
     var viewModel: SelectedFileViewModel!
@@ -166,6 +164,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         
     }
     
+    /// Controls setup of the view
     public func setUp() {
         
         documentView.layer.borderWidth = 2
@@ -189,6 +188,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         
     }
     
+    /// Controls setup of the segmented control values
     public func addValuesToSegmentControls() {
         
         let fontSize = UIFont.systemFont(ofSize: 18)
@@ -201,7 +201,6 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         genderSelectionSC.setTitle(GenderSelection.allValues()[0], forSegmentAt: 0)
         genderSelectionSC.setTitle(GenderSelection.allValues()[1], forSegmentAt: 1)
         
-        
         //AccentSC
         accentSelectionSC.selectedSegmentIndex = 0
         
@@ -211,9 +210,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         accentSelectionSC.setTitle(AccentSelection.allValues()[1], forSegmentAt: 1)
         accentSelectionSC.setTitle(AccentSelection.allValues()[2], forSegmentAt: 2)
         
-        
     }
     
+    /// Controls setting of the voice type by the user
     public func assignAudioSpecifications() {
         
         ViewController.voiceType = .undefined
@@ -254,6 +253,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         
     }
     
+    /// Controls the writing of history data to the database
     func writeHistoryDatatoFirebase() {
         
         ViewController.firebaseDBRef.child("history-data/\(UUID().uuidString)").setValue([
@@ -265,6 +265,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         
     }
     
+    /// Controls the setting of the file logo for the history page
     func setHistoryFileImage() {
              
         if ViewController.historyFilename?.contains("txt") == true {
@@ -291,6 +292,7 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
       
     }
     
+    /// Controls the reading of the history data from the database
     public func readingHistoryDataFromFirebase() {
                 
         firbaseDBHandle = ViewController.firebaseDBRef.child("history-data").observe(.childAdded) { (snapshot) in
@@ -526,6 +528,10 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
         }
     }
     
+    /// Controls the actions taken place after the player finsihes playing
+    /// - Parameters:
+    ///   - player: Audio player
+    ///   - flag: Boolean value for success of player completion
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
 
         playPauseAudioBtn.setImage(UIImage(systemName: "play", withConfiguration: iconConfiguration), for: .normal)
@@ -536,6 +542,9 @@ class ViewController: UIViewController, SFSpeechRecognizerDelegate, AVAudioPlaye
 
 extension Date {
     
+    /// Controls the formatting of the date and time
+    /// - Parameter format: String value of the chosen format type
+    /// - Returns: String of formatted date and time
     func formatTime(format: String) -> String {
         
         let dateformat = DateFormatter()

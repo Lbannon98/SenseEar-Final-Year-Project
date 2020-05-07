@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// View Model for selected file metadata
 class SelectedFileViewModel {
     
     var filename: String

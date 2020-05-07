@@ -62,6 +62,7 @@ class HistoryViewController: UITableViewController {
         
     }
     
+    /// Controls the setup of the view
     public func setUp() {
         
         tableView.rowHeight = 90
@@ -74,11 +75,21 @@ class HistoryViewController: UITableViewController {
         
     }
     
+    /// Controls the number of cells that are displayed
+    /// - Parameters:
+    ///   - tableView: Tableview for displaying the cells
+    ///   - section: Section for displaying the content
+    /// - Returns: Int value of cells to display
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return HistoryViewController.arrayData.count
     }
-
+    
+    /// Controls the setup of the cell at each row
+    /// - Parameters:
+    ///   - tableView: Tableview for displaying the cells
+    ///   - indexPath: Index path of the cell
+    /// - Returns: Table view cell setup with the datasource
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let datasource = HistoryViewController.arrayData[indexPath.row]

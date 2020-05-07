@@ -55,17 +55,26 @@ class ViewControllerTests: XCTestCase {
         
     }
     
-    func testDateFormatter() {
+    func testTextToSpeechService() {
         
         //Given
-        let date = Date()
-        let format = "MM-dd-yyyy HH:mm"
+        let testBundle = Bundle(for: type(of: self))
+
+        guard let fileURL = testBundle.url(forResource: "TestFile", withExtension: "txt")
+          else { fatalError() }
+        
+        let textExtracted = viewController.textExtractionFromSelectedFile(url: fileURL)
+        
+        let voice = VoiceTypes.ausMale
         
         //When
-        let time = date.formatTime(format: format)
+        TextToSpeechService.shared.makeTextToSpeechRequest(text: textExtracted, voiceType: voice) {}
+        
+        sleep(5)
         
         //Then
-        expect(time).toNot(beNil())
+        expect(TextToSpeechService.audioData).toNot(beNil())
+        
     }
 
 }

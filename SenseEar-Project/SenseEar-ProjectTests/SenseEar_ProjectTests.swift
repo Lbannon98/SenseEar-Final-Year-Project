@@ -77,7 +77,7 @@ class SenseEar_ProjectTests: XCTestCase {
            //Given
            let testBundle = Bundle(for: type(of: self))
 
-           guard let fileURL = testBundle.url(forResource: "CV 2019", withExtension: "pdf")
+           guard let fileURL = testBundle.url(forResource: "Slide 3 - AI Searching Part 1", withExtension: "pdf")
              else { fatalError() }
 
            print("FILE URL: \(fileURL.description)")
@@ -96,7 +96,7 @@ class SenseEar_ProjectTests: XCTestCase {
            //Given
            let testBundle = Bundle(for: type(of: self))
 
-           guard let fileURL = testBundle.url(forResource: "CV 2019", withExtension: "pdf")
+           guard let fileURL = testBundle.url(forResource: "Slide 3 - AI Searching Part 1", withExtension: "pdf")
              else { fatalError() }
 
            print("FILE URL: \(fileURL.description)")
@@ -115,7 +115,7 @@ class SenseEar_ProjectTests: XCTestCase {
         //Given
         let testBundle = Bundle(for: type(of: self))
 
-        guard let fileURL = testBundle.url(forResource: "CV 2019", withExtension: "pdf")
+        guard let fileURL = testBundle.url(forResource: "Slide 3 - AI Searching Part 1", withExtension: "pdf")
              else { fatalError() }
 
         print("FILE URL: \(fileURL.description)")
